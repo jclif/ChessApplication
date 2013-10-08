@@ -3,15 +3,15 @@ window.ChessApplication = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function($content, gamesData) {
+  initialize: function($rootEl, gamesData) {
     var games = new ChessApplication.Collections.Games(gamesData);
 
-    new ChessApplication.Routers.GamesRouter($content, games);
+    new ChessApplication.Routers.GamesRouter($rootEl, games);
     Backbone.history.start();
   }
 };
 
 $(document).ready(function(){
   var gamesData = JSON.parse($("#bootstrapped_games_json").html());
-  ChessApplication.initialize($("body"), gamesData);
+  ChessApplication.initialize($('.content'), gamesData);
 });

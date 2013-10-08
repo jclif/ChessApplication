@@ -140,6 +140,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   devise
+  ejs
   jquery-rails
   launchy
   letter_opener

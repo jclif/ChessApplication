@@ -3138,3 +3138,644 @@ Processing by GamesController#index as HTML
   Rendered games/index.html.erb within layouts/application (1.4ms)
   Rendered layouts/_errors.html.erb (0.1ms)
 Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:03:58 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:11:33 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.5ms)
+Compiled games/list.js  (0ms)  (pid 55649)
+Compiled application.js  (26ms)  (pid 55649)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 85ms (Views: 83.3ms | ActiveRecord: 0.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:11:43 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (25.4ms)
+  Rendered layouts/_errors.html.erb (0.6ms)
+Completed 200 OK in 243ms (Views: 130.9ms | ActiveRecord: 2.8ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:13:04 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (14.9ms)
+  Rendered layouts/_errors.html.erb (0.5ms)
+Completed 200 OK in 130ms (Views: 68.0ms | ActiveRecord: 20.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:16:52 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-08 14:22:45 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:22:45 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 18ms
+
+NameError - undefined local variable or method `games' for #<#<Class:0x007fc9b4c442a0>:0x007fc9b650fc80>
+  (in /Users/appacademy/Desktop/ChessApplication/app/assets/templates/games/list.jst.ejs.erb):
+  app/assets/templates/games/list.jst.ejs.erb:2:in `block in singletonclass'
+  app/assets/templates/games/list.jst.ejs.erb:65531:in `singletonclass'
+  app/assets/templates/games/list.jst.ejs.erb:65529:in `__tilt_70252121770460'
+  tilt (1.4.1) lib/tilt/template.rb:170:in `evaluate'
+  tilt (1.4.1) lib/tilt/template.rb:103:in `render'
+  sprockets (2.2.2) lib/sprockets/context.rb:193:in `block in evaluate'
+  sprockets (2.2.2) lib/sprockets/context.rb:190:in `evaluate'
+  sprockets (2.2.2) lib/sprockets/processed_asset.rb:12:in `initialize'
+  sprockets (2.2.2) lib/sprockets/base.rb:249:in `block in build_asset'
+  sprockets (2.2.2) lib/sprockets/base.rb:270:in `circular_call_protection'
+  sprockets (2.2.2) lib/sprockets/base.rb:248:in `build_asset'
+  sprockets (2.2.2) lib/sprockets/index.rb:93:in `block in build_asset'
+  sprockets (2.2.2) lib/sprockets/caching.rb:19:in `cache_asset'
+  sprockets (2.2.2) lib/sprockets/index.rb:92:in `build_asset'
+  sprockets (2.2.2) lib/sprockets/base.rb:169:in `find_asset'
+  sprockets (2.2.2) lib/sprockets/index.rb:60:in `find_asset'
+  sprockets (2.2.2) lib/sprockets/processed_asset.rb:44:in `block in init_with'
+  sprockets (2.2.2) lib/sprockets/processed_asset.rb:37:in `init_with'
+  sprockets (2.2.2) lib/sprockets/asset.rb:24:in `from_hash'
+  sprockets (2.2.2) lib/sprockets/caching.rb:15:in `cache_asset'
+  sprockets (2.2.2) lib/sprockets/index.rb:92:in `build_asset'
+  sprockets (2.2.2) lib/sprockets/base.rb:169:in `find_asset'
+  sprockets (2.2.2) lib/sprockets/index.rb:60:in `find_asset'
+  sprockets (2.2.2) lib/sprockets/bundled_asset.rb:38:in `init_with'
+  sprockets (2.2.2) lib/sprockets/asset.rb:24:in `from_hash'
+  sprockets (2.2.2) lib/sprockets/caching.rb:15:in `cache_asset'
+  sprockets (2.2.2) lib/sprockets/index.rb:92:in `build_asset'
+  sprockets (2.2.2) lib/sprockets/base.rb:169:in `find_asset'
+  sprockets (2.2.2) lib/sprockets/index.rb:60:in `find_asset'
+  sprockets (2.2.2) lib/sprockets/environment.rb:78:in `find_asset'
+  sprockets (2.2.2) lib/sprockets/base.rb:177:in `[]'
+  actionpack (3.2.14) lib/sprockets/helpers/rails_helper.rb:126:in `asset_for'
+  actionpack (3.2.14) lib/sprockets/helpers/rails_helper.rb:27:in `block in javascript_include_tag'
+  actionpack (3.2.14) lib/sprockets/helpers/rails_helper.rb:26:in `javascript_include_tag'
+  app/views/layouts/application.html.erb:6:in `_app_views_layouts_application_html_erb__1395720223370121226_70252161372220'
+  actionpack (3.2.14) lib/action_view/template.rb:145:in `block in render'
+  activesupport (3.2.14) lib/active_support/notifications.rb:125:in `instrument'
+  actionpack (3.2.14) lib/action_view/template.rb:143:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:60:in `render_with_layout'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/template_renderer.rb:19:in `render'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:36:in `render_template'
+  actionpack (3.2.14) lib/action_view/renderer/renderer.rb:17:in `render'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:110:in `_render_template'
+  actionpack (3.2.14) lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  actionpack (3.2.14) lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:88:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /Users/appacademy/.rvm/rubies/ruby-1.9.3-p392/lib/ruby/1.9.1/benchmark.rb:295:in `realtime'
+  activesupport (3.2.14) lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  activerecord (3.2.14) lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:39:in `render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:425:in `_run__377427171509570625__process_action__3030530667309283152__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.14) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.14) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.14) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__1416928928388361__call__2240966432468281764__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (1.0.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.0.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.0.1) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.1) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.1) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.1) lib/thin/connection.rb:54:in `process'
+  thin (1.5.1) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.5.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+  script/rails:0:in `<main>'
+
+
+
+Started POST "/__better_errors/70252162793940/variables" for 127.0.0.1 at 2013-10-08 14:22:45 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:22:57 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.6ms)
+Compiled games/list.js  (0ms)  (pid 56818)
+Compiled application.js  (50ms)  (pid 56818)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 106ms (Views: 103.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:23:14 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.9ms | ActiveRecord: 0.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:23:45 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (14.9ms)
+  Rendered layouts/_errors.html.erb (0.5ms)
+Completed 200 OK in 138ms (Views: 71.7ms | ActiveRecord: 20.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:23:47 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:23:59 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2013-10-08 14:24:15 -0400
+
+ActionController::RoutingError (No route matches [GET] "/session/new"):
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.1) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.1) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.1) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.1) lib/thin/connection.rb:54:in `process'
+  thin (1.5.1) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.5.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/session/destory" for 127.0.0.1 at 2013-10-08 14:24:18 -0400
+
+ActionController::RoutingError (No route matches [GET] "/session/destory"):
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.1) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.1) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.1) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.1) lib/thin/connection.rb:54:in `process'
+  thin (1.5.1) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.5.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/session/destroy" for 127.0.0.1 at 2013-10-08 14:25:01 -0400
+
+ActionController::RoutingError (No route matches [GET] "/session/destroy"):
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.1) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.1) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.1) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.1) lib/thin/connection.rb:54:in `process'
+  thin (1.5.1) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.5.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/users/" for 127.0.0.1 at 2013-10-08 14:25:22 -0400
+
+ActionController::RoutingError (No route matches [GET] "/users"):
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.1) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.1) lib/thin/connection.rb:79:in `catch'
+  thin (1.5.1) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.1) lib/thin/connection.rb:54:in `process'
+  thin (1.5.1) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run_machine'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.5.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.14/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2013-10-08 14:25:24 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"sign_out"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "sign_out"]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound - Couldn't find User with id=sign_out:
+  activerecord (3.2.14) lib/active_record/relation/finder_methods.rb:344:in `find_one'
+  activerecord (3.2.14) lib/active_record/relation/finder_methods.rb:315:in `find_with_ids'
+  activerecord (3.2.14) lib/active_record/relation/finder_methods.rb:107:in `find'
+  activerecord (3.2.14) lib/active_record/querying.rb:5:in `find'
+  app/controllers/users_controller.rb:4:in `show'
+  actionpack (3.2.14) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:414:in `_run__366454218226128336__process_action__2182016186553740626__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.14) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.14) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.14) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.14) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.14) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.14) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.14) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.14) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.14) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/routing/route_set.rb:608:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.14) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.14) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `_run__2987986361558918927__call__3877469105081405318__callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.14) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.14) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  better_errors (1.0.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (1.0.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (1.0.1) lib/better_errors/middleware.rb:56:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.14) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.14) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.14) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.14) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.14) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.14) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.14) lib/rails/engine.rb:484:in `call'
+  railties (3.2.14) lib/rails/application.rb:231:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.14) lib/rails/rack/log_tailer.rb:17:in `call'
+  thin (1.5.1) lib/thin/connection.rb:81:in `block in pre_process'
+  thin (1.5.1) lib/thin/connection.rb:79:in `pre_process'
+  thin (1.5.1) lib/thin/connection.rb:54:in `process'
+  thin (1.5.1) lib/thin/connection.rb:39:in `receive_data'
+  eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'
+  thin (1.5.1) lib/thin/backends/base.rb:63:in `start'
+  thin (1.5.1) lib/thin/server.rb:159:in `start'
+  rack (1.4.5) lib/rack/handler/thin.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.14) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.14) lib/rails/commands.rb:55:in `block in <top (required)>'
+  railties (3.2.14) lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `<main>'
+  script/rails:0:in `<main>'
+
+
+
+Started POST "/__better_errors/70346165701960/variables" for 127.0.0.1 at 2013-10-08 14:25:24 -0400
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:25:38 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:26:50 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.0ms)
+Compiled chess_application.js  (0ms)  (pid 57057)
+Compiled application.js  (8ms)  (pid 57057)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 66ms (Views: 64.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:27:12 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.6ms)
+Compiled chess_application.js  (0ms)  (pid 57057)
+Compiled application.js  (8ms)  (pid 57057)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 67ms (Views: 64.7ms | ActiveRecord: 0.5ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:28:41 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (14.9ms)
+  Rendered layouts/_errors.html.erb (0.4ms)
+Completed 200 OK in 129ms (Views: 66.3ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:29:13 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.3ms)
+Compiled games/list.js  (1ms)  (pid 57206)
+Compiled application.js  (8ms)  (pid 57206)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 67ms (Views: 65.5ms | ActiveRecord: 0.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:30:06 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (18.7ms)
+  Rendered layouts/_errors.html.erb (0.4ms)
+Completed 200 OK in 139ms (Views: 72.6ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:30:09 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:30:17 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.2ms)
+Compiled games/list.js  (0ms)  (pid 57255)
+Compiled application.js  (8ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 94ms (Views: 92.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:31:44 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.5ms)

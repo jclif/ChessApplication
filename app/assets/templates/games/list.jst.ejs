@@ -1,9 +1,8 @@
 <ul>
-  <% console.log(games) %>
   <% games.each(function (game) { %>
     <li class="game">
-      <a href="#/games/<%= game.escape("id") %>">
-        <%= game.escape("white_user_id")%>
+      <a href="#/games/<% game.escape("id") %>">
+        <%= game.escape("white_user_id") %>
       </a>
     </li>
   <% }); %>
