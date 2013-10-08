@@ -3779,3 +3779,233 @@ Processing by GamesController#index as HTML
   Rendered games/index.html.erb within layouts/application (1.5ms)
   Rendered layouts/_errors.html.erb (0.0ms)
 Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:38:27 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.0ms)
+Compiled games/list.js  (0ms)  (pid 57255)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (8ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 43.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:38:35 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:38:48 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:40:20 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.5ms)
+Compiled games/detail.js  (0ms)  (pid 57255)
+Compiled application.js  (28ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 85ms (Views: 84.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:40:58 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.3ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.2ms)
+Compiled games/list.js  (0ms)  (pid 57255)
+Compiled application.js  (8ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 68.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:41:14 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:41:49 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.4ms)
+Compiled games/list.js  (0ms)  (pid 57255)
+Compiled application.js  (8ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 63ms (Views: 61.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:42:07 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.7ms)
+Compiled games/list.js  (0ms)  (pid 57255)
+Compiled application.js  (8ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 74ms (Views: 72.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:42:26 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.8ms)
+Compiled games/list.js  (0ms)  (pid 57255)
+Compiled application.js  (10ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 69.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:45:47 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.1ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled views/game_detail.js  (0ms)  (pid 57255)
+Compiled application.js  (27ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 90ms (Views: 88.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:45:50 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:46:36 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.5ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (9ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 70ms (Views: 68.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:55:39 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.4ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (9ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 68ms (Views: 66.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:59:22 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.7ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (9ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 69ms (Views: 67.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:59:27 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 14:59:37 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 15:01:37 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.3ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (40ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 69.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 15:02:03 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (11ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 70ms (Views: 68.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 15:02:11 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.6ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (33ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 65ms (Views: 63.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-08 15:02:48 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.4ms)
+Compiled routers/gamers_router.js  (0ms)  (pid 57255)
+Compiled application.js  (9ms)  (pid 57255)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 69.7ms | ActiveRecord: 0.4ms)
