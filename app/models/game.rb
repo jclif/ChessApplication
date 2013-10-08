@@ -5,11 +5,11 @@ class Game < ActiveRecord::Base
   belongs_to :black_player, class_name: "User", foreign_key: :black_user_id
 
   def try_move(move) # long algebraic notation: 'e2e4'
-    response = ChessGame.eval_move({pgn: self.pgn, move: move})
+    valid = ChessGame.eval_move({moves: self.moves, poss_move: move})
 
-    if response
+    if valid
       self.switch_turn
-      self.pgn = [self.pgn, move].join(" ")
+      self.moves = [self.moves, move].join(" ")
       self.save
       return true
     else
@@ -26,6 +26,21 @@ class Game < ActiveRecord::Base
 
     self.save
   end
+
+  def active_player_id
+    i = (self.turn_num % 2) + 1
+
+    if i == 1
+      return self.white_user_id
+    else
+      return self.black_user_id
+    end
+  end
+
+  def turn_num
+    (self.moves.split(" ").length / 2) + 1
+  end
+
 end
 
 # TODO !!! figure out how to require from lib !!!
@@ -53,16 +68,16 @@ class ChessGame
 
   def self.eval_move(params)
     debugger
-    pgn = params[:pgn] # 'e2e4 ...'
+    moves = params[:moves] # 'e2e4 ...'
     game = ChessGame.new
-    poss_move = game.long_alg_to_coord(params[:move]) # 'e2e4'
-    pgn_array = pgn.split(" ") # ['e2e4', ...]
+    poss_move = game.long_alg_to_coord(params[:poss_move]) # 'e2e4'
+    moves_array = moves.split(" ") # ['e2e4', ...]
 
-    pgn_array.map! do |el|
+    moves_array.map! do |el|
       game.long_alg_to_coord(el)
     end # [[[6,4], [4,4]], ...]
 
-    pgn_array.each do |move|
+    moves_array.each do |move|
       game.board.make_move(move)
       game.move_hashes << {piece: game.board[move[1]], move: move}
       game.switch_turn

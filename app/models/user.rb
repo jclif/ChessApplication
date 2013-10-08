@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  def games
+    Game.where("white_user_id = ?", self.id) + Game.where("black_user_id = ?", self.id)
+  end
 end

@@ -1,10 +1,9 @@
 class CreateGames < ActiveRecord::Migration
   def change
     create_table :games do |t|
-      t.string :pgn, default: ""
+      t.string :moves, default: ""
       t.integer :white_user_id, null: false
       t.integer :black_user_id, null: false
-      t.boolean :finished, default: false
       t.string :current_player, default: "white"
 
 

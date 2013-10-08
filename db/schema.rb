@@ -14,10 +14,9 @@
 ActiveRecord::Schema.define(:version => 20131008142228) do
 
   create_table "games", :force => true do |t|
-    t.string   "pgn",            :default => ""
+    t.string   "moves",          :default => ""
     t.integer  "white_user_id",                       :null => false
     t.integer  "black_user_id",                       :null => false
-    t.boolean  "finished",       :default => false
     t.string   "current_player", :default => "white"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
