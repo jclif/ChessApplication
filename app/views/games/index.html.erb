@@ -1,0 +1,9 @@
+<script type="application/json" id="bootstrapped_games_json">
+  <%= current_user.games.to_json.html_safe %>
+</script>
+
+<script type="application/javascript">
+  $(function () {
+    // Bootstrap initial `Task`s.
+  });
+</script>

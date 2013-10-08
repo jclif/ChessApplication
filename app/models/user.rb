@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   def games
     Game.where("white_user_id = ?", self.id) + Game.where("black_user_id = ?", self.id)
   end
+
 end

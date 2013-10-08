@@ -1,11 +1,11 @@
 ChessApplication::Application.routes.draw do
   devise_for :users
 
-  root to: 'static_pages#root'
+  root to: "games#index"
 
   resources :users, only: [:show]
 
-  resources :games, only: [:show]
+  resources :games, only: [:show, :index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
