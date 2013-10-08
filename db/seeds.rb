@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+users = User.create([
+  {email: "test1@gmail.com", password: "password"},
+  {email: "test2@gmail.com", password: "password"}
+])
+
+games = Game.create([
+  {white_user_id: 1, black_user_id: 2}
+])

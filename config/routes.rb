@@ -1,6 +1,12 @@
 ChessApplication::Application.routes.draw do
   devise_for :users
 
+  root to: 'static_pages#root'
+
+  resources :users, only: [:show]
+
+  resources :games, only: [:show]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

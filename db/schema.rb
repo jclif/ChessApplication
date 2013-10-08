@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007225608) do
+ActiveRecord::Schema.define(:version => 20131008142228) do
+
+  create_table "games", :force => true do |t|
+    t.string   "pgn",            :default => ""
+    t.integer  "white_user_id",                       :null => false
+    t.integer  "black_user_id",                       :null => false
+    t.boolean  "finished",       :default => false
+    t.string   "current_player", :default => "white"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "games", ["black_user_id"], :name => "index_games_on_black_user_id"
+  add_index "games", ["white_user_id"], :name => "index_games_on_white_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
