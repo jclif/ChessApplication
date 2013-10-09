@@ -10,18 +10,16 @@
 
 <%= render partial: "layouts/errors" %>
 
+<ul class="user_info">
 <% if !current_user.nil? %>
-  <ul>
     <li>Logged in as: <%= current_user.email %></li>
-    <li><%= link_to "Your Profile!", user_url(current_user)%>
-    <li><%= button_to "Logout", destroy_user_session_url, :method => :delete %></li>
-  </ul>
-<% elsif %>
-  <ul>
+    <li><%= link_to "Your Profile!", user_url(current_user)%></li>
+    <li class="logout"><%= button_to "Logout", destroy_user_session_url, :method => :delete %></li>
+<% else %>
     <li><%= button_to "Sign In", user_session_url, :method => :get %></li>
     <li><%= button_to "Sign Up", new_user_registration_url, :method => :get %></li>
-  </ul>
 <% end %>
+</ul>
 
 <%= yield %>
 

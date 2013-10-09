@@ -8,13 +8,10 @@ class Game < ActiveRecord::Base
   belongs_to :black_player, class_name: "User", foreign_key: :black_user_id
 
   def default_board
-    puts "setting default board"
     game = ChessGame.new
 
     self.current_board = game.json_board
-    self.save
-    puts "current_board after default set:"
-    p self.current_board
+    self.save!
   end
 
   def try_move(move) # long algebraic notation: 'e2e4'
@@ -24,7 +21,7 @@ class Game < ActiveRecord::Base
       self.switch_turn
       self.moves = [self.moves, move].join(" ")
       self.current_board = response[:board]
-      self.save
+      self.save!
       return true
     else
       return false

@@ -26,6 +26,19 @@
   font-family: "Chess Merida Unicode";
   font-size: 60px;
   text-align: center;
+  cursor: crosshair;
+}
+
+.user_info {
+  list-style-type: none;
+}
+
+.logout {
+  float: right;
+}
+
+.clicked {
+  border: 1px solid red;
 }
 
 .dark {

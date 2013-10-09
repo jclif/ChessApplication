@@ -5,7 +5,7 @@ ChessApplication::Application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :games, only: [:show, :index]
+  resources :games, only: [:show, :index, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
