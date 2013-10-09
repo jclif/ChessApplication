@@ -1,8 +1,11 @@
-<h2><%= game.white_user_id %></h2>
-<h2><%= game.black_user_id %></h2>
-
-<p>
-  You've got your work cut out for you!
-</p>
+<% for(var i = 0; i < 8; i++) { %>
+  <% for(var j = 0; j < 8; j++) { %>
+    <% if ((i + j) % 2 == 0 ) { %>
+      <div class="square" data-id="<%= i %>_<%= j %>"></div>
+    <% } else { %>
+      <div class="square dark" data-id="<%= i %>_<%= j %>"></div>
+    <% } %>
+  <% } %>
+<% } %>
 
 <a href="#/">Back!</a>

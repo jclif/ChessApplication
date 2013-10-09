@@ -1,4 +1,6 @@
 ChessApplication.Views.GameDetailView = Backbone.View.extend({
+  events: {},
+
   render: function() {
     var that = this;
 
@@ -8,5 +10,5 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
 
     that.$el.html(renderedContent);
     return that;
-  }
-})
+  },
+});

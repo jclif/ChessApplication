@@ -1,7 +1,7 @@
 ChessApplication.Views.GamesListView = Backbone.View.extend({
   events: {},
 
-  render: function () {
+  render: function() {
     var that = this;
 
     var renderedContent = JST["games/list"]({

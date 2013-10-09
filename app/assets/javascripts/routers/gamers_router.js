@@ -22,11 +22,11 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
   show: function(id) {
     var that = this;
 
-    var game = _(that.games).findWhere({ id: parseInt(id) });
+    var game = that.games.findWhere({ id: parseInt(id) });
     var gameDetailView = new ChessApplication.Views.GameDetailView({
       model: game
-    })
+    });
 
-    that.$rootEl.html(taskDetailView.render().$el);
+    that.$rootEl.html(gameDetailView.render().$el);
   }
 });
