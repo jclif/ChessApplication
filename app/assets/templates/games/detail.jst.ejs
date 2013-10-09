@@ -1,13 +1,20 @@
-<%= game.attributes.current_board %>
+<% console.log(game) %>
+<% console.log(board) %>
+
+<div class="moves clearfix">
+  <%= game.attributes.moves %>
+</div>
 
 <% for(var i = 0; i < 8; i++) { %>
   <% for(var j = 0; j < 8; j++) { %>
     <% if ((i + j) % 2 == 0 ) { %>
-      <div class="square" data-id="<%= i %>_<%= j %>"></div>
+      <div class="square" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
     <% } else { %>
-      <div class="square dark" data-id="<%= i %>_<%= j %>"></div>
+      <div class="square dark" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
     <% } %>
   <% } %>
 <% } %>
+
+<br>
 
 <a href="#/">Back!</a>

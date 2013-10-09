@@ -5329,3 +5329,1501 @@ Processing by Devise::SessionsController#new as HTML
   Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (3.5ms)
   Rendered layouts/_errors.html.erb (0.0ms)
 Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 11:36:01 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (1.5ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (35.6ms)
+  Rendered layouts/_errors.html.erb (0.9ms)
+Completed 200 OK in 430ms (Views: 364.5ms | ActiveRecord: 2.2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 11:36:26 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.9ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-10-09 15:36:26.804430', "current_sign_in_at" = '2013-10-09 15:36:26.804430', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-10-09 15:36:26.805349' WHERE "users"."id" = 1[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 318ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:36:26 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (10.5ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:37:26 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.2ms)
+Compiled games/detail.js  (0ms)  (pid 70613)
+Compiled application.js  (9ms)  (pid 70613)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 69.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:37:33 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (4.0ms)
+Compiled games/detail.js  (0ms)  (pid 70613)
+Compiled application.js  (8ms)  (pid 70613)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 82ms (Views: 80.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:37:55 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (4.5ms)
+Compiled games/detail.js  (0ms)  (pid 70613)
+Compiled application.js  (8ms)  (pid 70613)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 78ms (Views: 75.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:38:16 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.7ms)
+Compiled games/detail.js  (0ms)  (pid 70613)
+Compiled application.js  (8ms)  (pid 70613)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 69ms (Views: 67.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:39:39 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 37ms (Views: 36.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:40:44 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 70ms (Views: 42.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:40:48 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:41:26 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (31.3ms)
+  Rendered layouts/_errors.html.erb (0.4ms)
+Completed 200 OK in 213ms (Views: 126.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:41:29 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:42:11 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.0ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 69.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:43:27 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (9.6ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 128ms (Views: 71.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:43:50 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (4.3ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (11ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 80ms (Views: 78.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:44:01 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (4.5ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 78ms (Views: 75.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:44:10 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.3ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 76ms (Views: 73.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:44:23 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (4.0ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 69.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:45:13 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.2ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.2ms)
+Completed 200 OK in 260ms (Views: 258.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:46:15 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.5ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled views/game_detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 121ms (Views: 119.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:46:25 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.2ms)
+Compiled views/game_detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 67ms (Views: 65.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:46:31 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.6ms)
+Compiled views/game_detail.js  (0ms)  (pid 70756)
+Compiled application.js  (10ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 71ms (Views: 69.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:46:41 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.4ms)
+Compiled views/game_detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:47:00 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:47:47 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.6ms)
+Compiled views/game_detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 68ms (Views: 66.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:48:10 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.5ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (10ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 41ms (Views: 39.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:48:40 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 41.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:48:52 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (3.9ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 47ms (Views: 44.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:49:16 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.6ms)
+Compiled application.css  (1ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 70ms (Views: 67.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:49:23 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (3.1ms)
+Compiled application.css  (1ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 20.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:49:59 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.3ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (4.2ms)
+Compiled application.css  (0ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 103ms (Views: 101.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:53:23 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.9ms)
+Compiled application.css  (1ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 35ms (Views: 33.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:53:31 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.6ms)
+Compiled application.css  (1ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 62ms (Views: 60.5ms | ActiveRecord: 0.4ms)
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 12:01:17 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 12:01:20 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 12:02:01 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (4.3ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 334ms (Views: 332.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:31:52 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.3ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (4.3ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 408ms (Views: 405.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:32:07 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.8ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (10ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 40.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:32:20 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.4ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 45ms (Views: 43.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:32:43 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (3.8ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (10ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 239ms (Views: 237.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:33:25 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (4.3ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 78ms (Views: 76.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:33:38 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (3.5ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 100ms (Views: 97.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:33:45 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.9ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 76ms (Views: 73.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:34:30 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (4.6ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (11ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 78ms (Views: 75.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:34:59 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.1ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (11ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 76ms (Views: 74.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:35:15 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (3.4ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (11ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 274ms (Views: 271.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:35:38 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (3.2ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 44ms (Views: 42.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:35:42 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:35:48 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (11ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 50ms (Views: 48.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:35:55 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (4.8ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (8ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:36:18 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (4.5ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (9ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 47.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:36:26 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.1ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (10ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 72ms (Views: 70.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:36:56 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.5ms)
+Compiled games/detail.js  (0ms)  (pid 70756)
+Compiled application.js  (10ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 73ms (Views: 71.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:37:18 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (3.2ms)
+Compiled application.css  (0ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:37:20 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 43ms (Views: 41.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:37:23 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:37:43 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.4ms)
+Compiled application.css  (1ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:37:58 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.4ms)
+Compiled application.css  (0ms)  (pid 70756)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:38:11 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 26ms (Views: 25.3ms | ActiveRecord: 0.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:38:30 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (50.1ms)
+  Rendered layouts/_errors.html.erb (0.5ms)
+Completed 200 OK in 225ms (Views: 119.3ms | ActiveRecord: 25.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:38:57 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.8ms)
+Compiled application.css  (1ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 51ms (Views: 49.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:39:07 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.4ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (9ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:39:42 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (3.2ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (11ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 44ms (Views: 42.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:39:59 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (10ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:40:35 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.5ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (8ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 39ms (Views: 37.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:42:05 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+Compiled application.css  (0ms)  (pid 72365)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (8ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 75ms (Views: 73.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:42:34 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (6.0ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (8ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 77ms (Views: 75.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:42:44 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.9ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (11ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 86ms (Views: 84.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:42:56 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+Compiled application.css  (1ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:43:02 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.9ms)
+Compiled application.css  (1ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 26ms (Views: 24.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:44:03 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.1ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (10ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 77ms (Views: 76.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:44:20 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.3ms)
+Compiled games/detail.js  (0ms)  (pid 72365)
+Compiled application.js  (10ms)  (pid 72365)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 70ms (Views: 68.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:52:33 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 45ms (Views: 17.6ms | ActiveRecord: 1.1ms)
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:55:12 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 45ms (Views: 17.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:56:47 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 45ms (Views: 17.2ms | ActiveRecord: 1.1ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (10.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 17:57:09 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$Qwo8VpKG/Q/Oje5VfxEpS.vYvInaqYTETkfmkpvFFYnCus24Os/te"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 17:57:09 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 17:57:09 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$FGLjY4W6IsosrfT8nM99fO5iYoiIlB6St1ONt/R50KP//N2KyrfN2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 17:57:09 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 17:57:09 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 17:57:09 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:57:38 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 401 Unauthorized in 27ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 13:57:38 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (1.5ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 13:57:39 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (0.4ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (3.6ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 13:57:43 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2013-10-09 17:57:43.922878', "current_sign_in_at" = '2013-10-09 17:57:43.922878', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-10-09 17:57:43.923811' WHERE "users"."id" = 1
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 118ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:57:43 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:57:48 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.7ms | ActiveRecord: 0.5ms)
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:59:03 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 44ms (Views: 16.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:59:13 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.6ms)
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 13:59:55 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.5ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.7ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:06:54 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$Tca18BoddRyGwnWB6t6htu04680rGVU6oNxi7QzQw0YnEDMt/9iR."], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:06:54 UTC +00:00]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:06:54 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$JGsYoMbHdeAtT4un7bwx2uM67my45Gr8XqLSmUCEa3miaVg/oYwx."], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:06:54 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 18:06:54 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 18:06:54 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.5ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:07:00 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 401 Unauthorized in 27ms
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (19.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:08:35 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$hn.KyF2wGadbj2usMIXctOdn7gRD/9nPqv9luZRinDTmIcNQXQhOS"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:08:35 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:08:35 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$cplOBAjpuS670CIveDF4YOEVtmJCdabC95WaxWR6OOlGRgM.XGczG"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:08:35 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 18:08:35 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 18:08:35 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:09:28 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 401 Unauthorized in 75ms
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:09:29 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:09:29 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (1.4ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (30.2ms)
+  Rendered layouts/_errors.html.erb (0.4ms)
+Completed 200 OK in 89ms (Views: 88.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:09:29 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (0.4ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:09:36 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.6ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-10-09 18:09:36.791597', "current_sign_in_at" = '2013-10-09 18:09:36.791597', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-10-09 18:09:36.792476' WHERE "users"."id" = 1[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 92ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:09:36 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (10.3ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 19.6ms | ActiveRecord: 0.8ms)
+Connecting to database specified by database.yml
+SQLite3::ConstraintException: games.white_user_id may not be NULL: INSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)
+SQLite3::ConstraintException: games.white_user_id may not be NULL: INSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)
+SQLite3::ConstraintException: games.white_user_id may not be NULL: INSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:18:59 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (15.5ms)
+  Rendered layouts/_errors.html.erb (0.5ms)
+Completed 200 OK in 131ms (Views: 67.3ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:19:05 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 16ms (Views: 13.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:19:05 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.5ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:22:34 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$QKC00WlWSBimsdWlmrkom.xapTc6GE59S./znTh5Uejg.H90shRki"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:22:34 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:22:34 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$rWdrUxDESgZydO8jJ94B/O7SNpF1WCU8a84DGWwnGO.h3xrwxyIGm"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:22:34 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 18:22:34 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 18:22:34 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (0.4ms)[0m  UPDATE "games" SET "white_user_id" = 1, "black_user_id" = 2, "created_at" = '2013-10-09 18:22:34.639746', "updated_at" = '2013-10-09 18:22:34.639746', "current_board" = '[["\u265c","\u265e","\u265d","\u265b","\u265a","\u265d","\u265e","\u265c"],["\u265f","\u265f","\u265f","\u265f","\u265f","\u265f","\u265f","\u265f"],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["\u2659","\u2659","\u2659","\u2659","\u2659","\u2659","\u2659","\u2659"],["\u2656","\u2658","\u2657","\u2655","\u2654","\u2657","\u2658","\u2656"]]' WHERE "games"."id" = 1
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:22:52 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 401 Unauthorized in 31ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:22:52 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (1.3ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:22:59 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (1.7ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-10-09 18:22:59.167773', "current_sign_in_at" = '2013-10-09 18:22:59.167773', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-10-09 18:22:59.168716' WHERE "users"."id" = 1[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 92ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:22:59 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.7ms)
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+Connecting to database specified by database.yml
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:44:29 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$CumnerFZSCbdU7msmEQ29OSm/ByKLBRKltittrXnqp3Hwwd/L2Ogm"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:44:29 UTC +00:00]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:44:29 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$EEHm9SQzbfnMfE1bn78C2.taW.mtIBRqAN5CGuuHxoRb62CYh2Gd2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:44:29 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 18:44:29 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 18:44:29 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (0.3ms)[0m  UPDATE "games" SET "white_user_id" = 1, "black_user_id" = 2, "created_at" = '2013-10-09 18:44:29.765917', "updated_at" = '2013-10-09 18:44:29.765917', "current_board" = '♜' WHERE "games"."id" = 1
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.7ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.8ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:46:56 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$wt6gRRbZ./Huh8ojyKK9g.4BlYUmBDEJy7lAd6wmAcgB7Eu0qZWh2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:46:56 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:46:56 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$dTHGdGCaBCIY1cH2ilMWIOJ7cctWRmuXVNST3etRCqEEh4OFvpKBS"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:46:56 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 18:46:56 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 18:46:56 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (0.4ms)[0m  UPDATE "games" SET "white_user_id" = 1, "black_user_id" = 2, "created_at" = '2013-10-09 18:46:56.433804', "updated_at" = '2013-10-09 18:46:56.433804', "current_board" = '♜' WHERE "games"."id" = 1
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:49:13 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$wNMYn5qX6ujiaAG4Lephu.m69sz077fJ/0MC0a6Ok5qSjkJb1Uwwi"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:49:13 UTC +00:00]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:49:14 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$lCtHTC8OBV4NhPKCMYDxT.WwEL1QVndro4euESR.TnYjkcPp.0hEa"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:49:14 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 18:49:14 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 18:49:14 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (0.4ms)[0m  UPDATE "games" SET "white_user_id" = 1, "black_user_id" = 2, "created_at" = '2013-10-09 18:49:14.078979', "updated_at" = '2013-10-09 18:49:14.078979', "current_board" = '[["\u265c","\u265e","\u265d","\u265b","\u265a","\u265d","\u265e","\u265c"],["\u265f","\u265f","\u265f","\u265f","\u265f","\u265f","\u265f","\u265f"],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["\u2659","\u2659","\u2659","\u2659","\u2659","\u2659","\u2659","\u2659"],["\u2656","\u2658","\u2657","\u2655","\u2654","\u2657","\u2658","\u2656"]]' WHERE "games"."id" = 1
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:51:09 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 401 Unauthorized in 27ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:51:09 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (0.4ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (34.1ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 61ms (Views: 60.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:51:14 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-10-09 18:51:14.913417', "current_sign_in_at" = '2013-10-09 18:51:14.913417', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-10-09 18:51:14.914258' WHERE "users"."id" = 1[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 82ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:51:14 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.7ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (2.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:55:07 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$ZzMBsfP4dIS5ehWY8a3JCuDwSVekXDFbjKHHoUiWTh1SwRKucyMRe"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:55:07 UTC +00:00]]
+  [1m[36m (27.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 18:55:07 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$Po9FVUfdw4eS5nCWMJyH4Oy1.SowWzhQPDrG2R.0tMx.tQ.tjj0YS"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 18:55:07 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 18:55:07 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 18:55:07 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (0.4ms)[0m  UPDATE "games" SET "white_user_id" = 1, "black_user_id" = 2, "created_at" = '2013-10-09 18:55:07.825214', "updated_at" = '2013-10-09 18:55:07.825214', "current_board" = '[["\u265c","\u265e","\u265d","\u265b","\u265a","\u265d","\u265e","\u265c"],["\u265f","\u265f","\u265f","\u265f","\u265f","\u265f","\u265f","\u265f"],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["","","","","","","",""],["\u2659","\u2659","\u2659","\u2659","\u2659","\u2659","\u2659","\u2659"],["\u2656","\u2658","\u2657","\u2655","\u2654","\u2657","\u2658","\u2656"]]' WHERE "games"."id" = 1
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+
+
+Started GET "/users/1" for 127.0.0.1 at 2013-10-09 14:55:43 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered users/show.html.erb within layouts/application (48.6ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 200 OK in 82ms (Views: 67.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/games/1" for 127.0.0.1 at 2013-10-09 14:55:44 -0400
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 401 Unauthorized in 8ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:55:44 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (3.1ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 14:55:49 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = '2013-10-09 18:55:49.579015', "current_sign_in_at" = '2013-10-09 18:55:49.579015', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-10-09 18:55:49.579895' WHERE "users"."id" = 1
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/games/1
+Completed 302 Found in 82ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/games/1" for 127.0.0.1 at 2013-10-09 14:55:49 -0400
+Processing by GamesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE "games"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered games/show.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 56ms (Views: 54.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 14:55:54 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 12ms (Views: 10.1ms | ActiveRecord: 0.5ms)

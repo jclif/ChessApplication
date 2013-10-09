@@ -1,14 +1,20 @@
 class Game < ActiveRecord::Base
   attr_accessible :white_user_id, :black_user_id
-  after_initialize :default_board
+
+  validates :white_user_id, :black_user_id, presence: true
+  after_create  :default_board
 
   belongs_to :white_player, class_name: "User", foreign_key: :white_user_id
   belongs_to :black_player, class_name: "User", foreign_key: :black_user_id
 
   def default_board
-    g = ChessGame.new
+    puts "setting default board"
+    game = ChessGame.new
 
-    self.current_board = g.json_board
+    self.current_board = game.json_board
+    self.save
+    puts "current_board after default set:"
+    p self.current_board
   end
 
   def try_move(move) # long algebraic notation: 'e2e4'
@@ -75,7 +81,6 @@ class ChessGame
   attr_accessor :board, :turn, :players, :move_hashes, :moving
 
   def self.eval_move(params)
-    debugger
     moves = params[:moves] # 'e2e4 ...'
     game = ChessGame.new
     poss_move = game.long_alg_to_coord(params[:poss_move]) # 'e2e4'
@@ -91,7 +96,12 @@ class ChessGame
       game.switch_turn
     end
 
-    {valid: game.board.valid?(poss_move), board: game.json_board}
+    valid = game.board.valid?(poss_move)
+    game.board.make_move(poss_move) if valid
+    jb = game.json_board
+
+
+   {valid: valid, board: jb}
   end
 
   def initialize
@@ -105,7 +115,11 @@ class ChessGame
   end
 
   def json_board
-    unicode_board = board.board.each_with_index do |row, i|
+    yamlized_board = self.board.board.to_yaml
+
+    unicode_board = YAML::load(yamlized_board)
+
+    unicode_board.each do |row|
       row.map! do |piece|
         if piece.nil?
           ""
@@ -265,7 +279,6 @@ class Board
   end
 
   def render
-
     puts "    a  b  c  d  e  f  g  h "
     game.board.board.each_with_index do |row, i|
       print " #{8 - i} "

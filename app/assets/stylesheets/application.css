@@ -24,8 +24,23 @@
   border: 1px solid black;
   float: left;
   font-family: "Chess Merida Unicode";
+  font-size: 60px;
+  text-align: center;
 }
 
 .dark {
   background: gray;
 }
+
+.moves {
+  border: 1px solid black;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
