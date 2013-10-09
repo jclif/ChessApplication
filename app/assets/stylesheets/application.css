@@ -13,16 +13,17 @@
  */
 
 .content {
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   margin: auto;
 }
 
 .square {
-  width: 98px;
-  height: 98px;
+  width: 73px;
+  height: 73px;
   border: 1px solid black;
   float: left;
+  font-family: "Chess Merida Unicode";
 }
 
 .dark {

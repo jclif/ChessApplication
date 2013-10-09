@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :white_user_id, null: false
       t.integer :black_user_id, null: false
       t.string :current_player, default: "white"
-
+      t.string :current_board
 
       t.timestamps
     end

@@ -4462,3 +4462,870 @@ Processing by GamesController#index as HTML
   Rendered games/index.html.erb within layouts/application (1.4ms)
   Rendered layouts/_errors.html.erb (0.0ms)
 Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 09:48:33 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (2.5ms)
+Compiled application.css  (1ms)  (pid 67377)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.6ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (27.9ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:49:07 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$Nz7QdEl.3LrHpxsjI5G4euWD2ecrFuKIAXhPWwOLMcs0mj7PwRv.6"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:49:07 UTC +00:00]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:49:07 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$8TbJJ/Gm3ok8uF7kSdzOmex.3evN0nZrW0Ew4kBi/YYpdsEvmzUAK"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:49:07 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:51:36 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$DeWKPq61hiDjKM4yVEX4C.H3DS9vFiBebCz0vy9OFlLMgfRAO2SdK"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:51:36 UTC +00:00]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:51:36 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$LnUkpaOJl0zNwNPTDdDhzObzD677rC1dtr8eWVjVVfwXGeLBC7XLa"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:51:36 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:53:03 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$vQbV/f4pMjEY2Y4/UlmC9OxGfb.ZFtY.3/b8RAOtmk1olPx4UuQW2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:53:03 UTC +00:00]]
+  [1m[36m (2.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:53:03 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$Dx8bDS5RZ7bM4Aa0qZ.yz..kMDB7pXHnw29OJHzq3XA4TJijYwl6S"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:53:03 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:53:53 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$KiqvufaPFAeCX4YtZPqone5sjLcY.wM0ipfC7iNz2fWf7fV/q2y8G"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:53:53 UTC +00:00]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:53:54 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$U25CQPfdeSkpk/v8XnWL5OndV6CvpUlWUxg5OSZ55EuUufb1Cx6a6"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:53:54 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (19.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:54:59 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$Y13mnxb./iT8QcST/k3iZ.QZFDbN4vAmhXuLuAJTrLO/aWM9Vi5z."], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:54:59 UTC +00:00]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:54:59 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$953nLapjirfbrUCE50Qvp.KNZ2se0L7P89fHGlU.FCk14TExP32nC"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:54:59 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 14:54:59 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 14:54:59 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.5ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (19.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:56:40 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$m2sPgZJESAt4fEDoQbBcDeMyK87PbvXumMzbAs83wh0VVF4yT4lkK"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:56:40 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:56:40 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$8iK/uSs3GFhCUTiEb8otg.QQwn0yepNTobtqQD7tPqytaognYBe2y"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:56:40 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (2.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (3.6ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:58:22 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$m2/x4F8eXq5EoTXvjAapieTUbyOIGfutBB9kbM9u328dNye5Rwhr2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:58:22 UTC +00:00]]
+  [1m[36m (2.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:58:22 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$0IcXdTJPMBzz3Rouj8ws9ew/dWm89C6Lsh4x2I.txJjqt7UeRtsCa"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:58:22 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 14:58:22 UTC +00:00], ["current_board", nil], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 14:58:22 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:58:34 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$r31EOJxd3ZUBnjgZYh2kOuR5aUqlGQAKdpMS6MoZPsCc8BkjTNYei"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:58:34 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:58:34 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$Ierp05CLdsKba1QlMqME3uthJgcSCTjk2wax7J2Tmz1D5ldBMWox6"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:58:34 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (0.9ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (19.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:59:18 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$WbndstvvAairrQIukB6rre/2s6BPCfAu8JDfqbSMuqxRDZd.iWe7u"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:59:18 UTC +00:00]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 14:59:18 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$mB0KbAlo4sp64LcgkIB.wu76me8XNw0eIj5iW6KvN7fvOY.YyTCfK"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 14:59:18 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (8.0ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 14:59:18 UTC +00:00], ["current_board", [[♜, ♞, ♝, ♛, ♚, ♝, ♞, ♜], [♟, ♟, ♟, ♟, ♟, ♟, ♟, ♟], [nil, nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil, nil], [nil, nil, nil, nil, nil, nil, nil, nil], [♙, ♙, ♙, ♙, ♙, ♙, ♙, ♙], [♖, ♘, ♗, ♕, ♔, ♗, ♘, ♖]]], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 14:59:18 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:01:09 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$0/ht0QmrU5pRzVr4Y/4rFu.oa3L6V/6pHAdF10bkcNFyIipirjo52"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:01:09 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:01:09 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$oUvXTsmXSMlzPAEWlohAL.l0PzdnpdubSk5hMy.wbgyfY01o4CfEW"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:01:09 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 15:01:09 UTC +00:00], ["current_board", "--- &70344754830400\n- - !ruby/object:Rook\n    pos:\n    - 0\n    - 0\n    color: :black\n    unicode: ♜\n    game: &70344754830460 !ruby/object:ChessGame\n      board: !ruby/object:Board\n        game: *70344754830460\n        board: *70344754830400\n      turn: :white\n      players:\n        :white: !ruby/object:HumanPlayer\n          color: :white\n          game: *70344754830460\n        :black: !ruby/object:HumanPlayer\n          color: :black\n          game: *70344754830460\n      move_hashes: []\n      moving: false\n  - !ruby/object:Knight\n    pos:\n    - 0\n    - 1\n    color: :black\n    unicode: ♞\n    game: *70344754830460\n  - !ruby/object:Bishop\n    pos:\n    - 0\n    - 2\n    color: :black\n    unicode: ♝\n    game: *70344754830460\n  - !ruby/object:Queen\n    pos:\n    - 0\n    - 3\n    color: :black\n    unicode: ♛\n    game: *70344754830460\n  - !ruby/object:King\n    pos:\n    - 0\n    - 4\n    color: :black\n    unicode: ♚\n    game: *70344754830460\n  - !ruby/object:Bishop\n    pos:\n    - 0\n    - 5\n    color: :black\n    unicode: ♝\n    game: *70344754830460\n  - !ruby/object:Knight\n    pos:\n    - 0\n    - 6\n    color: :black\n    unicode: ♞\n    game: *70344754830460\n  - !ruby/object:Rook\n    pos:\n    - 0\n    - 7\n    color: :black\n    unicode: ♜\n    game: *70344754830460\n- - !ruby/object:Pawn\n    pos:\n    - 1\n    - 0\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 1\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 2\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 3\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 4\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 5\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 6\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 7\n    color: :black\n    unicode: ♟\n    game: *70344754830460\n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - !ruby/object:Pawn\n    pos:\n    - 6\n    - 0\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 1\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 2\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 3\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 4\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 5\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 6\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 7\n    color: :white\n    unicode: ♙\n    game: *70344754830460\n- - !ruby/object:Rook\n    pos:\n    - 7\n    - 0\n    color: :white\n    unicode: ♖\n    game: *70344754830460\n  - !ruby/object:Knight\n    pos:\n    - 7\n    - 1\n    color: :white\n    unicode: ♘\n    game: *70344754830460\n  - !ruby/object:Bishop\n    pos:\n    - 7\n    - 2\n    color: :white\n    unicode: ♗\n    game: *70344754830460\n  - !ruby/object:Queen\n    pos:\n    - 7\n    - 3\n    color: :white\n    unicode: ♕\n    game: *70344754830460\n  - !ruby/object:King\n    pos:\n    - 7\n    - 4\n    color: :white\n    unicode: ♔\n    game: *70344754830460\n  - !ruby/object:Bishop\n    pos:\n    - 7\n    - 5\n    color: :white\n    unicode: ♗\n    game: *70344754830460\n  - !ruby/object:Knight\n    pos:\n    - 7\n    - 6\n    color: :white\n    unicode: ♘\n    game: *70344754830460\n  - !ruby/object:Rook\n    pos:\n    - 7\n    - 7\n    color: :white\n    unicode: ♖\n    game: *70344754830460\n"], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 15:01:09 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:07:54 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$CAqpvBFsWbYyMvRIVGQ9FuTkoKCow8pFeoWiM2sGeT/j/DXyCtWFe"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:07:54 UTC +00:00]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:07:54 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$NHZKu2nBDV7mincjoNRojeEqMqtj6Xp.Jx8u7lzboRKdy0j4onxPa"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:07:54 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (20.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:08:29 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$EDQmSCM.dVTkDtPS/C593Ov./bzZY3Ti0SZme/vxPKge.nBkWKeiO"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:08:29 UTC +00:00]]
+  [1m[36m (2.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:08:30 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$4hCU1/XrtZBnj1ChL1AnJeSOdkgeOqZcQytlT3hHQ0oFuTf.ZQOe6"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:08:30 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (19.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.7ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:08:48 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$ls4NuKfY/OkEMQ0G2t39e.0mtGQIf.rCYBCLcfD1MEAlQfekw8cRK"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:08:48 UTC +00:00]]
+  [1m[36m (103.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:08:49 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$olBvvZl38z1jnJIfoDo6B.CCaYOtYNoOeDU3Tg1qk.VEmbvXG3ZqO"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:08:49 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:09:23 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$SU5ZFtw83bjXT8VhMoEQt.gEdMURFo/zUqjgYId5az/EaVD2LxVBm"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:09:23 UTC +00:00]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:09:23 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$W/mYighm1OSCmaL0DKneD.3Pc38hQdfhjj25at2J/plY3vN1BXqcW"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:09:23 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.8ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:09:45 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$8e8l0p5F/Vs8uNYXtziaoe5isQrMgGeeC.215O3tCFwzo8G8neoUm"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:09:45 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:09:45 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$C12pQc7vgrt8yPQk.DLb/uJf9pLiUQQ08EA11uOLDaOuLtY0Dpfby"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:09:45 UTC +00:00]]
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 15:09:45 UTC +00:00], ["current_board", "--- &70096542985260\n- - !ruby/object:Rook\n    pos:\n    - 0\n    - 0\n    color: :black\n    unicode: ♜\n    game: &70096542985380 !ruby/object:ChessGame\n      board: !ruby/object:Board\n        game: *70096542985380\n        board: *70096542985260\n      turn: :white\n      players:\n        :white: !ruby/object:HumanPlayer\n          color: :white\n          game: *70096542985380\n        :black: !ruby/object:HumanPlayer\n          color: :black\n          game: *70096542985380\n      move_hashes: []\n      moving: false\n  - !ruby/object:Knight\n    pos:\n    - 0\n    - 1\n    color: :black\n    unicode: ♞\n    game: *70096542985380\n  - !ruby/object:Bishop\n    pos:\n    - 0\n    - 2\n    color: :black\n    unicode: ♝\n    game: *70096542985380\n  - !ruby/object:Queen\n    pos:\n    - 0\n    - 3\n    color: :black\n    unicode: ♛\n    game: *70096542985380\n  - !ruby/object:King\n    pos:\n    - 0\n    - 4\n    color: :black\n    unicode: ♚\n    game: *70096542985380\n  - !ruby/object:Bishop\n    pos:\n    - 0\n    - 5\n    color: :black\n    unicode: ♝\n    game: *70096542985380\n  - !ruby/object:Knight\n    pos:\n    - 0\n    - 6\n    color: :black\n    unicode: ♞\n    game: *70096542985380\n  - !ruby/object:Rook\n    pos:\n    - 0\n    - 7\n    color: :black\n    unicode: ♜\n    game: *70096542985380\n- - !ruby/object:Pawn\n    pos:\n    - 1\n    - 0\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 1\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 2\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 3\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 4\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 5\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 6\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 7\n    color: :black\n    unicode: ♟\n    game: *70096542985380\n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - !ruby/object:Pawn\n    pos:\n    - 6\n    - 0\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 1\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 2\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 3\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 4\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 5\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 6\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 7\n    color: :white\n    unicode: ♙\n    game: *70096542985380\n- - !ruby/object:Rook\n    pos:\n    - 7\n    - 0\n    color: :white\n    unicode: ♖\n    game: *70096542985380\n  - !ruby/object:Knight\n    pos:\n    - 7\n    - 1\n    color: :white\n    unicode: ♘\n    game: *70096542985380\n  - !ruby/object:Bishop\n    pos:\n    - 7\n    - 2\n    color: :white\n    unicode: ♗\n    game: *70096542985380\n  - !ruby/object:Queen\n    pos:\n    - 7\n    - 3\n    color: :white\n    unicode: ♕\n    game: *70096542985380\n  - !ruby/object:King\n    pos:\n    - 7\n    - 4\n    color: :white\n    unicode: ♔\n    game: *70096542985380\n  - !ruby/object:Bishop\n    pos:\n    - 7\n    - 5\n    color: :white\n    unicode: ♗\n    game: *70096542985380\n  - !ruby/object:Knight\n    pos:\n    - 7\n    - 6\n    color: :white\n    unicode: ♘\n    game: *70096542985380\n  - !ruby/object:Rook\n    pos:\n    - 7\n    - 7\n    color: :white\n    unicode: ♖\n    game: *70096542985380\n"], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 15:09:45 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Connecting to database specified by database.yml
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+
+***** Debugger requested, but was not available (ensure ruby-debug is listed in Gemfile/installed as gem): Start server with --debugger to enable *****
+
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:12:10 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$M9YaJzfcdEkBzkQXx.Z67.qqOpMObkaScUEXyB2PjncdAoI85Ly6i"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:12:10 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:12:10 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$TI4.jIcoOdHmnBKZVJn46eqJxNMIEmqHuq0djlpMOWsOQtkWN5oHa"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:12:10 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:12:52 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$LrLXbNK/N2SvjudTlMBmF.LwWYKO5qWtTYkQTT.6g00w33I/YP0DO"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:12:52 UTC +00:00]]
+  [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:12:52 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$YvEvBUwX0EIs4lmcaJ05uuOKoXejZzQakpg9WsIbUj6szPtKetnQq"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:12:52 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.4ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.2ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (19.9ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:13:20 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$B6zXN82KBt9eCnxysCKq5.Fd4jx1pebNqUR.Y/HESvPx1PJB/uLx."], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:13:20 UTC +00:00]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:13:20 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$z7psYP0vUxgyQbSdbtMYb.eRcnWxQB6dIR7EA/r2B1gUZcIeml91C"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:13:20 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 15:13:20 UTC +00:00], ["current_board", "--- &70291877122340\n- - !ruby/object:Rook\n    pos:\n    - 0\n    - 0\n    color: :black\n    unicode: ♜\n    game: &70291877122400 !ruby/object:ChessGame\n      board: !ruby/object:Board\n        game: *70291877122400\n        board: *70291877122340\n      turn: :white\n      players:\n        :white: !ruby/object:HumanPlayer\n          color: :white\n          game: *70291877122400\n        :black: !ruby/object:HumanPlayer\n          color: :black\n          game: *70291877122400\n      move_hashes: []\n      moving: false\n  - !ruby/object:Knight\n    pos:\n    - 0\n    - 1\n    color: :black\n    unicode: ♞\n    game: *70291877122400\n  - !ruby/object:Bishop\n    pos:\n    - 0\n    - 2\n    color: :black\n    unicode: ♝\n    game: *70291877122400\n  - !ruby/object:Queen\n    pos:\n    - 0\n    - 3\n    color: :black\n    unicode: ♛\n    game: *70291877122400\n  - !ruby/object:King\n    pos:\n    - 0\n    - 4\n    color: :black\n    unicode: ♚\n    game: *70291877122400\n  - !ruby/object:Bishop\n    pos:\n    - 0\n    - 5\n    color: :black\n    unicode: ♝\n    game: *70291877122400\n  - !ruby/object:Knight\n    pos:\n    - 0\n    - 6\n    color: :black\n    unicode: ♞\n    game: *70291877122400\n  - !ruby/object:Rook\n    pos:\n    - 0\n    - 7\n    color: :black\n    unicode: ♜\n    game: *70291877122400\n- - !ruby/object:Pawn\n    pos:\n    - 1\n    - 0\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 1\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 2\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 3\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 4\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 5\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 6\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 1\n    - 7\n    color: :black\n    unicode: ♟\n    game: *70291877122400\n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - \n  - \n  - \n  - \n  - \n  - \n  - \n  - \n- - !ruby/object:Pawn\n    pos:\n    - 6\n    - 0\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 1\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 2\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 3\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 4\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 5\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 6\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n  - !ruby/object:Pawn\n    pos:\n    - 6\n    - 7\n    color: :white\n    unicode: ♙\n    game: *70291877122400\n- - !ruby/object:Rook\n    pos:\n    - 7\n    - 0\n    color: :white\n    unicode: ♖\n    game: *70291877122400\n  - !ruby/object:Knight\n    pos:\n    - 7\n    - 1\n    color: :white\n    unicode: ♘\n    game: *70291877122400\n  - !ruby/object:Bishop\n    pos:\n    - 7\n    - 2\n    color: :white\n    unicode: ♗\n    game: *70291877122400\n  - !ruby/object:Queen\n    pos:\n    - 7\n    - 3\n    color: :white\n    unicode: ♕\n    game: *70291877122400\n  - !ruby/object:King\n    pos:\n    - 7\n    - 4\n    color: :white\n    unicode: ♔\n    game: *70291877122400\n  - !ruby/object:Bishop\n    pos:\n    - 7\n    - 5\n    color: :white\n    unicode: ♗\n    game: *70291877122400\n  - !ruby/object:Knight\n    pos:\n    - 7\n    - 6\n    color: :white\n    unicode: ♘\n    game: *70291877122400\n  - !ruby/object:Rook\n    pos:\n    - 7\n    - 7\n    color: :white\n    unicode: ♖\n    game: *70291877122400\n"], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 15:13:20 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (12.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (19.8ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:18:47 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$boZMbXOqDX1m6NGCk3ak4uXU9R4f0IJ6KGB5D0LU2dr6LHjrUDTpC"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:18:47 UTC +00:00]]
+  [1m[36m (1.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:18:47 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$XY.aeQh0wN9qrSR9kW2fSuGpAjPNC94VCxSkgvEbVzIvI2ZquTluy"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:18:47 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 15:18:47 UTC +00:00], ["current_board", "---\n- - ♜\n  - ♞\n  - ♝\n  - ♛\n  - ♚\n  - ♝\n  - ♞\n  - ♜\n- - ♟\n  - ♟\n  - ♟\n  - ♟\n  - ♟\n  - ♟\n  - ♟\n  - ♟\n- - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n- - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n- - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n- - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n  - ''\n- - ♙\n  - ♙\n  - ♙\n  - ♙\n  - ♙\n  - ♙\n  - ♙\n  - ♙\n- - ♖\n  - ♘\n  - ♗\n  - ♕\n  - ♔\n  - ♗\n  - ♘\n  - ♖\n"], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 15:18:47 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:19:46 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 401 Unauthorized in 174ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 11:19:46 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (1.5ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (12.7ms)
+Compiled application.css  (1ms)  (pid 69982)
+Compiled games/detail.js  (0ms)  (pid 69982)
+Compiled views/game_detail.js  (0ms)  (pid 69982)
+Compiled application.js  (36ms)  (pid 69982)
+  Rendered layouts/_errors.html.erb (0.9ms)
+Completed 200 OK in 546ms (Views: 545.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 11:19:49 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (0.6ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 11:19:54 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1
+Completed 401 Unauthorized in 97ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 83ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2013-10-09 11:19:57 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LvnsHPkRw550sSSt5JkwxPUNsAJYOtwA+on7xnVWCRw=", "user"=>{"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (27.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = '2013-10-09 15:19:57.397035', "current_sign_in_at" = '2013-10-09 15:19:57.397035', "last_sign_in_ip" = '127.0.0.1', "current_sign_in_ip" = '127.0.0.1', "sign_in_count" = 1, "updated_at" = '2013-10-09 15:19:57.397912' WHERE "users"."id" = 1[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 173ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:19:57 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (46.5ms)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 58ms (Views: 56.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:20:22 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (13.6ms)
+Compiled games/detail.js  (0ms)  (pid 69982)
+Compiled views/game_detail.js  (0ms)  (pid 69982)
+Compiled application.js  (8ms)  (pid 69982)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 259ms (Views: 256.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:20:36 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (12.0ms)
+Compiled games/detail.js  (0ms)  (pid 69982)
+Compiled application.js  (37ms)  (pid 69982)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 78ms (Views: 76.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:20:49 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (14.1ms)
+Compiled games/detail.js  (0ms)  (pid 69982)
+Compiled application.js  (10ms)  (pid 69982)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 83ms (Views: 81.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:22:05 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.1ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (41.3ms)
+Compiled games/detail.js  (0ms)  (pid 69982)
+Compiled application.js  (10ms)  (pid 69982)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 81ms (Views: 78.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:22:07 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mGame Load (0.1ms)[0m  [1mSELECT "games".* FROM "games" WHERE (white_user_id = 1)[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (black_user_id = 1)
+  Rendered games/index.html.erb within layouts/application (13.8ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 20.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:22:23 -0400
+Processing by GamesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mGame Load (0.2ms)[0m  SELECT "games".* FROM "games" WHERE (white_user_id = 1)
+  [1m[36mGame Load (0.2ms)[0m  [1mSELECT "games".* FROM "games" WHERE (black_user_id = 1)[0m
+  Rendered games/index.html.erb within layouts/application (14.7ms)
+Compiled games/detail.js  (0ms)  (pid 69982)
+Compiled application.js  (8ms)  (pid 69982)
+  Rendered layouts/_errors.html.erb (0.1ms)
+Completed 200 OK in 81ms (Views: 79.3ms | ActiveRecord: 0.6ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (1.5ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.2ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (20.5ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:27:30 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$N09dWdkzknSBMCmIj5p3IuSAEECoVQzX.ACtUMZF7omBkScgwpxWu"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:27:30 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:27:30 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$Ula2CxeKsC1jPkUJy9sureFzx9Fq2a/wMeLle9pGjBjTYeDIfrrfC"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:27:30 UTC +00:00]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (2.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to DeviseCreateUsers (20131007225608)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(255) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "elo" integer DEFAULT 1200 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.4ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131007225608')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+Migrating to CreateGames (20131008142228)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "moves" varchar(255) DEFAULT '', "white_user_id" integer NOT NULL, "black_user_id" integer NOT NULL, "current_player" varchar(255) DEFAULT 'white', "current_board" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mCREATE INDEX "index_games_on_white_user_id" ON "games" ("white_user_id")[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_games_on_black_user_id" ON "games" ("black_user_id")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131008142228')[0m
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test1@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:27:48 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test1@gmail.com"], ["encrypted_password", "$2a$10$V.jyeW4V4NK3Nve9FeOEAOwoOKtabombbDhdUSzUxKoZYEXtJzl4K"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:27:48 UTC +00:00]]
+  [1m[36m (2.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test2@gmail.com' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "elo", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Wed, 09 Oct 2013 15:27:48 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["elo", 1200], ["email", "test2@gmail.com"], ["encrypted_password", "$2a$10$BoszzYfgqs9cXsFJNRyRPewkfIdbdDVR87VKMgpzA1B4EClm9gm42"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 09 Oct 2013 15:27:48 UTC +00:00]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "games" ("black_user_id", "created_at", "current_board", "current_player", "moves", "updated_at", "white_user_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["black_user_id", 2], ["created_at", Wed, 09 Oct 2013 15:27:48 UTC +00:00], ["current_board", "[[\"\\u265c\",\"\\u265e\",\"\\u265d\",\"\\u265b\",\"\\u265a\",\"\\u265d\",\"\\u265e\",\"\\u265c\"],[\"\\u265f\",\"\\u265f\",\"\\u265f\",\"\\u265f\",\"\\u265f\",\"\\u265f\",\"\\u265f\",\"\\u265f\"],[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],[\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\"],[\"\\u2659\",\"\\u2659\",\"\\u2659\",\"\\u2659\",\"\\u2659\",\"\\u2659\",\"\\u2659\",\"\\u2659\"],[\"\\u2656\",\"\\u2658\",\"\\u2657\",\"\\u2655\",\"\\u2654\",\"\\u2657\",\"\\u2658\",\"\\u2656\"]]"], ["current_player", "white"], ["moves", ""], ["updated_at", Wed, 09 Oct 2013 15:27:48 UTC +00:00], ["white_user_id", 1]]
+  [1m[35m (1.8ms)[0m  commit transaction
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-09 11:28:06 -0400
+Processing by GamesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 401 Unauthorized in 41ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-10-09 11:28:06 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/shared/_links.erb (0.3ms)
+  Rendered /Users/appacademy/.rvm/gems/ruby-1.9.3-p392/gems/devise-2.2.3/app/views/devise/sessions/new.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_errors.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms)

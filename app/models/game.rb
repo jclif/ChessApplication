@@ -1,15 +1,23 @@
 class Game < ActiveRecord::Base
   attr_accessible :white_user_id, :black_user_id
+  after_initialize :default_board
 
   belongs_to :white_player, class_name: "User", foreign_key: :white_user_id
   belongs_to :black_player, class_name: "User", foreign_key: :black_user_id
 
-  def try_move(move) # long algebraic notation: 'e2e4'
-    valid = ChessGame.eval_move({moves: self.moves, poss_move: move})
+  def default_board
+    g = ChessGame.new
 
-    if valid
+    self.current_board = g.json_board
+  end
+
+  def try_move(move) # long algebraic notation: 'e2e4'
+    response = ChessGame.eval_move({moves: self.moves, poss_move: move})
+
+    if response[:valid]
       self.switch_turn
       self.moves = [self.moves, move].join(" ")
+      self.current_board = response[:board]
       self.save
       return true
     else
@@ -83,7 +91,7 @@ class ChessGame
       game.switch_turn
     end
 
-    game.board.valid?(poss_move)
+    {valid: game.board.valid?(poss_move), board: game.json_board}
   end
 
   def initialize
@@ -94,6 +102,20 @@ class ChessGame
     @moving = false # dirty hack for making sure when you check a move to see
     # if the resulting position from a pawn promotion move doesnt' leave you in check,
     # you don't prompt user for what piece they want to upgrade (because if won't matter)
+  end
+
+  def json_board
+    unicode_board = board.board.each_with_index do |row, i|
+      row.map! do |piece|
+        if piece.nil?
+          ""
+        else
+          piece.unicode
+        end
+      end
+    end
+
+    unicode_board.to_json
   end
 
   def switch_turn

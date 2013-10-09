@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20131008142228) do
     t.integer  "white_user_id",                       :null => false
     t.integer  "black_user_id",                       :null => false
     t.string   "current_player", :default => "white"
+    t.string   "current_board"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
   end
