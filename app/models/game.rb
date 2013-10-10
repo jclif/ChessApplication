@@ -268,9 +268,11 @@ class Board
   end
 
   def en_passant_move?(move)
-    return false unless !game.move_hashes.empty? && game.move_hashes.last[:piece].is_a?(Pawn) &&
-    2 == (game.move_hashes.last[:move][0][0] - game.move_hashes.last[:move][1][0]).abs &&
-    (move[1][1] == game.move_hashes.last[:move][1][1])
+    return false unless !game.move_hashes.empty? && # it isnt' the first move
+      game.move_hashes.last[:piece].is_a?(Pawn) &&  # the last move was a pawn move
+      2 == (game.move_hashes.last[:move][0][0] - game.move_hashes.last[:move][1][0]).abs && # that pawn move was a two space move
+      (move[1][1] == game.move_hashes.last[:move][1][1]) && # the current moves end position column shares the last moves end position column
+      1 == (move[0][1] - game.move_hashes.last[:move][1][1]).abs # the current moves start position column is one space away from the last moves end position column
 
     true
   end
