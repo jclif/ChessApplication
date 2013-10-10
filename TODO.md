@@ -20,7 +20,7 @@ Front End
 ---------
 
 ###Prettify
-* game index could be grid of updating miniboards, where first baord is plusicon for new game
+* game index could be grid of updating miniboards, where first baord is plus icon for new game
 * basic layout
 * put move list in div and give it move numbers
 
@@ -28,3 +28,4 @@ Front End
 * indicate whether it's your move
 * indicate when in check/checkmate
 * redirect to results page when game is over
+* invert board for black

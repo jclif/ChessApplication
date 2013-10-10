@@ -12,12 +12,14 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-
     move = params[:moves].split(" ")[-1]
-    p move
-    p @game.try_move(move)
 
-    head :ok
+    if @game.try_move(move)
+      head :ok
+    else
+      render status: :not_modified
+    end
+
   end
 
 end

@@ -24,7 +24,8 @@
   border: 1px solid black;
   float: left;
   font-family: "Chess Merida Unicode";
-  font-size: 60px;
+  line-height:73px;
+  font-size: 73px;
   text-align: center;
   cursor: crosshair;
 }
