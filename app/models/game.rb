@@ -228,7 +228,6 @@ class Board
     end
 
     self[move[1]] = self[move[0]]
-    debugger
 
     if en_passant_move?(move)
       self[game.move_hashes.last[:move][1]] = nil

@@ -17,7 +17,7 @@ Move Logic
 Back End
 --------
 ###Game
-* [x] figure out who sent the move, and make sure current player is that user, else dont try_move
+* x figure out who sent the move, and make sure current player is that user, else dont try_move
 * _ when game is over, delete the game and create a pgn with all of the game details
 * _ move all game logic to a better place, for organization karma (lib/chess perhaps?)
 
@@ -30,6 +30,7 @@ Front End
 ###Login
 * x flash errors that can be clicked to hide
 * x redirect to games#index
+* _ fix url, ie, "/games/#/games/:id"
 
 ###Prettify
 * _ game index could be grid of updating miniboards, where first baord is plus icon for new game

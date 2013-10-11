@@ -13,15 +13,18 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     move = params[:moves].split(" ")[-1]
 
+    puts "user info"
+    p current_user.id
     current_player_id = @game.current_player == "white" ? @game.white_user_id : @game.black_user_id
-    try_move = @game.try_move(move)
+    p current_player_id
 
-    if current_user.id == current_player_id && try_move
-      head :ok
+    if current_user.id == current_player_id
+      if @game.try_move(move)
+        head :ok
+      end
     else
       render nothing: true, status: :not_modified
     end
-
   end
 
 end
