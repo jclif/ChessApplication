@@ -9,14 +9,21 @@ class GamesController < ApplicationController
   def index
   end
 
+  def create
+    @game = Game.new(params[:game])
+    @game.white_user_id = current_user.id
+
+    if @game.save!
+      head :ok
+    else
+      render nothing: true, status: :unprocessable_entity
+    end
+  end
+
   def update
     @game = Game.find(params[:id])
     move = params[:moves].split(" ")[-1]
-
-    puts "user info"
-    p current_user.id
     current_player_id = @game.current_player == "white" ? @game.white_user_id : @game.black_user_id
-    p current_player_id
 
     if current_user.id == current_player_id
       if @game.try_move(move)

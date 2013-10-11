@@ -1,9 +1,12 @@
 <ul>
+<%= games.length %>
   <% games.each(function (game) { %>
     <li class="game">
       <a href="#/games/<%= game.escape("id") %>">
-        <%= game.escape("white_user_id") %>
+        ASDF
       </a>
     </li>
   <% }); %>
 </ul>
+<br>
+<a href="#/games/new">New Game!</a>

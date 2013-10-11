@@ -104,9 +104,9 @@ class ChessGame
     response[:board] = game.json_board
 
     if game.board.won?
-      response[:message] = "Somebody won!"
-    elsif game.board.check?
       response[:message] = "#{game.turn.to_s.capitalize} in check."
+    elsif game.board.check? && !!game.board.won?
+      response[:message] = "Somebody won!"
     elsif game.board.draw?
       response[:message] = "It's a draw!"
     else

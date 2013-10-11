@@ -5,5 +5,5 @@ ChessApplication::Application.routes.draw do
       root to: "devise/sessions#new"
   end
 
-  resources :games, only: [:show, :index, :update]
+  resources :games, only: [:show, :index, :create, :update]
 end

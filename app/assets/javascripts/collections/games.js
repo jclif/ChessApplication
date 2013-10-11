@@ -1,3 +1,4 @@
 ChessApplication.Collections.Games = Backbone.Collection.extend({
-  model: ChessApplication.Models.Game
+  model: ChessApplication.Models.Game,
+  url: 'games/'
 });

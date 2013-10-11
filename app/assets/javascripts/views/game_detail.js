@@ -4,12 +4,19 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
 
     that.coords = [];
 
-    setInterval(function () {
+    that.timer = setInterval(function () {
+      console.log("getting model");
       that.model.fetch();
     }, 1000);
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.model, "change", renderCallback);
+  },
+
+  close: function() {
+    var that = this;
+
+    clearInterval(that.timer);
   },
 
   events: {
