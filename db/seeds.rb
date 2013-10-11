@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Game.delete_all
+
 users = User.create([
   {email: "test1@gmail.com", password: "password"},
   {email: "test2@gmail.com", password: "password"}

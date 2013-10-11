@@ -96,10 +96,13 @@ class ChessGame
     end
 
     response[:valid] = game.board.valid?(poss_move)
-    game.board.make_move(poss_move) if response[:valid]
+    if response[:valid]
+      game.board.make_move(poss_move) if response[:valid]
+      game.move_hashes << {piece:game.board[poss_move[1]], move: poss_move}
+      game.switch_turn
+    end
     response[:board] = game.json_board
 
-    game.switch_turn
     if game.board.won?
       response[:message] = "Somebody won!"
     elsif game.board.check?
@@ -225,6 +228,7 @@ class Board
     end
 
     self[move[1]] = self[move[0]]
+    debugger
 
     if en_passant_move?(move)
       self[game.move_hashes.last[:move][1]] = nil
