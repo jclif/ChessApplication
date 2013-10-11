@@ -58,3 +58,45 @@
     line-height: 0;
     height: 0;
   }
+
+.mini-square {
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  float: left;
+  font-family: "Chess Merida Unicode";
+  line-height:10px;
+  font-size: 10px;
+  text-align: center;
+  cursor: default;
+}
+
+.mini-board-holder {
+border: 1px solid black;
+padding: 20px;
+width: 100%;
+background: gray;
+}
+
+.mini-board {
+height: 100px;
+width: 100px;
+margin: 10px;
+float:left;
+background: white;
+}
+
+.new-game {
+float:left;
+margin: 10px;
+height: 94px;
+width: 94px;
+font-size: 88px;
+text-align: center;
+border: 1px solid black;
+}
+
+a:link {color:black; text-decoration:none}      /* unvisited link */
+a:visited {color:black; text-decoration: none}  /* visited link */
+a:hover {color:black;}  /* mouse over link */
+a:active {color:black; text-decoration: none;}  /* selected link */

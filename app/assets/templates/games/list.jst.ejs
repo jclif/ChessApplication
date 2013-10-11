@@ -1,12 +1,20 @@
-<ul>
-<%= games.length %>
+<div class="mini-board-holder clearfix">
+  <div class="new-game"><a href="#/games/new">+</a></div>
   <% games.each(function (game) { %>
-    <li class="game">
+    <% var board = JSON.parse(game.attributes.current_board) %>
+    <div class="mini-board">
       <a href="#/games/<%= game.escape("id") %>">
-        ASDF
+        <% for(var i = 0; i < 8; i++) { %>
+          <% for(var j = 0; j < 8; j++) { %>
+            <% if ((i + j) % 2 == 0 ) { %>
+              <div class="mini-square" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+            <% } else { %>
+              <div class="mini-square dark" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+            <% } %>
+          <% } %>
+        <% } %>
       </a>
-    </li>
+      </div>
   <% }); %>
-</ul>
+</div>
 <br>
-<a href="#/games/new">New Game!</a>

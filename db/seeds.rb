@@ -11,8 +11,12 @@ Game.delete_all
 users = User.create([
   {email: "test1@gmail.com", password: "password"},
   {email: "test2@gmail.com", password: "password"}
-])
+]),
 
 games = Game.create([
+  {white_user_id: 1, black_user_id: 2},
+  {white_user_id: 1, black_user_id: 2},
+  {white_user_id: 1, black_user_id: 2},
+  {white_user_id: 1, black_user_id: 2},
   {white_user_id: 1, black_user_id: 2}
 ])
