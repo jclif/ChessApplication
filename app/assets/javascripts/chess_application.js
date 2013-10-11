@@ -11,7 +11,4 @@ window.ChessApplication = {
   }
 };
 
-$(document).ready(function(){
-  var gamesData = JSON.parse($("#bootstrapped_games_json").html());
-  ChessApplication.initialize($('.content'), gamesData);
-});
+

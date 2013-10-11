@@ -21,6 +21,7 @@ class Game < ActiveRecord::Base
       self.switch_turn
       self.moves = [self.moves, move].join(" ")
       self.current_board = response[:board]
+      self.message = response[:message]
       self.save!
       return true
     else
@@ -54,11 +55,8 @@ class Game < ActiveRecord::Base
 
 end
 
-# TODO !!! figure out how to require from lib !!!
-
 module MoveParser
   def alg_to_coords(input) # ["f2", "f3"] => [[6,5],[5,5]]
-
     coords = input.map do |pos|
       col = ("a".."h").to_a.index(pos[0])
       [8-pos[1].to_i, col]
@@ -78,6 +76,7 @@ class ChessGame
   attr_accessor :board, :turn, :players, :move_hashes, :moving
 
   def self.eval_move(params)
+    response = Hash.new
     moves = params[:moves] # 'e2e4 ...'
     game = ChessGame.new
     poss_move = game.long_alg_to_coord(params[:poss_move]) # 'e2e4'
@@ -93,12 +92,13 @@ class ChessGame
       game.switch_turn
     end
 
-    valid = game.board.valid?(poss_move)
-    game.board.make_move(poss_move) if valid
-    jb = game.json_board
+    response[:message] = "#{game.turn.to_s.capitalize} in check." if game.board.check?
 
+    response[:valid] = game.board.valid?(poss_move)
+    game.board.make_move(poss_move) if response[:valid]
+    response[:board] = game.json_board
 
-   {valid: valid, board: jb}
+    response
   end
 
   def initialize
@@ -454,7 +454,6 @@ class Pawn < Piece
     else
       return false unless pos[0] == 4
     end
-    debugger
     return false unless game.move_hashes.last[:piece].is_a?(Pawn)
 
     enemy_start_pos = game.move_hashes.last[:move][0]

@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-  before_filter :authenticate_user!
   respond_to :json
 
   def show
@@ -14,10 +13,13 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     move = params[:moves].split(" ")[-1]
 
-    if @game.try_move(move)
+    current_player_id = @game.current_player == "white" ? @game.white_user_id : @game.black_user_id
+    try_move = @game.try_move(move)
+
+    if current_user.id == current_player_id && try_move
       head :ok
     else
-      render status: :not_modified
+      render nothing: true, status: :not_modified
     end
 
   end

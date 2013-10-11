@@ -21,3 +21,10 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+// not sure where to put this -.-
+
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+

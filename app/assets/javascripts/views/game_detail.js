@@ -33,7 +33,9 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     var coord = [];
 
     strings = $(event.currentTarget).attr("data-id").split("_");
-    _.each(strings, function(string, index) { coord.push(parseInt(string)); });
+    _.each(strings, function(string, index) {
+      coord.push(parseInt(string, 10));
+    });
 
     console.log(coord);
 
@@ -57,13 +59,15 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
       move = move.concat(8-toCoord[0]);
       console.log(move);
 
-      that.model.save({moves: that.model.attributes.moves + " " + move});
+      that.model.save({
+        moves: that.model.attributes.moves + " " + move
+      });
       that.coords = [];
     }
   },
 
-  letters: function (num){
+  letters: function (num) {
     return ["a", "b", "c", "d", "e", "f", "g", "h"][num];
-  },
+  }
 
 });
