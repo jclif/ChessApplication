@@ -17,9 +17,6 @@ class Game < ActiveRecord::Base
   def try_move(move) # long algebraic notation: 'e2e4'
     response = ChessGame.eval_move({moves: self.moves, poss_move: move})
 
-    p "RESPONSE IS HERE!!!! : "
-    p response
-
     if response[:valid]
       self.switch_turn
       self.moves = [self.moves, move].join(" ")
@@ -97,16 +94,16 @@ class ChessGame
 
     response[:valid] = game.board.valid?(poss_move)
     if response[:valid]
-      game.board.make_move(poss_move) if response[:valid]
+      game.board.make_move(poss_move)
       game.move_hashes << {piece:game.board[poss_move[1]], move: poss_move}
       game.switch_turn
     end
     response[:board] = game.json_board
 
     if game.board.won?
-      response[:message] = "#{game.turn.to_s.capitalize} in check."
-    elsif game.board.check? && !!game.board.won?
       response[:message] = "Somebody won!"
+    elsif game.board.check? && !!game.board.won?
+      response[:message] = "#{game.turn.to_s.capitalize} in check."
     elsif game.board.draw?
       response[:message] = "It's a draw!"
     else
