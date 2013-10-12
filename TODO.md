@@ -12,7 +12,6 @@ Efficiency
 * [x] rip out long polling solution, and integrate pusher for move updates
 * _ integrate pusher with chat functionality
 
-
 Move Logic
 ----------
 * x two pawn two-space moves on the same column deletes first pawn (wat) not sure what other symptoms this bug may cause
@@ -73,3 +72,7 @@ Front End
 * _ four nav menus, starting from top-left, clockwise: chess, settings, chat, social
 * _ create box from each point of board to corner of screen, and pull menu icon toward center of board as cursor nears the point.
 * _ on mouseover of menu icon, display submenu
+
+InTeReStInG/cRaZy IdEaS
+-----------------------
+* _ sMs BaSeD aPi ViA tWiLiO
