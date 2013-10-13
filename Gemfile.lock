@@ -89,6 +89,9 @@ GEM
     orm_adapter (0.4.0)
     pg (0.17.0)
     polyglot (0.3.3)
+    pusher (0.11.3)
+      multi_json (~> 1.0)
+      signature (~> 0.1.6)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -116,6 +119,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    signature (0.1.7)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -153,6 +157,7 @@ DEPENDENCIES
   launchy
   letter_opener
   pg
+  pusher
   quiet_assets
   rails (= 3.2.14)
   sqlite3

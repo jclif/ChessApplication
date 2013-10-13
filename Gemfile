@@ -4,6 +4,7 @@ gem 'rails', '3.2.14'
 gem 'backbone-on-rails'
 gem 'devise'
 gem 'ejs'
+gem 'pusher'
 
 group :development do
   gem 'sqlite3'

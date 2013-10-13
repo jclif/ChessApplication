@@ -27,7 +27,8 @@ class GamesController < ApplicationController
 
     if current_user.id == current_player_id
       if @game.try_move(move)
-        head :ok
+        p 'pusher-ing'
+        Pusher.trigger('my-channel', 'my-event', {message: 'Hello World'})
       end
     else
       render nothing: true, status: :not_modified

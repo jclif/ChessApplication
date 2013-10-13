@@ -1,7 +1,9 @@
 ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
-  initialize: function($rootEl, games) {
+  initialize: function($rootEl, games, userId) {
     this.$rootEl = $rootEl;
     this.games = games;
+    this.userId = userId;
+    this.pusher = new Pusher('aa4b1aece38d355f8433');
   },
 
   routes: {
@@ -14,7 +16,9 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     var that = this;
 
     var gamesListView = new ChessApplication.Views.GamesListView({
-      collection: that.games
+      collection: that.games,
+      pusher: that.pusher,
+      userId: that.userId
     });
 
     that.$rootEl.html(gamesListView.render().$el);

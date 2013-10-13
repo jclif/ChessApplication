@@ -12,6 +12,15 @@ Efficiency
 * [x] rip out long polling solution, and integrate pusher for move updates
 * _ integrate pusher with chat functionality
 
+Security
+--------
+* _ generate new api keys, and hide them (AWS S3, with environment variables, perhaps?)
+
+FIX THIS BEFORE YOU DEPLOY!!!
+=============================
+* [x] set up pusher api keys
+* _ remove pusher log thingy
+
 Move Logic
 ----------
 * x two pawn two-space moves on the same column deletes first pawn (wat) not sure what other symptoms this bug may cause

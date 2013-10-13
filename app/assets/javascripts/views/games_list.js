@@ -1,8 +1,16 @@
 ChessApplication.Views.GamesListView = Backbone.View.extend({
   initialize: function () {
     var that = this;
+    that.userId = that.options.userId;
+    that.pusher = that.options.pusher;
+    console.log('user_' + that.userId + '_channel');
+    that.channel = that.pusher.subscribe('user_' + that.userId + '_channel');
+    that.channel.bind('update_games', function(data) {
+      console.log(data);
+    });
 
-    that.timer = setInterval(function () {
+    // gutting this out in favor of pusher
+    /*that.timer = setInterval(function () {
       that.collection.fetch({
         add: true,
         update: true,
@@ -11,7 +19,7 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
         }
       });
       console.log(that.collection);
-    }, 5000);
+    }, 5000);*/
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.collection, "add", renderCallback);
@@ -31,7 +39,6 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
   render: function() {
     var that = this;
 
-    console.log(that.collection);
     var renderedContent = JST["games/list"]({
       games: that.collection
     });
