@@ -12,9 +12,10 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(params[:game])
     @game.white_user_id = current_user.id
+    puts "you're creating things!"
 
     if @game.save!
-      head :ok
+      Pusher.trigger("user_#{current_user.id}_channel", "add_game", @game.to_json)
     else
       render nothing: true, status: :unprocessable_entity
     end
