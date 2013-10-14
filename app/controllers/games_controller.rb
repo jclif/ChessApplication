@@ -31,6 +31,7 @@ class GamesController < ApplicationController
     other_player_id = current_user.id == @game.white_user_id ? @game.black_user_id : @game.white_user_id
 
     if current_user.id == current_player_id && @game.try_move(move)
+      puts move
       Pusher.trigger("user_#{other_player_id}_channel", "update_games", @game.to_json)
       Pusher.trigger("game_#{@game.id}_channel", "update_game", @game.to_json)
       render json: @game

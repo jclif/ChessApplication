@@ -92,6 +92,8 @@ class ChessGame
       game.switch_turn
     end
 
+    debugger
+
     response[:valid] = game.board.valid?(poss_move)
     if response[:valid]
       game.board.make_move(poss_move)
@@ -102,7 +104,7 @@ class ChessGame
 
     if game.board.won?
       response[:message] = "Somebody won!"
-    elsif game.board.check? && !!game.board.won?
+    elsif game.board.check? && !game.board.won?
       response[:message] = "#{game.turn.to_s.capitalize} in check."
     elsif game.board.draw?
       response[:message] = "It's a draw!"

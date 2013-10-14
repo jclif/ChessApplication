@@ -13,8 +13,9 @@ Efficiency
 ----------
 * _ instead of passing move list and rebuilding board every eval, which checks win state of all the past moves, just construct the board by parsing board state, and check game state once.
 * _ dont parse move from coord to long alg, then back to coord. just pass the coords to the api
-* [x] rip out long polling solution, and integrate pusher for move updates
+* x rip out long polling solution, and integrate pusher for move updates
 * _ integrate pusher with chat functionality
+* _ pass back list of legal moves to backbone so that the ui can validate without hitting server
 
 Security
 --------
@@ -41,7 +42,8 @@ Back End
 * _ when game is over, delete the game and create a pgn with all of the game details
 * _ write algorith for updating elo after game
 * _ move all game logic to a better place, for organization karma (lib/chess perhaps?)
-* [x] add create game api
+* x add create game api
+* _ add ability to create games between friends or random online user
 
 ###Messages
 * _ implement them!!!
@@ -76,10 +78,11 @@ Front End
 * _ invert board for black
 
 ###GameListView
-* [x] grid of current games that updates dynamically, with first board being plus icon that takes user to new game menu
+* x grid of current games that updates dynamically, with first board being plus icon that takes user to new game menu
 
 ###GameCreateView
-* [x] add that sh%t
+* x add that sh%t
+* _ create menus for different types of games, p vs p vs p vs ai, and match with random online user vs match with friend
 
 ###Navigation
 * _ four nav menus, starting from top-left, clockwise: chess, settings, chat, social
