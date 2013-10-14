@@ -5,6 +5,10 @@ SO MUCH TO DO, SO LITTLE TIME
 *  _  : imcomplete
 * [x] : in progress
 
+Maybe
+-----
+* _ notification feed, which keeps track of games where it's your turn, and game invites
+
 Efficiency
 ----------
 * _ instead of passing move list and rebuilding board every eval, which checks win state of all the past moves, just construct the board by parsing board state, and check game state once.

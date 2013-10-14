@@ -1,4 +1,7 @@
 ChessApplication.Views.NewGameView = Backbone.View.extend({
+
+  template: JST["games/new"],
+
   events: {
     "click button.submit": "submit"
   },
@@ -6,9 +9,9 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
   render: function() {
     var that = this;
 
-    var renderedContent = JST["games/new"]();
-    that.$el.html(renderedContent);
-    return that;
+    that.$el.html(that.template());
+
+    return that.$el;
   },
 
   submit: function(event) {

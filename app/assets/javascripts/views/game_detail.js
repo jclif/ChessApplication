@@ -1,38 +1,44 @@
 ChessApplication.Views.GameDetailView = Backbone.View.extend({
+
+  template: JST["games/detail"],
+
   initialize: function () {
     var that = this;
 
     that.coords = [];
-
-    that.timer = setInterval(function () {
-      console.log("getting model");
-      that.model.fetch();
-    }, 1000);
+    that.pusher = that.options.pusher;
+    that.channelName = "game_" + that.model.id + "_channel";
+    that.channel = that.pusher.subscribe(that.channelName);
+    that.channel.bind("update_game", function(data){
+      console.log("update_game");
+      console.log(data);
+      that.model.set(data);
+    });
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.model, "change", renderCallback);
   },
 
-  close: function() {
-    var that = this;
 
-    clearInterval(that.timer);
+  dispose: function() {
+    this.remove();
+    this.pusher.unsubscribe(this.channelName);
   },
 
   events: {
-    "click div.square": "fromSquare"
+    "click div.square": "fromSquare",
+    "click .back": "disponse"
   },
 
   render: function() {
     var that = this;
 
-    var renderedContent = JST["games/detail"]({
+    that.$el.html(that.template({
       game: that.model,
       board: JSON.parse(that.model.attributes.current_board)
-    });
+    }));
 
-    that.$el.html(renderedContent);
-    return that;
+    return that.$el;
   },
 
   fromSquare: function (event) {
@@ -44,17 +50,13 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
       coord.push(parseInt(string, 10));
     });
 
-    console.log(coord);
-
     if (that.coords.length === 0) {
       firstClickEl = $(event.currentTarget);
       firstClickEl.toggleClass("clicked");
       that.coords.push(coord);
-      console.log("first click!");
     } else {
       that.coords.push(coord);
       firstClickEl.toggleClass("clicked");
-      console.log("second click!");
       // update model
 
       move = "";
@@ -64,7 +66,6 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
       move = move.concat(8-fromCoord[0]);
       move = move.concat(that.letters(toCoord[1]));
       move = move.concat(8-toCoord[0]);
-      console.log(move);
 
       that.model.save({
         moves: that.model.attributes.moves + " " + move

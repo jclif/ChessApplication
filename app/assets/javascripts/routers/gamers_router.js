@@ -1,9 +1,11 @@
 ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
+
   initialize: function($rootEl, games, userId) {
     this.$rootEl = $rootEl;
     this.games = games;
     this.userId = userId;
     this.pusher = new Pusher('aa4b1aece38d355f8433');
+    this.currentView = null;
   },
 
   routes: {
@@ -12,37 +14,51 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     "games/:id": "show"
   },
 
+  closePreviousView: function() {
+    if (this.currentView !== null) {
+      this.currentView.dispose();
+    }
+  },
+
   index: function() {
     var that = this;
 
-    var gamesListView = new ChessApplication.Views.GamesListView({
+    that.closePreviousView();
+
+    that.currentView = new ChessApplication.Views.GamesListView({
       collection: that.games,
       pusher: that.pusher,
       userId: that.userId
     });
 
-    that.$rootEl.html(gamesListView.render().$el);
+    that.$rootEl.html(that.currentView.render());
   },
 
   show: function(id) {
     var that = this;
 
-    var game = that.games.findWhere({ id: parseInt(id, 10) });
-    var gameDetailView = new ChessApplication.Views.GameDetailView({
-      model: game
+    that.closePreviousView();
+
+    //var game = that.games.findWhere({ id: parseInt(id, 10) });
+    var game = that.games.get(id);
+    that.currentView = new ChessApplication.Views.GameDetailView({
+      model: game,
+      pusher: that.pusher,
+      userId: that.userId
     });
 
-    that.$rootEl.html(gameDetailView.render().$el);
+    that.$rootEl.html(that.currentView.render());
   },
 
   new_game: function() {
-    console.log('hi');
     var that = this;
 
-    var newGameView = new ChessApplication.Views.NewGameView({
+    that.closePreviousView();
+
+    that.currentView = new ChessApplication.Views.NewGameView({
       collection: that.games
     });
 
-    that.$rootEl.html(newGameView.render().$el);
+    that.$rootEl.html(that.currentView.render());
   }
 });
