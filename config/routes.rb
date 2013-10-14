@@ -1,9 +1,8 @@
 ChessApplication::Application.routes.draw do
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users
 
-  devise_scope :user do
-      root to: "devise/sessions#new"
-  end
+  root to: "games#index"
 
   resources :games, only: [:show, :index, :create, :update]
+  resources :users, only: [:show]
 end

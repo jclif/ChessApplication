@@ -20,6 +20,7 @@ Efficiency
 Security
 --------
 * _ generate new api keys, and hide them (AWS S3, with environment variables, perhaps?)
+* _ figure out whether pusher channels are exposed to malicious parties in some way (need to auth?)
 
 FIX THIS BEFORE YOU DEPLOY!!!
 =============================
@@ -55,7 +56,10 @@ Front End
 ---------
 
 ###Profile View
-* _ add dat sh%t
+* x add dat sh%t
+* x display basic stats (elo, id, etc)
+* _ display associated info: ie, pgns (past games), friends, etfc
+* _ GrApHsSsSsS &*$#&YI$(*#&%(#$&*!!!!!
 
 ###ChatViews (not sure how exactly this will work)
 * _ add dat sh%t
@@ -63,7 +67,7 @@ Front End
 ###Login
 * x flash errors that can be clicked to hide
 * x redirect to games#index
-* _ fix url, ie, "/games/#/games/:id" (this was a dirty hack so that registration is disabled [also delete devise controller and fix root stuff])
+* x fix url, ie, "/games/#/games/:id" (this was a dirty hack so that registration is disabled [also delete devise controller and fix root stuff])
 
 ###Prettify
 * _ game index could be grid of updating miniboards, where first baord is plus icon for new game
@@ -74,6 +78,8 @@ Front End
 * x indicate whether it's your move
 * x indicate when check
 * x indicate when in checkmate
+* _ indication when the move is being validated
+* _ indicate when the move is invalid
 * _ redirect to results page when game is over
 * _ invert board for black
 

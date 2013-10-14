@@ -6,6 +6,10 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
     "click button.submit": "submit"
   },
 
+  dispose: function() {
+    this.remove();
+  },
+
   render: function() {
     var that = this;
 

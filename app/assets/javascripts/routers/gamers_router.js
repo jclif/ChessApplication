@@ -11,7 +11,8 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
   routes: {
     "": "index",
     "games/new": "new_game",
-    "games/:id": "show"
+    "games/:id": "show_game",
+    "users/:id" : "show_user"
   },
 
   closePreviousView: function() {
@@ -34,7 +35,7 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     that.$rootEl.html(that.currentView.render());
   },
 
-  show: function(id) {
+  show_game: function(id) {
     var that = this;
 
     that.closePreviousView();
@@ -60,5 +61,23 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     });
 
     that.$rootEl.html(that.currentView.render());
+  },
+
+  show_user: function(id) {
+    console.log("show_user");
+    var that = this;
+
+    that.closePreviousView();
+
+    //var game = that.games.findWhere({ id: parseInt(id, 10) });
+    var user = new ChessApplication.Models.User({id: parseInt(id, 10) });
+    user.fetch();
+    that.currentView = new ChessApplication.Views.UserDetailView({
+      pusher: that.pusher,
+      model: user
+    });
+
+    that.$rootEl.html(that.currentView.render());
   }
+
 });
