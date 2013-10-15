@@ -23,7 +23,7 @@ Security
 * _ figure out whether pusher channels are exposed to malicious parties in some way (need to auth?)
 
 FIX THIS BEFORE YOU DEPLOY!!!
-=============================
+-----------------------------
 * [x] set up pusher api keys
 * _ remove pusher log thingy
 
@@ -51,15 +51,18 @@ Back End
 
 ###PGN (ie, past game stats)
 * [x] implement them!!!
+* _ keep track of final board state so that, with move list, user can iterate through game
 
 Front End
 ---------
 
 ###Profile View
 * x add dat sh%t
+* _ tabinate!@@#$#@$
 * x display basic stats (elo, id, etc)
 * _ display associated info: ie, pgns (past games), friends, etfc
 * _ GrApHsSsSsS &*$#&YI$(*#&%(#$&*!!!!!
+* _ if you click on the messages tab, the chat minimizes
 
 ###ChatViews (not sure how exactly this will work)
 * _ add dat sh%t
@@ -82,6 +85,7 @@ Front End
 * _ indicate when the move is invalid
 * _ redirect to results page when game is over
 * _ invert board for black
+* _ weird pusher error when channel not properly established (Pusher::HTTPError - end of file reached)
 
 ###GameListView
 * x grid of current games that updates dynamically, with first board being plus icon that takes user to new game menu

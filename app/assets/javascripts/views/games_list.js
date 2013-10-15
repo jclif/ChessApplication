@@ -5,11 +5,13 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
   initialize: function () {
     var that = this;
     that.userId = that.options.userId;
+    // Pusher
     that.pusher = that.options.pusher;
     that.channelName = 'user_' + that.userId + '_channel';
     that.channel = that.pusher.subscribe(that.channelName);
+    // Subscriptions
     that.channel.bind("update_games", function(data){
-      console.log("update_games");
+      console.log("update_game");
       console.log(data);
       console.log(that.collection);
 
@@ -21,6 +23,10 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
       console.log(data);
       var game = new ChessApplication.Models.Game(data);
       that.collection.add(game);
+    });
+    that.channel.bind("delete_game", function(data){
+      console.log("delete_game");
+      console.log(data);
     });
 
     var renderCallback = that.render.bind(that);
@@ -45,5 +51,4 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
 
     return that.$el;
   }
-
 });

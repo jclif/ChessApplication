@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008142228) do
+ActiveRecord::Schema.define(:version => 20131014210654) do
 
   create_table "games", :force => true do |t|
     t.string   "moves",          :default => ""
@@ -20,12 +20,29 @@ ActiveRecord::Schema.define(:version => 20131008142228) do
     t.string   "current_player", :default => "white"
     t.string   "current_board"
     t.string   "message",        :default => "Good luck", :null => false
+    t.boolean  "check",          :default => false,       :null => false
+    t.boolean  "checkmate",      :default => false,       :null => false
+    t.boolean  "draw",           :default => false,       :null => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
   end
 
   add_index "games", ["black_user_id"], :name => "index_games_on_black_user_id"
   add_index "games", ["white_user_id"], :name => "index_games_on_white_user_id"
+
+  create_table "pgns", :force => true do |t|
+    t.integer  "white_user_id",  :null => false
+    t.integer  "black_user_id",  :null => false
+    t.string   "moves",          :null => false
+    t.integer  "results",        :null => false
+    t.integer  "white_elo_diff"
+    t.integer  "black_elo_diff"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "pgns", ["black_user_id"], :name => "index_pgns_on_black_user_id"
+  add_index "pgns", ["white_user_id"], :name => "index_pgns_on_white_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",   :null => false

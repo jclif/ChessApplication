@@ -6,26 +6,60 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     var that = this;
 
     that.coords = [];
+    that.subViews = [];
+    // Pusher
     that.pusher = that.options.pusher;
     that.channelName = "game_" + that.model.id + "_channel";
     that.channel = that.pusher.subscribe(that.channelName);
+    // Subscriptions
     that.channel.bind("update_game", function(data){
-      console.log(data);
       that.model.set(data);
+    });
+    that.channel.bind("delete_game", function(data){
+      console.log(that);
+      // Creates View
+      var resultsView = new ChessApplication.Views.GameResultsView({
+        pgn: data
+      });
+      // Disable listenTo stuff
+      that.undelegateEvents();
+      // Puts verlay in list of views to be deleted
+      that.subViews.push(resultsView);
+      // Calls ender on new view
+      that.$el.append(resultsView.render());
+      // Delete model
+      console.log(that.model);
+      that.model.trigger("destroy", that.model);
     });
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.model, "change", renderCallback);
   },
 
-
   dispose: function() {
-    this.remove();
-    this.pusher.unsubscribe(this.channelName);
+    var that = this;
+
+    that.remove();
+    that.pusher.unsubscribe(this.channelName);
+    that.subViews.forEach(function(view) {
+      view.dispose();
+    });
   },
 
   events: {
-    "click div.square": "moveClick"
+    "click .square": "moveClick",
+    "click .moves": "test"
+  },
+
+  test: function(event) {
+    var that = this;
+    console.log("testing");
+    var resultsView = new ChessApplication.Views.GameResultsView({
+      game: 5
+    });
+    that.subViews.push(resultsView);
+
+    that.$el.append(resultsView.render());
   },
 
   render: function() {

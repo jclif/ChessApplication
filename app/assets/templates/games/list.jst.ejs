@@ -1,13 +1,13 @@
 <div class="mini-board-holder clearfix">
-  <div class="new-game"><a href="#/games/new">+</a></div>
+  <div class="new-game"><a href="#/games/new"><img src="/assets/plus.png" alt="add game"></a></div>
   <% games.each(function (game) { %>
     <% var board = JSON.parse(game.attributes.current_board) %>
-    <div class="mini-board">
+    <div class="mini-board clearfix">
       <a href="#/games/<%= game.escape("id") %>">
         <% for(var i = 0; i < 8; i++) { %>
           <% for(var j = 0; j < 8; j++) { %>
             <% if ((i + j) % 2 == 0 ) { %>
-              <div class="mini-square" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+              <div class="mini-square light" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
             <% } else { %>
               <div class="mini-square dark" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
             <% } %>

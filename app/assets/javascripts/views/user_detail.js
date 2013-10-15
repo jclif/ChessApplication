@@ -4,6 +4,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
   initialize: function () {
     var that = this;
+    console.log(that.model);
 
     that.coords = [];
     that.pusher = that.options.pusher;

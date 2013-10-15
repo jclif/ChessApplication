@@ -4,11 +4,55 @@ class Game < ActiveRecord::Base
   validates :white_user_id, :black_user_id, presence: true
   after_create  :default_board
 
-  belongs_to :white_player, class_name: "User", foreign_key: :white_user_id
-  belongs_to :black_player, class_name: "User", foreign_key: :black_user_id
+  belongs_to :white_player, class_name: "User", foreign_key: :white_user_id, primary_key: :id
+  belongs_to :black_player, class_name: "User", foreign_key: :black_user_id, primary_key: :id
 
   def make_pgn
+    switch_turn
+    if self.checkmate = true
+      if self.current_player == "white"
+        results = 1
+      elsif self.current_player == "black"
+        results = 0
+      end
+    else
+      results = 0.5
+    end
 
+    pgn = Pgn.new(
+      white_user_id: self.white_user_id,
+      black_user_id: self.black_user_id,
+      moves: self.moves,
+      results: results,
+    )
+
+    # calculate elo diffs
+    set_diffs(pgn)
+
+    return pgn
+  end
+
+  def set_diffs(pgn)
+    result_for_black = nil
+    if pgn.results == 0.5
+      result_for_black = 0.5
+    elsif pgn.results == 1
+      result_for_black = 0
+    else
+      result_for_black = 1
+    end
+
+    pgn.white_elo_diff = calc_elo(self.black_player.elo, self.white_player.elo, pgn.results)
+    pgn.black_elo_diff = calc_elo(self.white_player.elo, self.black_player.elo, result_for_black)
+  end
+
+  def calc_elo(other_player_elo, this_player_elo, result_for_this_player)
+    k = 32
+
+    expected_points = 1 / (1 + (10 ** ((other_player_elo - this_player_elo) / 400.0)))
+    this_player_diff = k * (result_for_this_player - expected_points)
+
+    return this_player_diff
   end
 
   def default_board

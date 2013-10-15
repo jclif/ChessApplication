@@ -3,18 +3,23 @@
 Yo bro: <%= game.attributes.message %>
 
 <div class="moves clearfix">
-  <%= game.attributes.moves %>
+  <% game.attributes.moves.split(" ").forEach(function(move, i, arr) { %>
+    <% if (i % 2 !== 0) { %>
+      <%= Math.floor((i / 2) + 1) + "." %>
+    <% } %>
+    <%= move %>
+  <% }); %>
 </div>
-
-<% for(var i = 0; i < 8; i++) { %>
-  <% for(var j = 0; j < 8; j++) { %>
-    <% if ((i + j) % 2 == 0 ) { %>
-      <div class="square" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
-    <% } else { %>
-      <div class="square dark" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+<div class="chessboard">
+  <% for(var i = 0; i < 8; i++) { %>
+    <% for(var j = 0; j < 8; j++) { %>
+      <% if ((i + j) % 2 == 0 ) { %>
+        <div class="square" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+      <% } else { %>
+        <div class="square dark" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+      <% } %>
     <% } %>
   <% } %>
-<% } %>
-
+</div>
 <br>
 

@@ -1,6 +1,7 @@
 ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
   initialize: function($rootEl, games, userId) {
+        console.log($rootEl);
     this.$rootEl = $rootEl;
     this.games = games;
     this.userId = userId;
@@ -64,7 +65,6 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
   },
 
   show_user: function(id) {
-    console.log("show_user");
     var that = this;
 
     that.closePreviousView();

@@ -6,7 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.delete_all
 Game.delete_all
+Pgn.delete_all
 
 users = User.create([
   {email: "test1@gmail.com", password: "password"},
@@ -14,9 +16,20 @@ users = User.create([
 ]),
 
 games = Game.create([
-  {white_user_id: 1, black_user_id: 2},
-  {white_user_id: 1, black_user_id: 2},
-  {white_user_id: 1, black_user_id: 2},
-  {white_user_id: 1, black_user_id: 2},
-  {white_user_id: 1, black_user_id: 2}
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id},
+  {white_user_id: User.first.id, black_user_id: User.last.id}
 ])
+
+Game.all.each do |game|
+  game.try_move("f2f3")
+  game.try_move("e7e5")
+  game.try_move("g2g4")
+end

@@ -11,6 +11,7 @@ class CreatePgns < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :pgns, :white_user_id, :black_user_id
+    add_index :pgns, :white_user_id
+    add_index :pgns, :black_user_id
   end
 end
