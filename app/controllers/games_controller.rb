@@ -41,4 +41,15 @@ class GamesController < ApplicationController
     end
   end
 
+  def destroy
+    @game = Game.find(params[:id])
+    @pgn = @game.make_pgn
+    @game.delete
+    if @pgn.save!
+      render json: @pgn
+    else
+      render json: @pgn.errors, status: 422
+    end
+  end
+
 end

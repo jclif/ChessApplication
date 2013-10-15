@@ -10,7 +10,6 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     that.channelName = "game_" + that.model.id + "_channel";
     that.channel = that.pusher.subscribe(that.channelName);
     that.channel.bind("update_game", function(data){
-      console.log("update_game");
       console.log(data);
       that.model.set(data);
     });
@@ -26,8 +25,7 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
   },
 
   events: {
-    "click div.square": "fromSquare",
-    "click .back": "disponse"
+    "click div.square": "moveClick"
   },
 
   render: function() {
@@ -41,7 +39,7 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     return that.$el;
   },
 
-  fromSquare: function (event) {
+  moveClick: function (event) {
     var that = this;
     var coord = [];
 

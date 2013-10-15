@@ -3,6 +3,6 @@ ChessApplication::Application.routes.draw do
 
   root to: "games#index"
 
-  resources :games, only: [:show, :index, :create, :update]
+  resources :games, only: [:show, :index, :create, :update, :destroy]
   resources :users, only: [:show]
 end

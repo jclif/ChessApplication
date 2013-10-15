@@ -5,10 +5,12 @@ class CreatePgns < ActiveRecord::Migration
       t.integer :black_user_id, null: false
       t.string :moves, null: false
       t.integer :results, null: false
+      t.integer :white_elo_diff
+      t.integer :black_elo_diff
 
       t.timestamps
     end
 
-    add_index :pgns, :user_id, :opponent_id
+    add_index :pgns, :white_user_id, :black_user_id
   end
 end

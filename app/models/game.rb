@@ -7,6 +7,10 @@ class Game < ActiveRecord::Base
   belongs_to :white_player, class_name: "User", foreign_key: :white_user_id
   belongs_to :black_player, class_name: "User", foreign_key: :black_user_id
 
+  def make_pgn
+
+  end
+
   def default_board
     game = ChessGame.new
 
@@ -19,6 +23,9 @@ class Game < ActiveRecord::Base
 
     if response[:valid]
       self.switch_turn
+      self.checkmate = response[:checkmate]
+      self.check = response[:check]
+      self.draw = response[:draw]
       self.moves = [self.moves, move].join(" ")
       self.current_board = response[:board]
       self.message = response[:message]
@@ -92,8 +99,6 @@ class ChessGame
       game.switch_turn
     end
 
-    debugger
-
     response[:valid] = game.board.valid?(poss_move)
     if response[:valid]
       game.board.make_move(poss_move)
@@ -103,13 +108,25 @@ class ChessGame
     response[:board] = game.json_board
 
     if game.board.won?
-      response[:message] = "Somebody won!"
+      response[:message] = "#{game.turn} won!"
+      response[:checkmate] = true
+      response[:check] = true
+      response[:draw] = false
     elsif game.board.check? && !game.board.won?
       response[:message] = "#{game.turn.to_s.capitalize} in check."
+      response[:checkmate] = false
+      response[:check] = true
+      response[:draw] = false
     elsif game.board.draw?
       response[:message] = "It's a draw!"
+      response[:checkmate] = false
+      response[:check] = false
+      response[:draw] = true
     else
       response[:message] = ""
+      response[:checkmate] = false
+      response[:check] = false
+      response[:draw] = false
     end
 
     response
