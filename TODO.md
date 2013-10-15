@@ -40,7 +40,7 @@ Back End
 --------
 ###Game
 * x figure out who sent the move, and make sure current player is that user, else dont try_move
-* _ when game is over, delete the game and create a pgn with all of the game details
+* [x] when game is over, delete the game and create a pgn with all of the game details
 * _ write algorith for updating elo after game
 * _ move all game logic to a better place, for organization karma (lib/chess perhaps?)
 * x add create game api
@@ -50,7 +50,7 @@ Back End
 * _ implement them!!!
 
 ###PGN (ie, past game stats)
-* _ implement them!!!
+* [x] implement them!!!
 
 Front End
 ---------
@@ -70,7 +70,7 @@ Front End
 * x fix url, ie, "/games/#/games/:id" (this was a dirty hack so that registration is disabled [also delete devise controller and fix root stuff])
 
 ###Prettify
-* _ game index could be grid of updating miniboards, where first baord is plus icon for new game
+* x game index could be grid of updating miniboards, where first baord is plus icon for new game
 * _ basic layout
 * _ put move list in div and give it move numbers
 

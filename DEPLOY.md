@@ -1,14 +1,16 @@
 How to deploy to Linode
 =======================
 
-Some Set of Things to do
+Git Folder into server
 ------------------------
-1. first thing
-2. second thing
-3. third thinog
+1. git clone https://github.com/jclif/ChessApplication.git
+2. change ownership
+3. make production log chmod 06666
 
-Some Other Set of Things to do
+Set Up Database
 ------------------------------
-1. first thing
-2. second thing
-3. third thign
+1. drop tables
+2. create with chessapp permissions
+3. RAILS_ENV=production rake db:drop, rake db:create, rake db:migrate
+
+DELETE ALL TMP FILES
