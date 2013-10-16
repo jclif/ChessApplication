@@ -40,8 +40,8 @@ Back End
 --------
 ###Game
 * x figure out who sent the move, and make sure current player is that user, else dont try_move
-* [x] when game is over, delete the game and create a pgn with all of the game details
-* _ write algorith for updating elo after game
+* x when game is over, delete the game and create a pgn with all of the game details
+* x write algorith for updating elo after game
 * _ move all game logic to a better place, for organization karma (lib/chess perhaps?)
 * x add create game api
 * _ add ability to create games between friends or random online user
@@ -50,8 +50,14 @@ Back End
 * _ implement them!!!
 
 ###PGN (ie, past game stats)
-* [x] implement them!!!
-* _ keep track of final board state so that, with move list, user can iterate through game
+* x implement them!!!
+* _ allow user to iterate through past game moves
+
+###Friendships
+* _ implement them!!!
+
+###Notifications
+* _ a user can accept or deny friendships or games (perhaps as a field for the user/friendship model)
 
 Front End
 ---------
@@ -60,7 +66,8 @@ Front End
 * x add dat sh%t
 * _ tabinate!@@#$#@$
 * x display basic stats (elo, id, etc)
-* _ display associated info: ie, pgns (past games), friends, etfc
+* [x] display associated info: ie, pgns (past games), friends, etfc
+* _ search feature for past games
 * _ GrApHsSsSsS &*$#&YI$(*#&%(#$&*!!!!!
 * _ if you click on the messages tab, the chat minimizes
 
