@@ -71,13 +71,15 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
     //var game = that.games.findWhere({ id: parseInt(id, 10) });
     var user = new ChessApplication.Models.User({id: parseInt(id, 10) });
-    user.fetch();
-    that.currentView = new ChessApplication.Views.UserDetailView({
-      pusher: that.pusher,
-      model: user
+    user.fetch({
+      success:function() {
+        that.currentView = new ChessApplication.Views.UserDetailView({
+          pusher: that.pusher,
+          model: user
+        });
+        that.$rootEl.html(that.currentView.render());
+      }
     });
-
-    that.$rootEl.html(that.currentView.render());
   }
 
 });
