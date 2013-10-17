@@ -45,6 +45,7 @@ class GamesController < ApplicationController
         # Pusher: update and delete for detail view
         @pgn.save!
         Pusher.trigger("game_#{game.id}_channel", "delete_game", @pgn.to_json)
+        Pusher.trigger("game_#{game.id}_channel", "render_pgn", {pgn: @pgn, game:game})
         render nothing: true
       else
         Pusher.trigger("game_#{@game.id}_channel", "update_game", @game.to_json)

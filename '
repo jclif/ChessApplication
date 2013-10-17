@@ -3,54 +3,67 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
   template: JST["games/detail"],
 
   initialize: function () {
-    console.log(this);
     var that = this;
 
     that.coords = [];
     that.subViews = [];
     var channel = that.options.pusher.subscribe('game_' + that.model.id + '_channel');
     channel.bind("render_pgn", function(data){
-      console.log("rendering_pgn");
-      console.log(data.game.current_board);
-      // Disable listenTo stuff
-      that.undelegateEvents();
-      // Render last move
-      var game = new ChessApplication.Models.Game;
-      game.set(data.game);
-      that.$el.html(that.template({
-        game: game,
-        board: JSON.parse(data.game.current_board)
-      }));
-      game.trigger('destroy', game);
-      // Create/render results view
-      var resultsView = new ChessApplication.Views.GameResultsView({
-        pgn: data.pgn
-      });
-      // Puts verlay in list of views to be deleted
-      that.subViews.push(resultsView);
-      // Calls ender on new view
-      that.$el.append(resultsView.render());
+      console.log("update_game");
+      var model = that.collection.get(data.id);
+      that.collection.add(model, {merge: true});
     });
 
+
+
     var renderCallback = that.render.bind(that);
+    var resultsCallback = that.results.bind(that);
     that.listenTo(that.model, "change", renderCallback);
+    that.listenTo(that.model, "remove", resultsCallback);
   },
 
   dispose: function() {
     var that = this;
 
     that.remove();
+    that.pusher.unsubscribe(this.channelName);
     that.subViews.forEach(function(view) {
       view.dispose();
     });
   },
 
+  results: function() {
+    // Creates View
+    var resultsView = new ChessApplication.Views.GameResultsView({
+      pgn: data
+    });
+    // Disable listenTo stuff
+    that.undelegateEvents();
+    // Puts verlay in list of views to be deleted
+    that.subViews.push(resultsView);
+    // Calls ender on new view
+    that.$el.append(resultsView.render());
+    // Delete model
+    that.model.trigger("destroy", that.model);
+
+
   events: {
-    "click .square": "moveClick"
+    "click .square": "moveClick",
+    "click .moves": "test"
+  },
+
+  test: function(event) {
+    var that = this;
+    console.log("testing");
+    var resultsView = new ChessApplication.Views.GameResultsView({
+      game: 5
+    });
+    that.subViews.push(resultsView);
+
+    that.$el.append(resultsView.render());
   },
 
   render: function() {
-    console.log("rendering");
     var that = this;
 
     that.$el.html(that.template({
@@ -89,8 +102,6 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
 
       that.model.save({
         moves: that.model.attributes.moves + " " + move
-      }, {
-        silent:true
       });
       that.coords = [];
     }
