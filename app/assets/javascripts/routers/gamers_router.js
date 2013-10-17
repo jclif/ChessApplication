@@ -1,9 +1,9 @@
 ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
-  initialize: function($rootEl, games, userId) {
-        console.log($rootEl);
+  initialize: function($rootEl, games, friendships, userId) {
     this.$rootEl = $rootEl;
     this.games = games;
+    this.friendships = friendships;
     this.userId = userId;
     this.pusher = new Pusher('aa4b1aece38d355f8433');
     this.currentView = null;
@@ -69,7 +69,8 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
     that.closePreviousView();
 
-    //var game = that.games.findWhere({ id: parseInt(id, 10) });
+    // if id === that.userId, this profile is the current users, and the friendships collection should be passed in,
+    // otherwise, a database call should be made to collect that users friendships, which can then be passed in
     var user = new ChessApplication.Models.User({id: parseInt(id, 10) });
     user.fetch({
       success:function() {

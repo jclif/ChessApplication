@@ -28,7 +28,6 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
       // Calls ender on new view
       that.$el.append(resultsView.render());
       // Delete model
-      console.log(that.model);
       that.model.trigger("destroy", that.model);
     });
 

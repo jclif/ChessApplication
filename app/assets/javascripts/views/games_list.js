@@ -7,26 +7,28 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
     that.userId = that.options.userId;
     // Pusher
     that.pusher = that.options.pusher;
-    that.channelName = 'user_' + that.userId + '_channel';
-    that.channel = that.pusher.subscribe(that.channelName);
-    // Subscriptions
-    that.channel.bind("update_games", function(data){
-      console.log("update_game");
-      console.log(data);
-      console.log(that.collection);
-
-      var gameId = data.id;
-      var model = that.collection.get(gameId);
-    });
-    that.channel.bind("add_game", function(data){
+    // Add Game Sub
+    var channel = that.pusher.subscribe('user_' + that.userId + '_channel');
+    channel.bind("add_game", function(data){
       console.log("add_game");
-      console.log(data);
       var game = new ChessApplication.Models.Game(data);
       that.collection.add(game);
     });
-    that.channel.bind("delete_game", function(data){
-      console.log("delete_game");
-      console.log(data);
+    // For each game already in collection:
+    that.collection.forEach(function(game) {
+      // Update Game Sub
+      var channel = that.pusher.subscribe('game_' + game.id + '_channel');
+      channel.bind("update_game", function(data){
+        console.log("update_game");
+        var model = that.collection.get(data.id);
+        that.collection.add(model, {merge: true});
+      });
+      // Delete Game Sub
+      channel.bind("delete_game", function(data){
+        console.log("delete_game");
+        var model = that.collection.get(data.id);
+        that.model.trigger("destroy", that.model);
+      });
     });
 
     var renderCallback = that.render.bind(that);
@@ -38,8 +40,14 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
   },
 
   dispose: function() {
-    this.remove();
-    this.pusher.unsubscribe(this.channelName);
+    var that = this;
+
+    that.remove();
+    console.log(that.pusher);
+    // unsubscribe from pusher trigger for games in collection
+    that.collection.forEach(function(game) {
+      that.pusher.unsubscribe('game_' + game.id + '_channel');
+    });
   },
 
   render: function() {

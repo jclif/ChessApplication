@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014210654) do
+ActiveRecord::Schema.define(:version => 20131017135307) do
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "from_user_id",                    :null => false
+    t.integer  "to_user_id",                      :null => false
+    t.boolean  "accepted",     :default => false, :null => false
+    t.boolean  "pending",      :default => true,  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "friendships", ["from_user_id"], :name => "index_friendships_on_from_user_id"
+  add_index "friendships", ["to_user_id"], :name => "index_friendships_on_to_user_id"
 
   create_table "games", :force => true do |t|
     t.string   "moves",          :default => ""

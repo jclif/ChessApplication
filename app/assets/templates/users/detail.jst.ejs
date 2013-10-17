@@ -1,5 +1,5 @@
-<h1>Profile for <%= user.id %></h1>
-Elo: <%= user.attributes.elo %>
+<h1>Profile for User <%= user.id %></h1>
+Elo: <%= user.attributes.elo %><br><br>
 Past Games:
 <hr>
 <% user.attributes.past_games.forEach(function(pgn) { %>
@@ -9,7 +9,7 @@ Past Games:
   <% } else { %>
     <% other_user_id = pgn.white_user_id; %>
   <% } %>
-  At <% pgn.created_at %> you played as
+  At <%= pgn.created_at %> you played as
   <% if (pgn.white_user_id === user.id) { %>
     white
   <% } else { %>
@@ -18,5 +18,29 @@ Past Games:
   against user <a href="/#/users/<%= other_user_id %>"><%= other_user_id %></a>.<br>
   White's elo changed by <%= pgn.white_elo_diff %>.<br>
   Black's elo changed by <%= pgn.black_elo_diff %>.
-  <hr>
+  <br>
 <% }); %>
+
+Friends:
+<br>
+<% if(user.attributes.friends) { %>
+  <% user.attributes.friends.forEach(function(friend) { %>
+    <a href="/#/users/<%= friend.id %>">User<%= friend.id %> (<%= friend.email %>)</a><br>
+  <% }); %>
+<% } %>
+<hr>
+Pending Friends:
+<br>
+<% if(user.attributes.pending_friend_requests_received) { %>
+  <% user.attributes.pending_friend_requests_received.forEach(function(friend) { %>
+    <a href="/#/users/<%= friend.id %>">User<%= friend.id %>< <%= friend.email %> ></a><br>
+  <% }); %>
+<% } %>
+<hr>
+Denied Friends:
+<br>
+<% if(user.attributes.denied_friend_requests_received) { %>
+  <% user.attributes.denied_friend_requests_received.forEach(function(friend) { %>
+    <a href="/#/users/<%= friend.id %>">User<%= friend.id %>< <%= friend.email %> ></a><br>
+  <% }); %>
+<% } %>

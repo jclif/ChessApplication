@@ -24,6 +24,7 @@ class Game < ActiveRecord::Base
       black_user_id: self.black_user_id,
       moves: self.moves,
       results: results,
+      game_id: self.id,
     )
 
     # calculate elo diffs

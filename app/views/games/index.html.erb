@@ -6,12 +6,17 @@
   <%= current_user.id.to_json.html_safe %>
 </script>
 
+<script type="application/json" id="bootstrapped_friendships_json">
+  <%= current_user.friends.to_json.html_safe %>
+</script>
+
 <div class="content"></div>
 
 <script type="text/javascript">
   $(document).ready(function(){
     var gamesData = JSON.parse($("#bootstrapped_games_json").html());
+    var friendshipsData = JSON.parse($("#bootstrapped_friendships_json").html());
     var userId = JSON.parse($("#bootstrapped_current_user_id_json").html());
-    ChessApplication.initialize($('.content'), gamesData, userId);
+    ChessApplication.initialize($('.content'), gamesData, friendshipsData, userId);
   });
 </script>

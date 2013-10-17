@@ -38,7 +38,12 @@ Move Logic
 
 Back End
 --------
-###Game
+###Users
+* _ add guest account
+* _ add omniauth support for facebook and google
+* _ profile images with paperclip
+
+###Games
 * x figure out who sent the move, and make sure current player is that user, else dont try_move
 * x when game is over, delete the game and create a pgn with all of the game details
 * x write algorith for updating elo after game
@@ -61,6 +66,9 @@ Back End
 
 Front End
 ---------
+
+###Pusher Listeners
+* [x] initialize all collections initially, then set up pusher listeners for each of those models
 
 ###Profile View
 * x add dat sh%t
@@ -99,6 +107,7 @@ Front End
 
 ###GameCreateView
 * x add that sh%t
+* _ !!! fix redirect error
 * _ create menus for different types of games, p vs p vs p vs ai, and match with random online user vs match with friend
 
 ###Navigation

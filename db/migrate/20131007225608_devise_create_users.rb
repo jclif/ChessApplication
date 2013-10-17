@@ -11,7 +11,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Rememberable
       t.datetime :remember_created_at
-
       ## Trackable
       t.integer  :sign_in_count, :default => 0
       t.datetime :current_sign_in_at
@@ -35,7 +34,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       # Custom Devise
       t.integer :elo, :default => 1200, :null => false
-
 
       t.timestamps
     end

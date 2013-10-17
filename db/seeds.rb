@@ -12,24 +12,38 @@ Pgn.delete_all
 
 users = User.create([
   {email: "test1@gmail.com", password: "password"},
-  {email: "test2@gmail.com", password: "password"}
-]),
-
-games = Game.create([
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id},
-  {white_user_id: User.first.id, black_user_id: User.last.id}
+  {email: "test2@gmail.com", password: "password"},
+  {email: "test3@gmail.com", password: "password"},
+  {email: "test3@gmail.com", password: "password"},
 ])
 
-Game.all.each do |game|
+games = Game.create([
+  {white_user_id: users[0].id, black_user_id: users[1].id},
+  {white_user_id: users[0].id, black_user_id: users[1].id},
+  {white_user_id: users[0].id, black_user_id: users[1].id},
+  {white_user_id: users[0].id, black_user_id: users[1].id},
+  {white_user_id: users[1].id, black_user_id: users[2].id},
+  {white_user_id: users[1].id, black_user_id: users[2].id},
+  {white_user_id: users[1].id, black_user_id: users[2].id},
+  {white_user_id: users[2].id, black_user_id: users[0].id},
+  {white_user_id: users[2].id, black_user_id: users[0].id},
+  {white_user_id: users[2].id, black_user_id: users[0].id},
+  {white_user_id: users[2].id, black_user_id: users[0].id},
+])
+
+games.each do |game|
   game.try_move("f2f3")
   game.try_move("e7e5")
   game.try_move("g2g4")
 end
+
+friendships = Friendship.create([
+  {from_user_id: users[0].id, to_user_id: users[1].id},
+  {from_user_id: users[1].id, to_user_id: users[2].id},
+  {from_user_id: users[2].id, to_user_id: users[0].id},
+])
+
+f = friendships[0]
+f.accepted = true
+f.pending = false
+f.save!
