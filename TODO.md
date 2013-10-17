@@ -54,10 +54,10 @@ Back End
 * _ allow user to iterate through past game moves
 
 ###Friendships
-* _ implement them!!!
+* [x] implement them!!!
 
 ###Notifications
-* _ a user can accept or deny friendships or games (perhaps as a field for the user/friendship model)
+* [x] a user can accept or deny friendships or games (perhaps as a field for the user/friendship model)
 
 Front End
 ---------
