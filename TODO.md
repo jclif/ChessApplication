@@ -24,7 +24,8 @@ Security
 
 FIX THIS BEFORE YOU DEPLOY!!!
 -----------------------------
-* [x] set up pusher api keys
+* x set up pusher api keys
+* [x] configure capistrano
 * _ remove pusher log thingy
 
 Move Logic

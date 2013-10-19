@@ -5,6 +5,7 @@ gem 'backbone-on-rails'
 gem 'devise'
 gem 'ejs'
 gem 'pusher'
+gem 'figaro'
 
 group :development do
   gem 'sqlite3'

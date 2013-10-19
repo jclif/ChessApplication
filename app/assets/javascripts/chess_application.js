@@ -9,7 +9,7 @@ window.ChessApplication = {
     var games = new ChessApplication.Collections.Games(gamesData);
     var friendships = new ChessApplication.Collections.Friendships(friendshipsData);
     // Pusher
-    var pusher = new Pusher('aa4b1aece38d355f8433');
+    var pusher = new Pusher('bfb361cbdaac1e51c621')
     // Add Game Sub
     var channel = pusher.subscribe('user_' + that.userId + '_channel');
     channel.bind("add_game", function(data){
