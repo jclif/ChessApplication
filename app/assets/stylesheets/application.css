@@ -34,7 +34,6 @@ time, mark, audio, video {
         padding: 0;
         border: 0;
         font-size: 100%;
-        font: inherit;
         vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -95,6 +94,11 @@ nav a:hover {
 
 /* Classes */
 
+.nav-top li {
+  position:relative;
+  margin-right:30px;
+}
+
 .content {
   width: 600px;
   height: 600px;
@@ -102,12 +106,26 @@ nav a:hover {
   position: relative;
 }
 
+.notifications {
+  width: 20px;
+  position:absolute;
+  left:0;
+}
+
+.notifications:hover {
+  width: 30px;
+  left:-5px;
+  top:-5px;
+}
+
+
 .square {
+  position: relative;
   width: 73px;
   height: 73px;
   border: 1px solid black;
   float: left;
-  font-family: "Chess Merida Unicode";
+  font-family: "Chess Utrecht";
   line-height:73px;
   font-size: 73px;
   text-align: center;
@@ -115,22 +133,36 @@ nav a:hover {
   background-color: white;
 }
 
+.piece {
+  color: black;
+  position:absolute;
+  top:0;
+  left:0;
+}
+
+.piece-underlay {
+  color:white;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
 .overlay {
-    opacity:.97;
-    background-color: #bbb;
-    -webkit-box-shadow: 0px 27px 25px rgba(50, 50, 50, 0.9);
-    -moz-box-shadow:    0px 27px 25px rgba(50, 50, 50, 0.9);
-    box-shadow:         0px 27px 25px rgba(50, 50, 50, 0.9);
-    border: 10px solid #5D87B9;
-    position:absolute;
-    top:10%;
-    left:0;
-    right:0;
-    width: 350px;
-    margin: auto;
-    padding: 20px;
-    z-index:9999;
-    color:black;
+  opacity:.97;
+  background-color: #bbb;
+  -webkit-box-shadow: 0px 27px 25px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    0px 27px 25px rgba(50, 50, 50, 0.9);
+  box-shadow:         0px 27px 25px rgba(50, 50, 50, 0.9);
+  border: 10px solid #5D87B9;
+  position:absolute;
+  top:10%;
+  left:0;
+  right:0;
+  width: 350px;
+  margin: auto;
+  padding: 20px;
+  z-index:9999;
+  color:black;
 }
 
 .overlay-close {
@@ -139,6 +171,10 @@ nav a:hover {
 
 .user_info {
   list-style-type: none;
+}
+
+.past-games {
+  list-style-type: disc;
 }
 
 .nav-right{
@@ -184,7 +220,7 @@ nav a:hover {
   height: 10px;
   border: 1px solid black;
   float: left;
-  font-family: "Chess Merida Unicode";
+  font-family: "Chess Utrecht";
   line-height:10px;
   font-size: 10px;
   text-align: center;
@@ -213,6 +249,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80bbbbbb', e
 }
 
 .mini-board {
+  -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.57);
+  box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.57);
   width: 96px;
   margin: 20px;
   float:left;

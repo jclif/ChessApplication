@@ -15,10 +15,12 @@
 <% if !current_user.nil? %>
   <!-- temporary nav stuff -->
   <nav>
-    <ul class="clearfix">
+    <ul class="nav-top clearfix">
       <li class="nav-left"><a href="#/">Dashboard</a></li>
       <li class="nav-left"><a href="#/users/<%= current_user.id %>">Profile</a></li>
       <li class="nav-right"><%= link_to "Logout", destroy_user_session_url, method: :delete %></li>
+      <li class="nav-right"><img class="notifications" src="assets/chessboard.jpg"></li>
+      <li class="nav-right"><img class="notifications" src="assets/friends.svg"></li>
     </ul>
   </nav>
 <% else %>
@@ -29,7 +31,6 @@
 
 <script type="text/javascript">
 $('.notice').on("click", function(event) {$(event.currentTarget).hide("slow"); });
-
 $('.errors').on("click", function(event) { $(event.currentTarget).hide("slow"); });
 </script>
 
@@ -37,7 +38,7 @@ $('.errors').on("click", function(event) { $(event.currentTarget).hide("slow"); 
 
 <nav>
   <ul>
-    <li class="nav-right"><a href="#/">Chat</a></li>
+    <li class="nav-right"><a href="#/"><img style="width: 50px;" src="assets/chat.svg"></a></li>
   </ul>
 </nav>
 

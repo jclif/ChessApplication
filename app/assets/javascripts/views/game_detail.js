@@ -49,36 +49,40 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     "click .square": "moveClick"
   },
 
-  viewHelpers: {
-    unicode_to_solid: function(uni){
-      var white_to_black = {
-  },
-
-
-_.template(myTemplate, data);
-
   render: function() {
     console.log("rendering");
-    _.extend(data, viewHelpers);
     var that = this;
+    
+    var is_white = function(uni) {
+      whites = [
+        "\u2654",
+        "\u2655",
+        "\u2656",
+        "\u2657",
+        "\u2658",
+        "\u2659"];
 
-    var white_to_black = function(uni) {
+      return _.contains(whites, uni)
+    };
+
+    var white_to_solid = function(uni) {
+      var white_to_black = {
       "\u2655": "\u265B",
       "\u2654": "\u265A",
       "\u2656": "\u265C",
       "\u2657": "\u265D",
       "\u2658": "\u265E",
       "\u2659": "\u265F"
-    }
-        `
+      };
+
       if (_.contains(Object.keys(white_to_black), uni)) {
         return white_to_black[uni];
       }
-    }
-      
+    };
 
     that.$el.html(that.template({
-      unicode_to_solid: that.viewHelpers[unicode_to_solid]
+      is_white: is_white,
+      white_to_solid: white_to_solid,
       game: that.model,
       board: JSON.parse(that.model.attributes.current_board)
     }));

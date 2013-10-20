@@ -2,9 +2,17 @@
   <% for(var i = 0; i < 8; i++) { %>
     <% for(var j = 0; j < 8; j++) { %>
       <% if ((i + j) % 2 == 0 ) { %>
-        <div class="square" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+        <div class="square" data-id="<%= i %>_<%= j %>">
+        <% if (is_white(board[i][j])) { %>
+          <span class="piece-underlay"><%= white_to_solid(board[i][j]) %></span>
+        <% } %>
+        <span class="piece"><%= board[i][j] %></span></div>
       <% } else { %>
-        <div class="square dark" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+        <div class="square dark" data-id="<%= i %>_<%= j %>">
+        <% if (is_white(board[i][j])) { %>
+          <span class="piece-underlay"><%= white_to_solid(board[i][j]) %></span>
+        <% } %>
+        <span class="piece"><%= board[i][j] %></span></div>
       <% } %>
     <% } %>
   <% } %>

@@ -1,8 +1,9 @@
 <h1>Profile for User <%= user.id %></h1>
 Elo: <%= user.attributes.elo %><br><br>
 Past Games:
-<hr>
+<ul class="past-games">
 <% user.attributes.past_games.forEach(function(pgn) { %>
+<li>
 <% var other_user_id = null; %>
   <% if (pgn.white_user_id === user.attributes.id) { %>
     <% other_user_id = pgn.black_user_id; %>
@@ -18,9 +19,10 @@ Past Games:
   against user <a href="/#/users/<%= other_user_id %>"><%= other_user_id %></a>.<br>
   White's elo changed by <%= pgn.white_elo_diff %>.<br>
   Black's elo changed by <%= pgn.black_elo_diff %>.
-  <br>
+</li>
 <% }); %>
-
+</ul>
+<hr>
 Friends:
 <br>
 <% if(user.attributes.friends) { %>
