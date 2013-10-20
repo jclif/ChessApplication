@@ -15,12 +15,12 @@
 <% if !current_user.nil? %>
   <!-- temporary nav stuff -->
   <nav>
-    <ul>
-      <li><a href="#/">Dashboard</a></li>
-      <li><a href="#/users/<%= current_user.id %>">Profile</a></li>
+    <ul class="clearfix">
+      <li class="nav-left"><a href="#/">Dashboard</a></li>
+      <li class="nav-left"><a href="#/users/<%= current_user.id %>">Profile</a></li>
+      <li class="nav-right"><%= link_to "Logout", destroy_user_session_url, method: :delete %></li>
     </ul>
   </nav>
-  <%= button_to "Logout", destroy_user_session_url, method: :delete, class: "logout" %>
 <% else %>
     <li><%= button_to "Sign In", user_session_url, :method => :get %></li>
     <li><%= button_to "Sign Up", new_user_registration_url, :method => :get %></li>
@@ -34,6 +34,12 @@ $('.errors').on("click", function(event) { $(event.currentTarget).hide("slow"); 
 </script>
 
 <%= yield %>
+
+<nav>
+  <ul>
+    <li class="nav-right"><a href="#/">Chat</a></li>
+  </ul>
+</nav>
 
 <script type="text/javascript">
 $( document ).ready(function() {

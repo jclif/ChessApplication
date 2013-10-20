@@ -63,7 +63,9 @@ Back End
 * [x] implement them!!!
 
 ###Notifications
-* [x] a user can accept or deny friendships or games (perhaps as a field for the user/friendship model)
+* [x] a user can accept or deny friendships (perhaps as a field for the user/friendship model)
+* _ a user can accept or deny games
+* _ pending games and friendships could be aggregated into lists that drop down from different icons (game icon, friendships icon, etc), with buttons for accepting or denying 
 
 Front End
 ---------
@@ -92,6 +94,7 @@ Front End
 * x game index could be grid of updating miniboards, where first baord is plus icon for new game
 * _ basic layout
 * _ put move list in div and give it move numbers
+* _ implement notification growl, where hidden box is filled with notification content (by pusher listener for current user) when it receives data, then slowly fades away
 
 ###GameDetailView
 * x indicate whether it's your move

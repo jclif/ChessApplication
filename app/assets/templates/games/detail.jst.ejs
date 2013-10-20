@@ -1,15 +1,3 @@
-<%= capitalize(game.attributes.current_player) %>'s Turn
-<br>
-Yo bro: <%= game.attributes.message %>
-
-<div class="moves clearfix">
-  <% game.attributes.moves.split(" ").forEach(function(move, i, arr) { %>
-    <% if (i % 2 !== 0) { %>
-      <%= Math.floor((i / 2) + 1) + "." %>
-    <% } %>
-    <%= move %>
-  <% }); %>
-</div>
 <div class="chessboard">
   <% for(var i = 0; i < 8; i++) { %>
     <% for(var j = 0; j < 8; j++) { %>

@@ -43,7 +43,7 @@ footer, header, hgroup, menu, nav, section {
         display: block;
 }
 body {
-        line-height: 1;
+  line-height: 1;
 }
 ol, ul {
         list-style: none;
@@ -141,8 +141,12 @@ nav a:hover {
   list-style-type: none;
 }
 
-.logout {
+.nav-right{
   float: right;
+}
+
+.nav-left{
+  float: left;
 }
 
 .clicked {
@@ -155,6 +159,10 @@ nav a:hover {
 
 .light {
   background: white;
+}
+
+.light-piece {
+  color: white;
 }
 
 .moves {
@@ -184,13 +192,28 @@ nav a:hover {
 }
 
 .mini-board-holder {
-  border: 1px solid black;
   width: 100%;
-  background: gray;
+  background: #ccc;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 8px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 8px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 8px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  /* Gradient */
+background: -moz-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%, rgba(187,187,187,0.9) 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(187,187,187,0.5)), color-stop(100%,rgba(187,187,187,0.9))); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* IE10+ */
+background: radial-gradient(ellipse at center, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80bbbbbb', endColorstr='#e6bbbbbb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .mini-board {
-  width: 100px;
+  width: 96px;
   margin: 20px;
   float:left;
 }
@@ -198,9 +221,9 @@ nav a:hover {
 .new-game {
   float:left;
   margin: 20px;
-  height: 94px;
-  width: 94px;
-  font-size: 88px;
+  height: 96px;
+  width: 96px;
+  font-size: 96px;
   text-align: center;
 }
 
@@ -208,4 +231,3 @@ nav a:hover {
   height: 100%;
   width: 100%;
 }
-
