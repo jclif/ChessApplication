@@ -2,14 +2,23 @@
   <div class="new-game"><a href="#/games/new"><img class="plus" src="/assets/shadow/plus.png" alt="add game"></a></div>
   <% games.each(function (game) { %>
     <% var board = JSON.parse(game.attributes.current_board) %>
+    <% console.log(board[0][0]) %>
     <div class="mini-board clearfix">
       <a href="#/games/<%= game.escape("id") %>">
         <% for(var i = 0; i < 8; i++) { %>
           <% for(var j = 0; j < 8; j++) { %>
             <% if ((i + j) % 2 == 0 ) { %>
-              <div class="mini-square light" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+              <div class="mini-square light" data-id="<%= i %>_<%= j %>">
+              <% if (is_white(board[i][j])) { %>
+                <span class="piece-underlay"><%= white_to_solid(board[i][j]) %></span>
+              <% } %>
+              <span class="piece"><%= board[i][j] %></span></div>
             <% } else { %>
-              <div class="mini-square dark" data-id="<%= i %>_<%= j %>"><%= board[i][j] %></div>
+              <div class="mini-square dark" data-id="<%= i %>_<%= j %>">
+              <% if (is_white(board[i][j])) { %>
+                <span class="piece-underlay"><%= white_to_solid(board[i][j]) %></span>
+              <% } %>
+              <span class="piece"><%= board[i][j] %></span></div>
             <% } %>
           <% } %>
         <% } %>

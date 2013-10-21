@@ -216,6 +216,7 @@ nav a:hover {
   }
 
 .mini-square {
+  position:relative;
   width: 10px;
   height: 10px;
   border: 1px solid black;
@@ -255,6 +256,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80bbbbbb', e
   width: 96px;
   margin: 20px;
   float:left;
+  position:relative;
 }
 
 .new-game {
