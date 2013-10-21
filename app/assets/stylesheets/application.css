@@ -190,7 +190,13 @@ nav a:hover {
 }
 
 .dark {
-  background: gray;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%, rgba(102,102,102,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(153,153,153,0.98)), color-stop(100%,rgba(102,102,102,1))); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* IE10+ */
+  background: radial-gradient(ellipse at center, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa999999', endColorstr='#666666',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .light {
@@ -259,6 +265,34 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80bbbbbb', e
   position:relative;
 }
 
+.chessboard {
+  /*
+  -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.57);
+  box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.57);
+  text-shadow: 2px 2px 5px rgba(150, 150, 150, 1);
+*/
+}
+
+.gradient{
+  background-color:#FFF;
+
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient(#FFFFFF, #000000);
+
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#000000));
+
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient(#FFFFFF, #000000);
+
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient(#FFFFFF, #000000);
+
+  /* Microsoft IE10 */
+  background-image: -ms-linear-gradient(#FFFFFF, #000000);
+}
+
 .new-game {
   float:left;
   margin: 20px;
@@ -266,6 +300,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80bbbbbb', e
   width: 96px;
   font-size: 96px;
   text-align: center;
+}
+
+.nav-bot-right {
+  position:fixed;
+  right: 0;
+  bottom: 0;
 }
 
 .new-game img {
