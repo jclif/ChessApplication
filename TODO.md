@@ -42,8 +42,10 @@ Back End
 ###Users
 * _ add guest account
 * x add omniauth support for gihutb
-* _ add omniauth support for facebook
-* _ add omniauth support for google
+* x add omniauth support for facebook
+* x add omniauth support for google
+* _ add omniauth support for twitter (effing a...twitter doesnt give email, so you cant validate to make sure user doesn't already exist. signing in with twitter will have to redirect to a form view that autopopulates fields returned by twitter, with email to be entered)
+* _ add omniauth support for soundcloud! (http://developers.soundcloud.com/docs#authentication)
 * _ profile images with paperclip
 
 ###Games

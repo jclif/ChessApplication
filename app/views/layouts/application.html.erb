@@ -3,6 +3,7 @@
 <head>
   <title>Chessnuts</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -14,11 +15,13 @@
 <ul class="user_info">
 <% if !current_user.nil? %>
   <!-- temporary nav stuff -->
-  <nav>
-    <ul class="nav-top clearfix">
-      <li class="nav-left"><a href="#/">Dashboard</a></li>
-      <li class="nav-left"><a href="#/users/<%= current_user.id %>">Profile</a></li>
-      <li class="nav-right"><%= link_to "Logout", destroy_user_session_url, method: :delete %></li>
+  <nav class="nav-top clearfix">
+    <ul class="nav-top nav-left clearfix">
+      <li><a href="#/" class="nav-icon"><i class="fa fa-home"></i></a></li>
+      <li><a href="#/users/<%= current_user.id %>" class="nav-icon"><i class="fa fa-user"></i></a></li>
+    </ul>
+    <ul class="nav-top nav-right clearfix">
+      <li class="nav-right"><a class="nav-icon" href="<%= destroy_user_session_url %>" data-method="delete" rel="nofollow" ><i class='fa fa-sign-out'></i></a></li>
       <li class="nav-right"><img class="notifications" src="assets/chessboard.jpg"></li>
       <li class="nav-right"><img class="notifications" src="assets/friends.svg"></li>
     </ul>
@@ -42,7 +45,7 @@ $('.errors').on("click", function(event) { $(event.currentTarget).hide("slow"); 
 
 <nav>
   <ul>
-    <li class="nav-bot-right"><a href="#/"><img style="width: 30px;" src="assets/chat.svg"></a></li>
+    <li class="nav-bot-right"><a href="#/" class="nav-icon"><i class="fa fa-comments"></i></a></li>
   </ul>
 </nav>
 

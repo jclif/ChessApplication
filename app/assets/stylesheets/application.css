@@ -81,15 +81,21 @@ nav li {
   margin: 10px;
 }
 
-nav a {
-  color: #5D98D7;
+nav .word-links {
   text-decoration: none;
 }
 
-nav a:hover {
+nav .word-links:hover {
   color: #5D98D7;
   box-sizing:border-box;
   border-bottom: 1px dotted #5D98D7;
+}
+
+nav .nav-icon {
+  text-decoration: none;
+}
+nav .nav-icon:hover {
+  color: #5D98D7;
 }
 
 /* Classes */
@@ -177,11 +183,12 @@ nav a:hover {
   list-style-type: disc;
 }
 
-.nav-right{
+.nav-right {
   float: right;
 }
 
-.nav-left{
+.nav-left {
+  margin-left: 50px;
   float: left;
 }
 
