@@ -34,6 +34,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       # Custom Devise
       t.integer :elo, :default => 1200, :null => false
+      t.string :provider
+      t.string :uid
 
       t.timestamps
     end

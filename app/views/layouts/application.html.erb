@@ -26,6 +26,7 @@
 <% else %>
     <li><%= button_to "Sign In", user_session_url, :method => :get %></li>
     <li><%= button_to "Sign Up", new_user_registration_url, :method => :get %></li>
+    <a class="btn-auth btn-github large" href="<%=user_omniauth_authorize_path(:github) %>">Sign in with <b>GitHub</b></a>
 <% end %>
 </ul>
 

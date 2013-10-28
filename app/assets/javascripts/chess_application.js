@@ -9,21 +9,18 @@ window.ChessApplication = {
     var games = new ChessApplication.Collections.Games(gamesData);
     var friendships = new ChessApplication.Collections.Friendships(friendshipsData);
     // Pusher
-    var pusher = new Pusher('bfb361cbdaac1e51c621')
+    var pusher = new Pusher('bfb361cbdaac1e51c621');
     // Add Game Sub
     var channel = pusher.subscribe('user_' + that.userId + '_channel');
     channel.bind("add_game", function(data){
-      console.log("add_game");
       var game = new ChessApplication.Models.Game(data);
       games.add(game);
       var channel = pusher.subscribe('game_' + game.id + '_channel');
       channel.bind("update_game", function(data) {
-        console.log("update_game");
         var model = games.get(data.id);
         games.add(model, {merge:true});
       });
       channel.bind("delete_game", function(data) {
-        console.log("delete_game");
         var model = games.get(data.id);
         model.trigger("destroy", that.model);
       });
@@ -33,13 +30,11 @@ window.ChessApplication = {
       // Update Game Sub
       var channel = pusher.subscribe('game_' + game.id + '_channel');
       channel.bind("update_game", function(data){
-        console.log("update_game");
         var model = games.get(data.id);
         model.set(data);
       });
       // Delete Game Sub
       channel.bind("delete_game", function(data){
-        console.log("delete_game");
         games.remove(data.id);
       });
     });

@@ -1,12 +1,30 @@
+module Authentication
+  module ActiveRecordHelpers
+
+    def self.included(base)
+      base.extend ClassMethods
+    end
+
+    module ClassMethods
+      def find_for_oauth(auth)
+        record = where(provider: auth.provider, uid: auth.uid.to_s).first
+        record || create(provider: auth.provider, uid: auth.uid, email: auth.info.email, password: Devise.friendly_token[0,20])
+      end
+    end
+  end
+end
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid
+
+  include Authentication::ActiveRecordHelpers
 
   def pending_friend_reqests_recieved
     Friendship.where(["to_user_id = ? AND pending = ?", self.id, true])

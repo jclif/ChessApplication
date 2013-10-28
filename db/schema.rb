@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(:version => 20131017135307) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "elo",                    :default => 1200, :null => false
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end

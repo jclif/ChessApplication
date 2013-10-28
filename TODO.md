@@ -41,7 +41,9 @@ Back End
 --------
 ###Users
 * _ add guest account
-* _ add omniauth support for facebook and google
+* x add omniauth support for gihutb
+* _ add omniauth support for facebook
+* _ add omniauth support for google
 * _ profile images with paperclip
 
 ###Games
@@ -65,7 +67,7 @@ Back End
 ###Notifications
 * [x] a user can accept or deny friendships (perhaps as a field for the user/friendship model)
 * _ a user can accept or deny games
-* _ pending games and friendships could be aggregated into lists that drop down from different icons (game icon, friendships icon, etc), with buttons for accepting or denying 
+* _ pending games and friendships could be aggregated into lists that drop down from different icons (game icon, friendships icon, etc), with buttons for accepting or denying
 
 Front End
 ---------
@@ -89,6 +91,10 @@ Front End
 * x flash errors that can be clicked to hide
 * x redirect to games#index
 * x fix url, ie, "/games/#/games/:id" (this was a dirty hack so that registration is disabled [also delete devise controller and fix root stuff])
+* x button for github omniauth
+* _ button for facebook omniauth
+* _ button for google omniauth
+* _ button for guest sign in
 
 ###Prettify
 * x game index could be grid of updating miniboards, where first baord is plus icon for new game

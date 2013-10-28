@@ -6,6 +6,7 @@ gem 'devise'
 gem 'ejs'
 gem 'pusher'
 gem 'figaro'
+gem 'omniauth-github'
 
 group :development do
   gem 'sqlite3'
