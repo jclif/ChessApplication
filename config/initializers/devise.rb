@@ -216,8 +216,12 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   if Rails.env.development?
     config.omniauth :github, ENV['DEV_GITHUB_APP_ID'], ENV['DEV_GITHUB_APP_SECRET'], :scope => 'user,public_repo'
+    config.omniauth :facebook, ENV['DEV_FACEBOOK_APP_ID'], ENV['DEV_FACEBOOK_APP_SECRET']
+    config.omniauth :google_oauth2, ENV["DEV_GOOGLE_APP_ID"], ENV["DEV_GOOGLE_APP_SECRET"], { access_type: "offline", approval_prompt: "" }
   elsif Rails.env.production?
     config.omniauth :github, ENV['PROD_GITHUB_APP_ID'], ENV['PROD_GITHUB_APP_SECRET'], :scope => 'user,public_repo'
+    config.omniauth :facebook, ENV['PROD_FACEBOOK_APP_ID'], ENV['PROD_FACEBOOK_APP_SECRET']
+    config.omniauth :google_oauth2, ENV["PROD_GOOGLE_APP_ID"], ENV["PROD_GOOGLE_APP_SECRET"], { access_type: "offline", approval_prompt: "" }
   end
 
   # ==> Warden configuration

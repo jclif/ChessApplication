@@ -7,6 +7,8 @@ gem 'ejs'
 gem 'pusher'
 gem 'figaro'
 gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :development do
   gem 'sqlite3'

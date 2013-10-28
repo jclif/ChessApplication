@@ -24,15 +24,18 @@
     </ul>
   </nav>
 <% else %>
-    <li><%= button_to "Sign In", user_session_url, :method => :get %></li>
-    <li><%= button_to "Sign Up", new_user_registration_url, :method => :get %></li>
-    <a class="btn-auth btn-github large" href="<%=user_omniauth_authorize_path(:github) %>">Sign in with <b>GitHub</b></a>
 <% end %>
 </ul>
 
 <script type="text/javascript">
 $('.notice').on("click", function(event) {$(event.currentTarget).hide("slow"); });
 $('.errors').on("click", function(event) { $(event.currentTarget).hide("slow"); });
+</script>
+
+<script type="text/javascript">
+  if (window.location.hash && window.location.hash == '#_=_') {
+    window.location.hash = '';
+  }
 </script>
 
 <%= yield %>
