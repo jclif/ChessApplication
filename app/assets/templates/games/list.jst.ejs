@@ -1,6 +1,8 @@
+<% console.log("listing") %>
 <div class="mini-board-holder clearfix">
   <a href="#/games/new"><i class="fa fa-plus new-game"></i></a>
   <% games.each(function (game) { %>
+    <% console.log(game) %>
     <% var board = JSON.parse(game.attributes.current_board) %>
     <div class="mini-board clearfix">
       <a href="#/games/<%= game.escape("id") %>">

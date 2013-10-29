@@ -73,7 +73,6 @@ class Game < ActiveRecord::Base
       self.draw = response[:draw]
       self.moves = [self.moves, move].join(" ")
       self.current_board = response[:board]
-      self.message = response[:message]
       self.save!
       return true
     else
@@ -153,22 +152,18 @@ class ChessGame
     response[:board] = game.json_board
 
     if game.board.won?
-      response[:message] = "#{game.turn} won!"
       response[:checkmate] = true
       response[:check] = true
       response[:draw] = false
     elsif game.board.check? && !game.board.won?
-      response[:message] = "#{game.turn.to_s.capitalize} in check."
       response[:checkmate] = false
       response[:check] = true
       response[:draw] = false
     elsif game.board.draw?
-      response[:message] = "It's a draw!"
       response[:checkmate] = false
       response[:check] = false
       response[:draw] = true
     else
-      response[:message] = ""
       response[:checkmate] = false
       response[:check] = false
       response[:draw] = false

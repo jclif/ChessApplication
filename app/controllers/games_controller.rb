@@ -18,7 +18,7 @@ class GamesController < ApplicationController
     if @game.save!
       puts "create success!"
       Pusher.trigger("user_#{other_player_id}_channel", "add_game", @game.to_json)
-      render json: @game
+      render json: @game, status: 200
     else
       puts "create fail!"
       render json: @game.errors, status: 422

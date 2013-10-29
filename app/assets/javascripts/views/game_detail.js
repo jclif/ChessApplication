@@ -9,13 +9,15 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     that.coords = [];
     that.subViews = [];
     var channel = that.options.pusher.subscribe('game_' + that.model.id + '_channel');
+
+    // Bind channel for ending the game
     channel.bind("render_pgn", function(data){
       console.log("rendering_pgn");
       console.log(data.game.current_board);
       // Disable listenTo stuff
       that.undelegateEvents();
       // Render last move
-      var game = new ChessApplication.Models.Game;
+      var game = new ChessApplication.Models.Game();
       game.set(data.game);
       that.$el.html(that.template({
         is_white: that.is_white,

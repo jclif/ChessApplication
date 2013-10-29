@@ -32,7 +32,7 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
         "\u2658",
         "\u2659"];
 
-      return _.contains(whites, uni)
+      return _.contains(whites, uni);
     };
 
     var white_to_solid = function(uni) {
