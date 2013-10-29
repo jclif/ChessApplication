@@ -2,12 +2,43 @@
   <h1>New Gam</h1>
   <form>
   <label for="game_opponent_email">Who would you like to play? (email)</label>
-  <input name="game[opponent_email]" id="game_opponent_email">
-  <input type="radio name="game[current_user_color_choice]" value="Red" id="game_current_user_color_choice"
+  <input name="game[opponent_email]" id="game_opponent_email"><br>
+  <input type="radio" name="game[current_user_color_choice]" value="Black" id="game_current_user_color_choice">Black<br>
+  <input type="radio" name="game[current_user_color_choice]" value="White" id="game_current_user_color_choice">White<br>
   <input id="selected_origin">
   <input id="link_origin_id" name="link[origin_id]" type="hidden">
 
   <button class="submit">Submit!</button>
   </form>
 
+</div>
+
+<script>
+  $(function() {
+    function log( message ) {
+      $( "<div>" ).text( message ).prependTo( "#log" );
+      $( "#log" ).scrollTop( 0 );
+    }
+
+    $( "#birds" ).autocomplete({
+      source: "/users.json",
+      minLength: 2,
+      select: function( event, ui ) {
+        log( ui.item ?
+          "Selected: " + ui.item.value + " aka " + ui.item.id :
+          "Nothing selected, input was " + this.value
+        );
+      }
+    });
+  });
+</script>
+
+<div class="ui-widget">
+  <label for="birds">Birds: </label>
+  <input id="birds" />
+</div>
+
+<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
+  Result:
+  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
 </div>
