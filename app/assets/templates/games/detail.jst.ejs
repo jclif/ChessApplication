@@ -4,15 +4,15 @@
       <% if ((i + j) % 2 == 0 ) { %>
         <div class="square" data-id="<%= i %>_<%= j %>">
         <% if (is_white(board[i][j])) { %>
-          <span class="piece-underlay"><%= white_to_solid(board[i][j]) %></span>
+          <span class="piece-underlay big-piece"><%= white_to_solid(board[i][j]) %></span>
         <% } %>
-        <span class="piece"><%= board[i][j] %></span></div>
+        <span class="piece big-piece"><%= board[i][j] %></span></div>
       <% } else { %>
         <div class="square dark" data-id="<%= i %>_<%= j %>">
         <% if (is_white(board[i][j])) { %>
-          <span class="piece-underlay"><%= white_to_solid(board[i][j]) %></span>
+          <span class="piece-underlay big-piece"><%= white_to_solid(board[i][j]) %></span>
         <% } %>
-        <span class="piece"><%= board[i][j] %></span></div>
+        <span class="piece big-piece"><%= board[i][j] %></span></div>
       <% } %>
     <% } %>
   <% } %>

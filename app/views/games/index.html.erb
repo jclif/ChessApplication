@@ -1,3 +1,16 @@
+<nav class="nav-top clearfix">
+  <ul class="nav-left clearfix">
+    <li><a href="#/"><i class="fa fa-home"></i></a></li>
+    <li><a href="#/users/<%= current_user.id %>"><i class="fa fa-user"></i></a></li>
+  </ul>
+  <ul class="nav-right clearfix">
+    <li><a href="<%= destroy_user_session_url %>" data-method="delete" rel="nofollow" ><i class='fa fa-sign-out'></i></a></li>
+    <li><a href="#"><i class="fa fa-gear"></i></a></li>
+    <li><a href="#"><i class="fa fa-square"></i></a></li>
+    <li><a href="#"><i class="fa fa-group"></i></a></li>
+  </ul>
+</nav>
+
 <script type="application/json" id="bootstrapped_games_json">
   <%= current_user.games.to_json.html_safe %>
 </script>
@@ -20,3 +33,9 @@
     ChessApplication.initialize($('.content'), gamesData, friendshipsData, userId);
   });
 </script>
+
+<nav class="nav-bot clearfix">
+  <ul class="nav-right">
+    <li><a href="#/"><i class="fa fa-comments"></i></a></li>
+  </ul>
+</nav>

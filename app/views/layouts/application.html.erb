@@ -11,25 +11,6 @@
 
 <%# render partial: "layouts/errors" %>
 
-<!-- This needs to be put into backbone -->
-<ul class="user_info">
-<% if !current_user.nil? %>
-  <!-- temporary nav stuff -->
-  <nav class="nav-top clearfix">
-    <ul class="nav-top nav-left clearfix">
-      <li><a href="#/" class="nav-icon"><i class="fa fa-home"></i></a></li>
-      <li><a href="#/users/<%= current_user.id %>" class="nav-icon"><i class="fa fa-user"></i></a></li>
-    </ul>
-    <ul class="nav-top nav-right clearfix">
-      <li class="nav-right"><a class="nav-icon" href="<%= destroy_user_session_url %>" data-method="delete" rel="nofollow" ><i class='fa fa-sign-out'></i></a></li>
-      <li class="nav-right"><img class="notifications" src="assets/chessboard.jpg"></li>
-      <li class="nav-right"><img class="notifications" src="assets/friends.svg"></li>
-    </ul>
-  </nav>
-<% else %>
-<% end %>
-</ul>
-
 <script type="text/javascript">
 $('.notice').on("click", function(event) {$(event.currentTarget).hide("slow"); });
 $('.errors').on("click", function(event) { $(event.currentTarget).hide("slow"); });
@@ -42,12 +23,6 @@ $('.errors').on("click", function(event) { $(event.currentTarget).hide("slow"); 
 </script>
 
 <%= yield %>
-
-<nav>
-  <ul>
-    <li class="nav-bot-right"><a href="#/" class="nav-icon"><i class="fa fa-comments"></i></a></li>
-  </ul>
-</nav>
 
 <script type="text/javascript">
 $( document ).ready(function() {

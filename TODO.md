@@ -5,9 +5,11 @@ SO MUCH TO DO, SO LITTLE TIME
 *  _  : imcomplete
 * [x] : in progress
 
-Maybe
------
-* _ notification feed, which keeps track of games where it's your turn, and game invites
+FIX THIS BEFORE YOU DEPLOY!!!
+-----------------------------
+* x set up pusher api keys
+* [x] configure capistrano
+* _ remove pusher log thingy
 
 Efficiency
 ----------
@@ -22,12 +24,6 @@ Security
 * _ generate new api keys, and hide them (AWS S3, with environment variables, perhaps?)
 * _ figure out whether pusher channels are exposed to malicious parties in some way (need to auth?)
 
-FIX THIS BEFORE YOU DEPLOY!!!
------------------------------
-* x set up pusher api keys
-* [x] configure capistrano
-* _ remove pusher log thingy
-
 Move Logic
 ----------
 * x two pawn two-space moves on the same column deletes first pawn (wat) not sure what other symptoms this bug may cause
@@ -40,7 +36,7 @@ Move Logic
 Back End
 --------
 ###Users
-* _ add guest account
+* [x] add guest account
 * x add omniauth support for gihutb
 * x add omniauth support for facebook
 * x add omniauth support for google
@@ -94,12 +90,12 @@ Front End
 * x redirect to games#index
 * x fix url, ie, "/games/#/games/:id" (this was a dirty hack so that registration is disabled [also delete devise controller and fix root stuff])
 * x button for github omniauth
-* _ button for facebook omniauth
-* _ button for google omniauth
-* _ button for guest sign in
+* x button for facebook omniauth
+* x button for google omniauth
+* [x] button for guest sign in
+* [x] less ugly plz
 
 ###Prettify
-* x game index could be grid of updating miniboards, where first baord is plus icon for new game
 * _ basic layout
 * _ put move list in div and give it move numbers
 * _ implement notification growl, where hidden box is filled with notification content (by pusher listener for current user) when it receives data, then slowly fades away
@@ -116,6 +112,8 @@ Front End
 
 ###GameListView
 * x grid of current games that updates dynamically, with first board being plus icon that takes user to new game menu
+* _ when cursor over game, more details!
+* _ pagination, or some way of not displaying too many boards
 
 ###GameCreateView
 * x add that sh%t
