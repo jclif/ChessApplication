@@ -11,6 +11,8 @@ class GamesController < ApplicationController
   end
 
   def create
+    puts params[:game]
+    fail
     @game = Game.new(params[:game])
     @game.white_user_id = current_user.id
     other_player_id = current_user.id == @game.white_user_id ? @game.black_user_id : @game.white_user_id

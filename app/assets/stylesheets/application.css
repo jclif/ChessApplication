@@ -163,6 +163,20 @@ a:link, a:visited, a:hover, a:active {
   line-height: 120%;
 }
 
+.new-game-container {
+  width: 460px;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
 .nav-top {
   position: fixed;
   width: 100%;

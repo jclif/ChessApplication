@@ -50,6 +50,7 @@ Back End
 * x write algorith for updating elo after game
 * _ move all game logic to a better place, for organization karma (lib/chess perhaps?)
 * x add create game api
+* [x] on game create, allow for autocompleting the opponents email, and picking color
 * _ add ability to create games between friends or random online user
 
 ###Messages
@@ -79,7 +80,7 @@ Front End
 * x display basic stats (elo, id, etc)
 * [x] display associated info: ie, pgns (past games), friends, etfc
 * _ search feature for past games
-* _ GrApHsSsSsS &*$#&YI$(*#&%(#$&*!!!!!
+* _ GrApHsSsSsS &$#&YI$(#&%(#$&!!!!!
 * _ if you click on the messages tab, the chat minimizes
 
 ###ChatViews (not sure how exactly this will work)
@@ -117,7 +118,9 @@ Front End
 
 ###GameCreateView
 * x add that sh%t
-* _ !!! fix redirect error
+* x !!! fix redirect error
+* _ autocomplete for opponent email
+* _ radio buttons for color desired, or random
 * _ create menus for different types of games, p vs p vs p vs ai, and match with random online user vs match with friend
 
 ###Navigation

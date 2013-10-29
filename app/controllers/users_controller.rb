@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.find(:all, conditions: ['email LIKE ?', "%#{params[:term]}%"])
-    render json: @users.as_json(only: [:email])
+    render json: @users.as_json(only: [:id, :email])
   end
 
 end
