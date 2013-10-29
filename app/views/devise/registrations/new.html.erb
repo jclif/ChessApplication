@@ -1,5 +1,5 @@
-<div class="login-container">
-<h2>Sign up</h2>
+<div class="login-container clearfix">
+<div class="logo">Chessnuts</div>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -13,7 +13,7 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><input class="login-button button button-rounded button-action button-large" type="submit" value="Sign up" name="commit"></input></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
