@@ -32,6 +32,8 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
       userId: that.userId
     });
 
+    console.log(that.currentView);
+
     that.$rootEl.html(that.currentView.render());
   },
 

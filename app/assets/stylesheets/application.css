@@ -43,6 +43,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  background: url(/assets/ticks.png) repeat 0 0;
 }
 ol, ul {
         list-style: none;
@@ -80,6 +81,7 @@ a:link, a:visited, a:hover, a:active {
 /* Classes */
 
 .login-container {
+  background: white;
   width: 460px;
   margin: 50px auto 0 auto;
   padding: 20px;
@@ -94,7 +96,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .login-container .logo {
-  font-family: "Almendra SC";
+  font-family: "Raleway";
   font-weight: bold;
   font-size:200%;
   text-align: center;
@@ -178,6 +180,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .nav-top {
+  z-index:1;
   position: fixed;
   width: 100%;
   top: 20px;
@@ -224,10 +227,10 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .content {
+  padding: 10px;
   width: 600px;
   margin: auto;
   margin-top: 50px;
-  position: relative;
 }
 
 .square {
@@ -252,7 +255,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .big-piece {
-  margin-top: 10px;
+  margin-top: 3px;
 }
 
 .small-piece {
@@ -302,13 +305,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .dark {
-  background: -moz-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%, rgba(102,102,102,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(153,153,153,0.98)), color-stop(100%,rgba(102,102,102,1))); /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* IE10+ */
-  background: radial-gradient(ellipse at center, rgba(153,153,153,0.98) 0%,rgba(102,102,102,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fa999999', endColorstr='#666666',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background-color: #5D87B9;
 }
 
 .light {
@@ -347,31 +344,22 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .mini-board-holder {
-  margin-top: 50px;
   width: 100%;
-  background: #ccc;
+  background: white;
   /* Shadow */
-  -webkit-box-shadow: 4px 4px 8px rgba(50, 50, 50, 0.57);
-  -moz-box-shadow:    4px 4px 8px rgba(50, 50, 50, 0.57);
-  box-shadow:         4px 4px 8px rgba(50, 50, 50, 0.57);
+  -webkit-box-shadow: 0px 4px 8px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    0px 4px 8px rgba(50, 50, 50, 0.57);
+  box-shadow:         0px 4px 8px rgba(50, 50, 50, 0.57);
   /* Radius */
   border-radius: 6px 6px 6px 6px;
   -moz-border-radius: 6px 6px 6px 6px;
   -webkit-border-radius: 6px 6px 6px 6px;
-  /* Gradient */
-  background: -moz-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%, rgba(187,187,187,0.9) 100%); /* FF3.6+ */
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(187,187,187,0.5)), color-stop(100%,rgba(187,187,187,0.9))); /* Chrome,Safari4+ */
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* Opera 12+ */
-  background: -ms-radial-gradient(center, ellipse cover, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* IE10+ */
-  background: radial-gradient(ellipse at center, rgba(187,187,187,0.5) 0%,rgba(187,187,187,0.9) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80bbbbbb', endColorstr='#e6bbbbbb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
 .mini-board {
-  -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.57);
-  -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.57);
-  box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.57);
+  -webkit-box-shadow: 0px 1px 4px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    0px 1px 4px rgba(50, 50, 50, 0.57);
+  box-shadow:         0px 1px 4px rgba(50, 50, 50, 0.57);
   width: 96px;
   margin: 20px;
   float:left;
@@ -379,31 +367,6 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .chessboard {
-  /*
-  -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.57);
-  -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.57);
-  box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.57);
-  text-shadow: 2px 2px 5px rgba(150, 150, 150, 1);
-*/
-}
-
-.gradient{
-  background-color:#FFF;
-
-  /* Firefox 3.6+ */
-  background-image: -moz-linear-gradient(#FFFFFF, #000000);
-
-  /* Safari 4+, Chrome 1+ */
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to(#000000));
-
-  /* Safari 5.1+, Chrome 10+ */
-  background-image: -webkit-linear-gradient(#FFFFFF, #000000);
-
-  /* Opera 11.10+ */
-  background-image: -o-linear-gradient(#FFFFFF, #000000);
-
-  /* Microsoft IE10 */
-  background-image: -ms-linear-gradient(#FFFFFF, #000000);
 }
 
 .new-game {

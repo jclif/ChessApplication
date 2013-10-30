@@ -3,7 +3,6 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
   template: JST["games/detail"],
 
   initialize: function () {
-    console.log(this);
     var that = this;
 
     that.coords = [];
@@ -54,18 +53,16 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
   },
 
   render: function() {
-    console.log("rendering");
     var that = this;
 
-
-    that.$el.html(that.template({
+    that.el = that.template({
       is_white: that.is_white,
       white_to_solid: that.white_to_solid,
       game: that.model,
       board: JSON.parse(that.model.attributes.current_board)
-    }));
+    });
 
-    return that.$el;
+    return that.el;
   },
 
   is_white: function(uni) {

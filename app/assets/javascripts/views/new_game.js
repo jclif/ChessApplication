@@ -13,7 +13,7 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
   render: function() {
     var that = this;
 
-    that.$el.html(that.template());
+    that.$el = that.template();
 
     return that.$el;
   },

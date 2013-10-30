@@ -50,13 +50,12 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
       }
     };
 
-
-    that.$el.html(that.template({
+    that.el = that.template({
       is_white: is_white,
       white_to_solid: white_to_solid,
       games: that.collection
-    }));
+    });
 
-    return that.$el;
+    return that.el;
   }
 });
