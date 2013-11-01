@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
 
   include Authentication::ActiveRecordHelpers
 
-  def pending_friend_reqests_recieved
+  def pending_friend_requests_recieved
     Friendship.where(["to_user_id = ? AND pending = ?", self.id, true])
   end
 
@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
     Friendship.where(["to_user_id = ? AND accepted = ?", self.id, false])
   end
 
-  def friends
+  def accepted_friends
     User.find_by_sql([<<-SQL, true, true, self.id, self.id, self.id, self.id, self.id])
       SELECT DISTINCT
         users.*
@@ -96,8 +96,21 @@ class User < ActiveRecord::Base
     SQL
   end
 
-  def games
-    Game.where(["white_user_id = ?", self.id]) + Game.where(["black_user_id = ?", self.id])
+  def pending_game_requests_recieved
+    Game.where(["white_user_id = ? AND pending = ?", self.id, true]) + Game.where(["black_user_id = ? AND pending = ?", self.id, true])
+  end
+
+  def accepted_games
+    User.find_by_sql([<<-SQL, true, self.id, self.id])
+      SELECT
+        games.*
+      FROM
+        games
+      WHERE
+        accepted = ?
+      AND
+        (white_user_id = ? OR black_user_id = ?)
+    SQL
   end
 
   def past_games

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131017135307) do
+ActiveRecord::Schema.define(:version => 20131101002845) do
 
   create_table "friendships", :force => true do |t|
     t.integer  "from_user_id",                    :null => false
@@ -27,20 +27,30 @@ ActiveRecord::Schema.define(:version => 20131017135307) do
 
   create_table "games", :force => true do |t|
     t.string   "moves",          :default => ""
-    t.integer  "white_user_id",                           :null => false
-    t.integer  "black_user_id",                           :null => false
+    t.integer  "white_user_id",                       :null => false
+    t.integer  "black_user_id",                       :null => false
     t.string   "current_player", :default => "white"
     t.string   "current_board"
-    t.string   "message",        :default => "Good luck", :null => false
-    t.boolean  "check",          :default => false,       :null => false
-    t.boolean  "checkmate",      :default => false,       :null => false
-    t.boolean  "draw",           :default => false,       :null => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.boolean  "check",          :default => false,   :null => false
+    t.boolean  "checkmate",      :default => false,   :null => false
+    t.boolean  "draw",           :default => false,   :null => false
+    t.boolean  "accepted",       :default => false,   :null => false
+    t.boolean  "pending",        :default => true,    :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "games", ["black_user_id"], :name => "index_games_on_black_user_id"
   add_index "games", ["white_user_id"], :name => "index_games_on_white_user_id"
+
+  create_table "open_games", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "user_color", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "open_games", ["user_id"], :name => "index_open_games_on_user_id"
 
   create_table "pgns", :force => true do |t|
     t.integer  "white_user_id",  :null => false

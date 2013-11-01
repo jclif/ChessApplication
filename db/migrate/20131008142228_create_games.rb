@@ -9,6 +9,8 @@ class CreateGames < ActiveRecord::Migration
       t.boolean :check, default: false, null: false
       t.boolean :checkmate, default: false, null: false
       t.boolean :draw, default: false, null: false
+      t.boolean :accepted, default: false, null: false
+      t.boolean :pending, default: true, null: false
 
       t.timestamps
     end

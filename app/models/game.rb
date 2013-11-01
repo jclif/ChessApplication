@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  attr_accessible :white_user_id, :black_user_id
+  attr_accessible :white_user_id, :black_user_id, :accepted, :pending
 
   validates :white_user_id, :black_user_id, presence: true
   after_create  :default_board

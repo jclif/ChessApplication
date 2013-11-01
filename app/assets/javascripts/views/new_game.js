@@ -13,7 +13,10 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
   render: function() {
     var that = this;
 
-    that.$el = that.template();
+    that.$el.html(that.template({
+      open_games: that.options.open_games,
+      friendships: that.options.friendships
+    }));
 
     return that.$el;
   },
@@ -24,6 +27,7 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
 
     var formData = $(event.currentTarget).closest('form').serializeJSON();
     var game = new ChessApplication.Models.Game(formData.game);
+    console.log(game);
     game.save({},{
       success: function(model, response, options) {
         console.log('success');

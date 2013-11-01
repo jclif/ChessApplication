@@ -11,8 +11,8 @@
   </ul>
 </nav>
 
-<script type="application/json" id="bootstrapped_games_json">
-  <%= current_user.games.to_json.html_safe %>
+<script type="application/json" id="bootstrapped_current_users_games_json">
+  <%= current_user.accepted_games.to_json.html_safe %>
 </script>
 
 <script type="application/json" id="bootstrapped_current_user_id_json">
@@ -20,22 +20,56 @@
 </script>
 
 <script type="application/json" id="bootstrapped_friendships_json">
-  <%= current_user.friends.to_json.html_safe %>
+  <%= current_user.accepted_friends.to_json.html_safe %>
+</script>
+
+<script type="application/json" id="bootstrapped_open_games_json">
+  <%= @open_games.to_json.html_safe %>
 </script>
 
 <div class="content"></div>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    var gamesData = JSON.parse($("#bootstrapped_games_json").html());
+  $(document).ready(function() {
+    var CurrUserGamesData = JSON.parse($("#bootstrapped_current_users_games_json").html());
+    var OpenGamesData = JSON.parse($("#bootstrapped_open_games_json").html());
     var friendshipsData = JSON.parse($("#bootstrapped_friendships_json").html());
     var userId = JSON.parse($("#bootstrapped_current_user_id_json").html());
-    ChessApplication.initialize($('.content'), gamesData, friendshipsData, userId);
+    ChessApplication.initialize($('.content'), CurrUserGamesData, OpenGamesData, friendshipsData, userId);
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var $navtop = $('.nav-top');
+    var top_h = $navtop.outerHeight();
+    $navtop.css({
+      top: -top_h * 2,
+      opacity: 0,
+      display: 'block'
+    }).animate({
+      top: 10,
+      opacity: 1
+    }, 1000, 'easeOutBounce');
+    var $navbot = $('.nav-bot');
+    var bot_h = $navbot.outerHeight();
+    var bot_w = $('.chat-icon').outerWidth();
+
+    $navbot.css({
+      bottom: -bot_h * 2,
+      right: -bot_w * 2,
+      opacity: 0,
+      display: 'block'
+    }).animate({
+      bottom: 10,
+      right: 0,
+      opacity: 1
+    }, 1000, 'easeOutBounce');
   });
 </script>
 
 <nav class="nav-bot clearfix">
   <ul class="nav-right">
-    <li><a href="#/"><i class="fa fa-comments"></i></a></li>
+    <li><a href="#/" class="chat-icon"><i class="fa fa-comments"></i></a></li>
   </ul>
 </nav>

@@ -8,12 +8,18 @@ class GamesController < ApplicationController
   end
 
   def index
+    @open_games = OpenGame.all
   end
 
   def create
-    puts params[:game]
-    @game = Game.new(params[:game])
-    @game.white_user_id = current_user.id
+    if params[:current_user_color_choice].downcase == "white"
+      white_user_id = current_user.id
+      black_user_id = User.find_by_email(params[:opponent_email]).id
+    elsif params[:current_user_color_choice].downcase == "black"
+      white_user_id = User.find_by_email(params[:opponent_email]).id
+      black_user_id = current_user.id
+    end
+    @game = Game.new(white_user_id: white_user_id, black_user_id: black_user_id)
     other_player_id = current_user.id == @game.white_user_id ? @game.black_user_id : @game.white_user_id
 
     if @game.save!

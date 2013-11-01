@@ -55,14 +55,14 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
   render: function() {
     var that = this;
 
-    that.el = that.template({
+    that.$el.html(that.template({
       is_white: that.is_white,
       white_to_solid: that.white_to_solid,
       game: that.model,
       board: JSON.parse(that.model.attributes.current_board)
-    });
+    }));
 
-    return that.el;
+    return that.$el;
   },
 
   is_white: function(uni) {

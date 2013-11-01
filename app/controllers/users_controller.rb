@@ -8,8 +8,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.find(:all, conditions: ['email LIKE ?', "%#{params[:term]}%"])
-    puts @users.inspect
-    render json: @users.as_json(only: [:id, :email])
+    @users_array = @users.map do |user|
+      {value: user.email, label: user.email}
+    end
+    render json: @users_array
   end
 
 end

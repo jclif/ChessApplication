@@ -1,44 +1,40 @@
-<div class"new-game-container clearfix">
-  <h1>New Gam</h1>
-  <form>
-  <label for="game_opponent_email">Who would you like to play? (email)</label>
-  <input name="game[opponent_email]" id="game_opponent_email"><br>
-  <input type="radio" name="game[current_user_color_choice]" value="Black" id="game_current_user_color_choice">Black<br>
-  <input type="radio" name="game[current_user_color_choice]" value="White" id="game_current_user_color_choice">White<br>
-  <input id="selected_origin">
-  <input id="link_origin_id" name="link[origin_id]" type="hidden">
+<div class="new-game-container clearfix">
+  <% console.log(open_games); %>
+  <% console.log(friendships); %>
+  <nav class="new-game-nav clearfix">
+    <ul>
+      <li class="current">Create Game</li>
+      <li>Open Games</li>
+      <li>Play a Friend</li>
+      <li>Play Chai</li>
+    </ul>
+  </nav>
+  <div class="create-game new-game-current"></div>
+    <form>
+    Which friend would you like to play?<br>
+    <select name="game"><br>
+    <input type="radio" name="game[current_user_color_choice]" value="Black" id="game_current_user_color_choice">Black<br>
+    <input type="radio" name="game[current_user_color_choice]" value="White" id="game_current_user_color_choice">White<br>
 
-  <button class="submit">Submit!</button>
-  </form>
+    <button class="submit">Submit!</button>
+    </form>
 
 </div>
 
 <script>
+/*
   $(function() {
-    function log( message ) {
-      $( "<div>" ).text( message ).prependTo( "#log" );
-      $( "#log" ).scrollTop( 0 );
-    }
-
-    $( "#birds" ).autocomplete({
+    $( "#game_opponent_email" ).autocomplete({
       source: "/users.json",
       minLength: 2,
       select: function( event, ui ) {
-        log( ui.item ?
-          "Selected: " + ui.item.value + " aka " + ui.item.id :
-          "Nothing selected, input was " + this.value
-        );
-      }
+        console.log(ui);
+      },
     });
   });
+  */
 </script>
-
+<!--<label for="game_opponent_email">Enter your opponents email.</label>
 <div class="ui-widget">
-  <label for="birds">Birds: </label>
-  <input id="birds" />
-</div>
-
-<div class="ui-widget" style="margin-top: 2em; font-family: Arial;">
-  Result:
-  <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
-</div>
+<input placeholder="Search by email" name="game[opponent_email]" id="game_opponent_email"><br>
+</div> -->

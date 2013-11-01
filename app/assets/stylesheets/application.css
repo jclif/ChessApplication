@@ -165,25 +165,11 @@ a:link, a:visited, a:hover, a:active {
   line-height: 120%;
 }
 
-.new-game-container {
-  width: 460px;
-  margin: 50px auto 0 auto;
-  padding: 20px;
-  /* Shadow */
-  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
-  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
-  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
-  /* Radius */
-  border-radius: 6px 6px 6px 6px;
-  -moz-border-radius: 6px 6px 6px 6px;
-  -webkit-border-radius: 6px 6px 6px 6px;
-}
-
 .nav-top {
   z-index:1;
   position: fixed;
   width: 100%;
-  top: 20px;
+  top: -24px;
 }
 
 .nav-top a {
@@ -215,7 +201,8 @@ a:link, a:visited, a:hover, a:active {
 .nav-bot {
   position: fixed;
   width: 100%;
-  bottom: 20px;
+  bottom: -24px;
+  right: -24px;
 }
 
 .nav-bot a {
@@ -381,4 +368,38 @@ a:link, a:visited, a:hover, a:active {
 .new-game img {
   height: 100%;
   width: 100%;
+}
+
+.new-game-container {
+  width: 100%;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.new-game-container nav {
+  margin-bottom: 20px;
+}
+
+.new-game-container li {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.new-game-container li:hover {
+  border-bottom: 2px dotted #5D87B9;
+}
+
+.new-game-container .current {
+  color: #5D87B9;
+  border-bottom: 2px dotted #5D87B9;
 }

@@ -1,8 +1,9 @@
 ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
-  initialize: function($rootEl, games, friendships, userId, pusher) {
+  initialize: function($rootEl, current_users_games, open_games, friendships, userId, pusher) {
     this.$rootEl = $rootEl;
-    this.games = games;
+    this.current_users_games = current_users_games;
+    this.open_games = open_games;
     this.friendships = friendships;
     this.userId = userId;
     this.currentView = null;
@@ -23,16 +24,15 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
   },
 
   index: function() {
+    console.log(this.open_games);
     var that = this;
 
     that.closePreviousView();
 
     that.currentView = new ChessApplication.Views.GamesListView({
-      collection: that.games,
+      collection: that.current_users_games,
       userId: that.userId
     });
-
-    console.log(that.currentView);
 
     that.$rootEl.html(that.currentView.render());
   },
@@ -42,7 +42,7 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
     that.closePreviousView();
 
-    var game = that.games.get(id);
+    var game = that.current_users_games.get(id);
     that.currentView = new ChessApplication.Views.GameDetailView({
       model: game,
       pusher: that.pusher,
@@ -58,7 +58,9 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     that.closePreviousView();
 
     that.currentView = new ChessApplication.Views.NewGameView({
-      collection: that.games
+      open_games: that.open_games,
+      friendships: that.friendships,
+      userId: that.userId
     });
 
     that.$rootEl.html(that.currentView.render());
