@@ -403,3 +403,31 @@ a:link, a:visited, a:hover, a:active {
   color: #5D87B9;
   border-bottom: 2px dotted #5D87B9;
 }
+
+.profile-container {
+  width: 100%;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  background: white;
+  position: relative;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.profile-container .friend-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.profile-container .unfriend-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

@@ -4,10 +4,11 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
   initialize: function () {
     var that = this;
-    console.log(that.model);
 
     that.coords = [];
     that.pusher = that.options.pusher;
+    that.userId = that.options.userId;
+    that.friendships = that.options.friendships;
     that.channelName = "user_" + that.model.id + "_channel";
     that.channel = that.pusher.subscribe(that.channelName);
     that.channel.bind("update_profile", function(data){
@@ -33,7 +34,8 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var that = this;
 
     that.$el.html(that.template({
-      user: that.model
+      user: that.model,
+      userId: that.userId
     }));
 
     return that.$el;
