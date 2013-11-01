@@ -71,14 +71,13 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
     that.closePreviousView();
 
-    // if id === that.userId, this profile is the current users, and the friendships collection should be passed in,
-    // otherwise, a database call should be made to collect that users friendships, which can then be passed in
     var user = new ChessApplication.Models.User({id: parseInt(id, 10) });
     user.fetch({
       success:function() {
         that.currentView = new ChessApplication.Views.UserDetailView({
           pusher: that.pusher,
-          model: user
+          model: user,
+          userId: that.userId
         });
         that.$rootEl.html(that.currentView.render());
       }
