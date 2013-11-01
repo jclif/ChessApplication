@@ -1,12 +1,7 @@
 <div class="profile-container clearfix">
   <h1>Profile for user with email: <%= user.attributes.email %></h1>
-<<<<<<< HEAD
-  <div class="friend-button button button-rounded button-primary" style="display: none;">Friend</div>
-  <div class="unfriend-button button button-rounded button-caution" style="display: none;">Unfriend</div>
-=======
   <div class="friend-button button button-rounded button-primary">Friend</div>
   <div class="unfriend-button button button-rounded button-caution">Unfriend</div>
->>>>>>> 4544c3fa7d0d27316fd720562835ffc98aaed1ae
   Elo: <%= user.attributes.elo %><br><br>
   Past Games:
   <ul class="past-games">
@@ -37,41 +32,6 @@
     <% user.attributes.accepted_friends.forEach(function(friend) { %>
       <a href="/#/users/<%= friend.id %>">User<%= friend.id %> (<%= friend.email %>)</a><br>
     <% }); %>
-<<<<<<< HEAD
-  <% } %>
-  <hr>
-  Pending Friends:
-  <br>
-  <% if(user.attributes.pending_friend_requests_received) { %>
-    <% user.attributes.pending_friend_requests_received.forEach(function(friend) { %>
-      <a href="/#/users/<%= friend.id %>">User<%= friend.id %>< <%= friend.email %> ></a><br>
-    <% }); %>
-  <% } %>
-  <hr>
-  Denied Friends:
-  <br>
-  <% if(user.attributes.denied_friend_requests_received) { %>
-    <% user.attributes.denied_friend_requests_received.forEach(function(friend) { %>
-      <a href="/#/users/<%= friend.id %>">User<%= friend.id %>< <%= friend.email %> ></a><br>
-    <% }); %>
-  <% } %>
-</div>
-
-<% $(document).ready(function() { %>
-<% console.log($('.profile-container')); %>
-<% $('.profile-container').css("background", "blue"); %>
-  <% if (userId !== user.attributes.id) { %>
-  <% console.log("isn't the same user"); %>
-    <% if (user.isFriendsWith(userId)) { %>
-    <% console.log("show friend") %>
-      <% $('.profile-container .friend-button').css( "display", "block"); %>
-    <% } else { %>
-    <% console.log("show unfriend"); %>
-      <% $('.profile-container .unfriend-button').show(); %>
-    <% } %>
-  <% } %>
-<% }); %>
-=======
   <% } %>
   <hr>
   Pending Friends:
@@ -96,4 +56,3 @@
   <% console.log("isFriendsWith did something!"); %>
    <% } %>
 <% } %>
->>>>>>> 4544c3fa7d0d27316fd720562835ffc98aaed1ae

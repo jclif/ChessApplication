@@ -1,0 +1,441 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+        display: block;
+}
+body {
+  line-height: 1;
+  background: url(/assets/ticks.png) repeat 0 0;
+}
+ol, ul {
+        list-style: none;
+}
+blockquote, q {
+        quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+        content: '';
+        content: none;
+}
+table {
+        border-collapse: collapse;
+        border-spacing: 0;
+}
+
+/* Custom Reset */
+
+input {
+  font: inherit;
+}
+
+/* Elements */
+
+body {
+  font-family: 'Helvetica';
+  font-size: 24px;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: black;
+}
+
+/* Classes */
+
+.login-container {
+  background: white;
+  width: 460px;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.login-container .logo {
+  font-family: "Raleway";
+  font-weight: bold;
+  font-size:200%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login-container input[type="submit"] {
+  margin: 10px auto;
+  display: block;
+}
+
+.login-container div {
+  margin:5px 0;
+}
+
+.login-container .omni-buttons {
+  margin-top: 20px;
+}
+
+.login-smaller {
+  margin-top:5px;
+  font-size: 60%;
+}
+
+.login-container label {
+  font-size: 60%;
+}
+
+.login-button {
+  text-size: 200%;
+}
+
+#new_session {
+  float: right;
+}
+
+#user_email {
+  margin-top: 5px;
+}
+
+#user_password {
+  margin-top: 5px;
+}
+
+.login-container .login-button {
+  -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.55);
+  -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.55);
+  box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 1);
+}
+
+.login-container .guest-button {
+  -webkit-box-shadow: 1px 1px 2px rgba(50, 50, 50, 0.55);
+  -moz-box-shadow:    1px 1px 2px rgba(50, 50, 50, 0.55);
+  box-shadow:         1px 1px 2px rgba(50, 50, 50, 0.55);
+}
+
+.login-container .devise-extras {
+  margin-top:15px;
+  float:left;
+  font-size:55%;
+}
+
+.login-container .devise-extras a {
+  margin-top: 1px;
+  line-height: 120%;
+}
+
+.nav-top {
+  z-index:1;
+  position: fixed;
+  width: 100%;
+  top: -24px;
+}
+
+.nav-top a {
+  text-decoration: none;
+}
+
+.nav-top a:hover {
+  color: #5D98D7;
+}
+
+.nav-right {
+  float: right;
+}
+
+.nav-right li {
+  margin-right: 20px;
+  float: right;
+}
+
+.nav-left {
+  float: left;
+}
+
+.nav-left li {
+  margin-left: 20px;
+  float: left;
+}
+
+.nav-bot {
+  position: fixed;
+  width: 100%;
+  bottom: -24px;
+  right: -24px;
+}
+
+.nav-bot a {
+  text-decoration: none;
+}
+
+.nav-bot a:hover {
+  color: #5D98D7;
+}
+
+.content {
+  padding: 10px;
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.square {
+  position: relative;
+  width: 73px;
+  height: 73px;
+  border: 1px solid black;
+  float: left;
+  line-height:73px;
+  font-size: 73px;
+  text-align: center;
+  cursor: crosshair;
+  background-color: white;
+}
+
+.piece {
+  color: black;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+}
+
+.big-piece {
+  margin-top: 3px;
+}
+
+.small-piece {
+  margin-top: 1px;
+}
+
+.piece-underlay {
+  color:white;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+}
+
+.overlay {
+  opacity:.97;
+  background-color: #bbb;
+  -webkit-box-shadow: 0px 27px 25px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    0px 27px 25px rgba(50, 50, 50, 0.9);
+  box-shadow:         0px 27px 25px rgba(50, 50, 50, 0.9);
+  border: 10px solid #5D87B9;
+  position:absolute;
+  top:10%;
+  left:0;
+  right:0;
+  width: 350px;
+  margin: auto;
+  padding: 20px;
+  z-index:9999;
+  color:black;
+}
+
+.overlay-close {
+  float: right;
+}
+
+.user_info {
+  list-style-type: none;
+}
+
+.past-games {
+  list-style-type: disc;
+}
+
+.clicked {
+  border: 1px solid red;
+}
+
+.dark {
+  background-color: #5D87B9;
+}
+
+.light {
+  background: white;
+}
+
+.light-piece {
+  color: white;
+}
+
+.moves {
+  font-weight: lighter;
+  border: 1px solid black;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+
+.mini-square {
+  position:relative;
+  width: 10px;
+  height: 10px;
+  border: 1px solid black;
+  float: left;
+  font-family: "Chess Utrecht";
+  line-height:10px;
+  font-size: 10px;
+  text-align: center;
+  cursor: default;
+}
+
+.mini-board-holder {
+  width: 100%;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 0px 4px 8px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    0px 4px 8px rgba(50, 50, 50, 0.57);
+  box-shadow:         0px 4px 8px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.mini-board {
+  -webkit-box-shadow: 0px 1px 4px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    0px 1px 4px rgba(50, 50, 50, 0.57);
+  box-shadow:         0px 1px 4px rgba(50, 50, 50, 0.57);
+  width: 96px;
+  margin: 20px;
+  float:left;
+  position:relative;
+}
+
+.chessboard {
+}
+
+.new-game {
+  float:left;
+  margin: 20px;
+  height: 96px;
+  width: 96px;
+  font-size: 96px;
+  text-align: center;
+}
+
+.new-game img {
+  height: 100%;
+  width: 100%;
+}
+
+.new-game-container {
+  width: 100%;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.new-game-container nav {
+  margin-bottom: 20px;
+}
+
+.new-game-container li {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.new-game-container li:hover {
+  border-bottom: 2px dotted #5D87B9;
+}
+
+.new-game-container .current {
+  color: #5D87B9;
+  border-bottom: 2px dotted #5D87B9;
+}
+
+.profile-container {
+  width: 100%;
+  margin: 50px auto 0 auto;
+  padding: 20px;
+  background: white;
+  position: relative;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.profile-container .friend-button {
+<<<<<<< HEAD
+=======
+  display: none;
+>>>>>>> 4544c3fa7d0d27316fd720562835ffc98aaed1ae
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.profile-container .unfriend-button {
+<<<<<<< HEAD
+=======
+  display: none;
+>>>>>>> 4544c3fa7d0d27316fd720562835ffc98aaed1ae
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
