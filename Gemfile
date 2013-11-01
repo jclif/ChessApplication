@@ -17,7 +17,6 @@ group :development do
   gem 'quiet_assets'
   gem 'launchy'
   gem 'letter_opener'
-  gem 'thin'
   gem 'debugger'
 end
 

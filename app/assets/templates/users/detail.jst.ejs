@@ -3,7 +3,7 @@
     <li class="user-search-bar clearfix">
       <label for="user_email"></label>
       <div class="ui-widget">
-        <input type="text" placeholder="Search by email" name="user[email]" id="user_email"><i class="fa fa-search user-search-button"></i><br>
+        <input name="user[email]" id="user_email"><i class="fa fa-search user-search-button"></i><br>
         <input name="user[id]" id="user_id" type="hidden">
       </div>
     </li>
@@ -62,15 +62,3 @@
     <% }); %>
   <% } %>
 </div>
-
-<script>
-  $(document).ready(function() {
-    $( "#user_email" ).autocomplete({
-      source: "/users.json",
-      minLength: 2,
-      select: function(event, ui) {
-        $('#user_id').val(ui.label);
-      },
-    });
-  });
-</script>

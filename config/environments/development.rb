@@ -41,4 +41,5 @@ ChessApplication::Application.configure do
   # caching
   config.assets.cache_store = :null_store
   config.action_controller.cache_store = :null_store
+  config.serve_static_assets = false
 end

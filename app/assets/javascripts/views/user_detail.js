@@ -28,7 +28,8 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
   },
 
   events: {
-    "click .user-search-button": "showSearchedUser"
+    "click .user-search-button": "showSearchedUser",
+    "keypress #user_email": "filterEnter"
   },
 
   render: function() {
@@ -47,15 +48,38 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
           $('.friend-button').show();
         }
       }
+
+      $( "#user_email" ).autocomplete({
+        source: "/users.json",
+        minLength: 2
+      });
+
     });
 
     return that.$el;
   },
 
-  showSearchedUser: function() {
-    var email = $('.profile-nav #user_email')[0].value;
+  filterEnter: function(e) {
+    var that = this;
 
-    console.log(email);
+    if (e.keyCode === 13) {
+      that.showSearchedUser();
+    }
+  },
+
+  showSearchedUser: function() {
+    var that = this;
+    var email = $('.profile-nav #user_email')[0].value;
+    var ajaxOptions = {
+      url: '/users',
+      type: 'GET',
+      data: {"user_email": email},
+      success: function(data) {
+        Backbone.history.navigate('#/users/' + data.userId);
+      }
+    };
+
+    $.ajax(ajaxOptions);
   }
 
 });

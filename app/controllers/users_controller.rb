@@ -7,12 +7,20 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.find(:all, conditions: ['email LIKE ?', "%#{params[:term]}%"])
-    @users_array = @users.map do |user|
-      {value: user.email, label: user.id}
+    puts params
+    if params[:term]
+      @users = User.find(:all, conditions: ['email LIKE ?', "%#{params[:term]}%"])
+      @users_array = @users.map do |user|
+        {label: user.email}
+      end
+      render json: @users_array
+    elsif params[:user_email]
+      @user = User.find_by_email(params[:user_email])
+      puts "putsing"
+      puts @user
+      @user_id = {userId: @user.id}
+      render json: @user_id
     end
-    puts @users_array
-    render json: @users_array
   end
 
 end

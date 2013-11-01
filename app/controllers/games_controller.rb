@@ -39,6 +39,7 @@ class GamesController < ApplicationController
 
     if current_user.id == current_player_id && @game.try_move(move)
       if @game.checkmate
+        puts "checkmate"
         @pgn = @game.make_pgn
         w = @game.white_player
         b = @game.black_player
@@ -49,11 +50,17 @@ class GamesController < ApplicationController
 
         game = @game
         @game.delete
+        puts game.inspect
         # Pusher: update and delete for detail view
-        @pgn.save!
-        Pusher.trigger("game_#{game.id}_channel", "delete_game", @pgn.to_json)
-        Pusher.trigger("game_#{game.id}_channel", "render_pgn", {pgn: @pgn, game:game})
-        render nothing: true
+        puts @pgn.inspect
+        if @pgn.save!
+          puts "triggering"
+          Pusher.trigger("game_#{game.id}_channel", "delete_game", @pgn.to_json)
+          Pusher.trigger("game_#{game.id}_channel", "render_pgn", {pgn: @pgn, game: game})
+          render nothing: true
+        else
+          render json: @pgn.errors, status: 422
+        end
       else
         Pusher.trigger("game_#{@game.id}_channel", "update_game", @game.to_json)
         render nothing: true
