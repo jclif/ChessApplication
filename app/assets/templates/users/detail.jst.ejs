@@ -3,7 +3,7 @@
     <li class="user-search-bar clearfix">
       <label for="user_email"></label>
       <div class="ui-widget">
-        <input placeholder="Search by email" name="user[email]" id="user_email"><i class="fa fa-search user-search-button"></i><br>
+        <input type="text" placeholder="Search by email" name="user[email]" id="user_email"><i class="fa fa-search user-search-button"></i><br>
         <input name="user[id]" id="user_id" type="hidden">
       </div>
     </li>
@@ -69,7 +69,7 @@
       source: "/users.json",
       minLength: 2,
       select: function(event, ui) {
-        console.log(ui.item.label);
+        console.log(ui.item);
         $("#user_email").val(ui.item.label);
         $("#user_id").val(ui.item.value);
       },
