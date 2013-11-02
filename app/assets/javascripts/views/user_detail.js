@@ -28,6 +28,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
   },
 
   events: {
+    "click .user-search-button": "showSearchedUser"
   },
 
   render: function() {
@@ -37,16 +38,24 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
       user: that.model,
       userId: that.userId
     }));
+
     _.defer(function() {
       if (that.userId !== that.model.attributes.id) {
         if (that.model.isFriendsWith(that.userId)) {
-          $('.profile-container .unfriend-button').css( "display", "block");
+          $('.unfriend-button').show();
         } else {
-          $('.profile-container .friend-button').show();
+          $('.friend-button').show();
         }
       }
     });
 
     return that.$el;
+  },
+
+  showSearchedUser: function() {
+    var email = $('.profile-nav #user_email')[0].value;
+
+    console.log(email);
   }
+
 });
