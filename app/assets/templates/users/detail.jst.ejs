@@ -50,18 +50,3 @@
     <% }); %>
   <% } %>
 </div>
-
-<% $(document).ready(function() { %>
-<% console.log($('.profile-container')); %>
-<% $('.profile-container').css("background", "blue"); %>
-  <% if (userId !== user.attributes.id) { %>
-  <% console.log("isn't the same user"); %>
-    <% if (user.isFriendsWith(userId)) { %>
-    <% console.log("show friend") %>
-      <% $('.profile-container .friend-button').css( "display", "block"); %>
-    <% } else { %>
-    <% console.log("show unfriend"); %>
-      <% $('.profile-container .unfriend-button').show(); %>
-    <% } %>
-  <% } %>
-<% }); %>

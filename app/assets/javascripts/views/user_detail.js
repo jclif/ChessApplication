@@ -37,6 +37,15 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
       user: that.model,
       userId: that.userId
     }));
+    _.defer(function() {
+      if (that.userId !== that.model.attributes.id) {
+        if (that.model.isFriendsWith(that.userId)) {
+          $('.profile-container .unfriend-button').css( "display", "block");
+        } else {
+          $('.profile-container .friend-button').show();
+        }
+      }
+    });
 
     return that.$el;
   }
