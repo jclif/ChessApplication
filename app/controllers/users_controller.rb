@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def index
     @users = User.find(:all, conditions: ['email LIKE ?', "%#{params[:term]}%"])
     @users_array = @users.map do |user|
-      {value: user.id, label: user.email}
+      {value: user.email, label: user.id}
     end
     puts @users_array
     render json: @users_array

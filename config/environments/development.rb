@@ -35,6 +35,10 @@ ChessApplication::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  #devise
+  # devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # caching
+  config.assets.cache_store = :null_store
+  config.action_controller.cache_store = :null_store
 end

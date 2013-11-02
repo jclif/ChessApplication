@@ -64,14 +64,12 @@
 </div>
 
 <script>
-  $(function() {
+  $(document).ready(function() {
     $( "#user_email" ).autocomplete({
       source: "/users.json",
       minLength: 2,
       select: function(event, ui) {
-        console.log(ui.item);
-        $("#user_email").val(ui.item.label);
-        $("#user_id").val(ui.item.value);
+        $('#user_id').val(ui.label);
       },
     });
   });
