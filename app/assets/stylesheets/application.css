@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require fancybox
  *= require_tree .
  */
 
@@ -467,10 +468,6 @@ a:link, a:visited, a:hover, a:active {
   font-size: 100%;
 }
 
-.profile-container #profile-tabs li:last-child {
-  float:right;
-}
-
 .profile-container .panel {
   font-size: 100%;
   overflow: auto;
@@ -490,6 +487,10 @@ a:link, a:visited, a:hover, a:active {
   box-shadow: 0 0 10px #888;
   -moz-box-shadow: 0 0 10px #888888;
   -webkit-box-shadow: 0 0 10px #888;
+}
+
+#profile-tabs .messages {
+  float: right;
 }
 
 .profile-nav {

@@ -48,7 +48,11 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
           $('.friend-button').show();
         }
       } else {
-        $('#profile-tabs ul').append('<li><a href="#messages"><i class="fa fa-envelope"></i> Messages</a></li>');
+        $('#profile-tabs ul').append('<li class="messages"><a href="#messages"><i class="fa fa-envelope"></i> Messages</a></li>');
+
+        $messages = $('<div></div>').attr("id", "messages").attr("class", "panel");
+        $messages.html('<p>Messages coming soon!');
+        $('#profile-tabs').append($messages);
       }
 
 

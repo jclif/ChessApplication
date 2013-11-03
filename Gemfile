@@ -30,6 +30,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'fancybox2-rails'
 
 # authentication/authorization
 gem 'bcrypt-ruby', :require => 'bcrypt'

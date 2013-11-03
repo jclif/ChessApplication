@@ -64,7 +64,7 @@ test_open_games = OpenGame.create([
 
 test_friendships = Friendship.create([
   {from_user_id: test_users[0].id, to_user_id: test_users[1].id},
-  {from_user_id: test_users[1].id, to_user_id: test_users[2].id},
+  {from_user_id: test_users[0].id, to_user_id: test_users[2].id},
   {from_user_id: test_users[2].id, to_user_id: test_users[0].id},
 ])
 

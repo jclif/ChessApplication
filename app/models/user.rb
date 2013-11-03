@@ -69,6 +69,23 @@ class User < ActiveRecord::Base
     Friendship.where(["to_user_id = ? AND pending = ?", self.id, true])
   end
 
+  def pending_friends_sent
+    User.find_by_sql([<<-SQL, true, self.id])
+      SELECT DISTINCT
+        users.*
+      FROM
+        users
+      JOIN
+        friendships as f
+      ON
+        users.id = f.to_user_id
+      WHERE
+        f.pending = ?
+      AND
+        f.from_user_id = ?
+    SQL
+  end
+
   def denied_friend_requests_recieved
     Friendship.where(["to_user_id = ? AND accepted = ?", self.id, false])
   end
@@ -101,7 +118,7 @@ class User < ActiveRecord::Base
   end
 
   def accepted_games
-    User.find_by_sql([<<-SQL, true, self.id, self.id])
+    Game.find_by_sql([<<-SQL, true, self.id, self.id])
       SELECT
         games.*
       FROM

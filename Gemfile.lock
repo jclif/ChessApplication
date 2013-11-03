@@ -70,6 +70,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    fancybox2-rails (0.2.5)
+      railties (>= 3.1.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     figaro (0.7.0)
@@ -183,6 +185,7 @@ DEPENDENCIES
   debugger
   devise
   ejs
+  fancybox2-rails
   figaro
   jquery-rails
   launchy
