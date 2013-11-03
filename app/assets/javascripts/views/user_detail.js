@@ -47,7 +47,10 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
         } else {
           $('.friend-button').show();
         }
+      } else {
+        $('#profile-tabs ul').append('<li><a href="#messages"><i class="fa fa-envelope"></i> Messages</a></li>');
       }
+
 
       $( "#user_email" ).autocomplete({
         source: "/users.json",

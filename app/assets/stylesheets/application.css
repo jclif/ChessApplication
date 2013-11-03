@@ -438,12 +438,21 @@ a:link, a:visited, a:hover, a:active {
   position: relative;
 }
 
+.profile-container a {
+  color: white;
+}
+
 .profile-container .friend-button {
   cursor: pointer;
   float:right;
 }
 
 .profile-container .unfriend-button {
+  cursor: pointer;
+  float: right;
+}
+
+.profile-container .pending-button {
   cursor: pointer;
   float: right;
 }
@@ -458,10 +467,29 @@ a:link, a:visited, a:hover, a:active {
   font-size: 100%;
 }
 
+.profile-container #profile-tabs li:last-child {
+  float:right;
+}
+
 .profile-container .panel {
   font-size: 100%;
   overflow: auto;
   height: 300px;
+}
+
+.profile-container .profile-info-container {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.profile-container .profile-pic {
+  float: left;
+  border: white 2px solid;
+  margin-right:10px;
+  box-shadow: 0 0 10px #888;
+  -moz-box-shadow: 0 0 10px #888888;
+  -webkit-box-shadow: 0 0 10px #888;
 }
 
 .profile-nav {
