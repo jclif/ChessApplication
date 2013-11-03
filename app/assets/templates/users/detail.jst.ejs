@@ -73,22 +73,6 @@
             <a href="/#/users/<%= friend.id %>">User<%= friend.id %> (<%= friend.email %>)</a><br>
           <% }); %>
         <% } %>
-        <hr>
-        Pending Friends:
-        <br>
-        <% if(user.attributes.pending_friend_requests_received) { %>
-          <% user.attributes.pending_friend_requests_received.forEach(function(friend) { %>
-            <a href="/#/users/<%= friend.id %>">User<%= friend.id %>< <%= friend.email %> ></a><br>
-          <% }); %>
-        <% } %>
-        <hr>
-        Denied Friends:
-        <br>
-        <% if(user.attributes.denied_friend_requests_received) { %>
-          <% user.attributes.denied_friend_requests_received.forEach(function(friend) { %>
-            <a href="/#/users/<%= friend.id %>">User<%= friend.id %>< <%= friend.email %> ></a><br>
-          <% }); %>
-        <% } %>
       </div>
       <div id="graphs" class="panel">
         <p> Graphs coming soon!</p>

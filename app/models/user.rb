@@ -65,8 +65,21 @@ class User < ActiveRecord::Base
 
   include Authentication::ActiveRecordHelpers
 
-  def pending_friend_requests_recieved
-    Friendship.where(["to_user_id = ? AND pending = ?", self.id, true])
+  def pending_friends_recieved
+    User.find_by_sql([<<-SQL, true, self.id])
+      SELECT DISTINCT
+        users.*
+      FROM
+        users
+      JOIN
+        friendships as f
+      ON
+        users.id = f.from_user_id
+      WHERE
+        f.pending = ?
+      AND
+        f.to_user_id = ?
+    SQL
   end
 
   def pending_friends_sent

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: @user.as_json(methods: [:past_games, :friends, :pending_friend_requests_sent, :pending_friend_requests_recieved, :denied_friend_requests_recieved, :accepted_friends])
+    render json: @user.as_json(methods: [:past_games, :pending_friends_sent, :pending_friends_received, :accepted_friends])
   end
 
   def index
