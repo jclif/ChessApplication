@@ -17,8 +17,6 @@ test_users = User.create([
   {email: "test1@gmail.com", password: "password"},
   {email: "test2@gmail.com", password: "password"},
   {email: "test3@gmail.com", password: "password"},
-  {email: "test3@gmail.com", password: "password"},
-  {email: "guest@example.com", password: "guestpassword"},
 ])
 
 test_games = Game.create([
@@ -64,8 +62,6 @@ test_open_games = OpenGame.create([
 
 test_friendships = Friendship.create([
   {from_user_id: test_users[0].id, to_user_id: test_users[1].id},
-  {from_user_id: test_users[0].id, to_user_id: test_users[2].id},
-  {from_user_id: test_users[2].id, to_user_id: test_users[0].id},
 ])
 
 f = test_friendships[0]
@@ -74,11 +70,3 @@ f.pending = false
 f.save!
 
 # For guest account
-
-guest_user = User.create(email: "guest@example.com", password: "guestpassword")
-
-guest_games = nil
-
-guest_friendships = nil
-
-guest_open_games = nil

@@ -5,11 +5,14 @@ ChessApplication.Models.User= Backbone.Model.extend({
   isFriendsWith: function(OtherUserId) {
     var that = this;
     var found = false;
-    that.attributes.accepted_friends.forEach(function(friend) {
+    console.log(OtherUserId);
+    that.attributes.accepted_friend_ids.forEach(function(friend) {
+      console.log(friend.id);
       if (friend.id === OtherUserId) {
         found = true;
       }
     });
+    console.log(found);
     return found;
   },
 

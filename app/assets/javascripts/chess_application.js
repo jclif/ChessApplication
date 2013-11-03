@@ -3,12 +3,13 @@ window.ChessApplication = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function($rootEl, CurrUserGamesData, OpenGamesData, friendshipsData, userId) {
+  initialize: function($rootEl, CurrUserData, CurrUserGamesData, OpenGamesData) {
     var that = this;
 
+    var current_user = new ChessApplication.Models.User(CurrUserData);
     var current_users_games = new ChessApplication.Collections.Games(CurrUserGamesData);
     var open_games = new ChessApplication.Collections.Games(OpenGamesData);
-    var friendships = new ChessApplication.Collections.Friendships(friendshipsData);
+    // var friendships = new ChessApplication.Collections.Friendships(friendshipsData);
 
     var pusher = new Pusher('bfb361cbdaac1e51c621');
     // Add Game Subscription
@@ -40,7 +41,7 @@ window.ChessApplication = {
       });
     });
 
-    new ChessApplication.Routers.GamesRouter($rootEl, current_users_games, open_games, friendships, userId, pusher);
+    new ChessApplication.Routers.GamesRouter($rootEl, current_user, current_users_games, open_games, pusher);
     Backbone.history.start();
   }
 };

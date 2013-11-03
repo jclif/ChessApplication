@@ -15,14 +15,15 @@ module Authentication
 end
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid
+
+  include Authentication::ActiveRecordHelpers
+
+  has_many :friendships_created, class_name: "Friendship", foreign_key: :from_user_id, primary_key: :id
+  has_many :friendships_proposed_to, class_name: "Friendship", foreign_key: :to_user_id, primary_key: :id
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -63,7 +64,32 @@ class User < ActiveRecord::Base
     end
   end
 
-  include Authentication::ActiveRecordHelpers
+  # Used
+
+  def accepted_friend_ids
+    User.find_by_sql([<<-SQL, true, true, self.id, self.id, self.id, self.id, self.id])
+      SELECT
+        users.id
+      FROM
+        users
+      LEFT OUTER JOIN
+        friendships as ff
+      ON
+        users.id = ff.from_user_id
+      LEFT OUTER JOIN
+        friendships as ft
+      ON
+        users.id = ft.to_user_id
+      WHERE
+        (ff.accepted = ? OR ft.accepted = ?)
+      AND
+        (ff.from_user_id = ? OR ff.to_user_id = ? OR ft.from_user_id = ? OR ft.to_user_id = ?)
+      AND
+        users.id != ?
+    SQL
+  end
+
+  # Unused
 
   def pending_friends_recieved
     User.find_by_sql([<<-SQL, true, self.id])
@@ -101,29 +127,6 @@ class User < ActiveRecord::Base
 
   def denied_friend_requests_recieved
     Friendship.where(["to_user_id = ? AND accepted = ?", self.id, false])
-  end
-
-  def accepted_friends
-    User.find_by_sql([<<-SQL, true, true, self.id, self.id, self.id, self.id, self.id])
-      SELECT DISTINCT
-        users.*
-      FROM
-        users
-      JOIN
-        friendships as ff
-      ON
-        users.id = ff.from_user_id
-      JOIN
-        friendships as ft
-      ON
-        users.id = ft.to_user_id
-      WHERE
-        (ff.accepted = ? OR ft.accepted = ?)
-      AND
-        (ff.from_user_id = ? OR ff.to_user_id = ? OR ft.from_user_id = ? OR ft.to_user_id = ?)
-      AND
-        users.id != ?
-    SQL
   end
 
   def pending_game_requests_recieved

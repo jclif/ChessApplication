@@ -20,12 +20,8 @@
   <%= current_user.accepted_games.to_json.html_safe %>
 </script>
 
-<script type="application/json" id="bootstrapped_current_user_id_json">
-  <%= current_user.id.to_json.html_safe %>
-</script>
-
-<script type="application/json" id="bootstrapped_friendships_json">
-  <%= current_user.accepted_friends.to_json.html_safe %>
+<script type="application/json" id="bootstrapped_current_user_json">
+  <%= @user.to_json.html_safe %>
 </script>
 
 <script type="application/json" id="bootstrapped_open_games_json">
@@ -34,11 +30,10 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
+    var CurrUser = JSON.parse($("#bootstrapped_current_user_json").html());
     var CurrUserGamesData = JSON.parse($("#bootstrapped_current_users_games_json").html());
     var OpenGamesData = JSON.parse($("#bootstrapped_open_games_json").html());
-    var friendshipsData = JSON.parse($("#bootstrapped_friendships_json").html());
-    var userId = JSON.parse($("#bootstrapped_current_user_id_json").html());
-    ChessApplication.initialize($('.content'), CurrUserGamesData, OpenGamesData, friendshipsData, userId);
+    ChessApplication.initialize($('.content'), CurrUser, CurrUserGamesData, OpenGamesData);
   });
 </script>
 
