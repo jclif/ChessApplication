@@ -35,6 +35,19 @@ test_games = Game.create([
   {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
   {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
   {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
+  {white_user_id: test_users[0].id, black_user_id: test_users[1].id, accepted: true, pending: false},
 ])
 
 test_games.each do |game|
@@ -69,4 +82,3 @@ guest_games = nil
 guest_friendships = nil
 
 guest_open_games = nil
-

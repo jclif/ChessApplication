@@ -54,6 +54,8 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
         minLength: 2
       });
 
+      $("#profile-tabs").tabs();
+
     });
 
     return that.$el;

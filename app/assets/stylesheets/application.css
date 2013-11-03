@@ -116,6 +116,10 @@ a:link, a:visited, a:hover, a:active {
   margin-top: 20px;
 }
 
+.login-container .btn-auth {
+  margin-top: 5px;
+}
+
 .login-smaller {
   margin-top:5px;
   font-size: 60%;
@@ -176,8 +180,14 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-.nav-top a:hover {
-  color: #5D98D7;
+.nav-icon {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-size: 150%;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-icon:hover {
+  color: #5D87B9;
 }
 
 .nav-right {
@@ -209,15 +219,15 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
 
-.nav-bot a:hover {
-  color: #5D98D7;
-}
-
 .content {
-  width: 600px;
+  width: 700px;
   margin: auto;
   margin-top: 50px;
-  background: white;
+}
+
+.chessboard {
+  width: 600px;
+  margin: auto;
   /* Shadow */
   -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
   -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
@@ -361,9 +371,6 @@ a:link, a:visited, a:hover, a:active {
   position:relative;
 }
 
-.chessboard {
-}
-
 .new-game {
   float:left;
   margin: 20px;
@@ -371,6 +378,7 @@ a:link, a:visited, a:hover, a:active {
   width: 96px;
   font-size: 96px;
   text-align: center;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
 .new-game img {
@@ -380,8 +388,16 @@ a:link, a:visited, a:hover, a:active {
 
 .new-game-container {
   width: 100%;
-  margin: 50px auto 0 auto;
   padding: 20px;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
 }
 
 .new-game-container nav {
@@ -403,8 +419,22 @@ a:link, a:visited, a:hover, a:active {
   border-bottom: 2px dotted #5D87B9;
 }
 
-.profile-container {
+.social-container {
+  width: 100%;
   padding: 20px;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.profile-container {
+  margin-top: 20px;
   position: relative;
 }
 
@@ -416,6 +446,22 @@ a:link, a:visited, a:hover, a:active {
 .profile-container .unfriend-button {
   cursor: pointer;
   float: right;
+}
+
+.profile-container .past-games li {
+  padding: 5px 0;
+  list-style-type: none;
+  border-top: 1px solid black
+}
+
+.profile-container #profile-tabs {
+  font-size: 100%;
+}
+
+.profile-container .panel {
+  font-size: 100%;
+  overflow: auto;
+  height: 300px;
 }
 
 .profile-nav {

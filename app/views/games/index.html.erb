@@ -1,10 +1,18 @@
 <nav class="nav-top clearfix">
   <ul class="nav-left clearfix">
-    <li><a href="#/"><i class="fa fa-home fa-2x"></i></a></li>
-    <li><a href="#/users/<%= current_user.id %>"><i class="fa fa-user fa-2x"></i></a></li>
+    <li><a href="#/"><i class="nav-icon fa fa-home"></i></a></li>
+    <li><a href="#/users/<%= current_user.id %>"><i class="nav-icon fa fa-user"></i></a></li>
   </ul>
   <ul class="nav-right clearfix">
-    <li><a href="<%= destroy_user_session_url %>" data-method="delete" rel="nofollow" ><i class='fa fa-sign-out fa-2x'></i></a></li>
+    <li><a href="<%= destroy_user_session_url %>" data-method="delete" rel="nofollow" ><i class='nav-icon fa fa-sign-out'></i></a></li>
+  </ul>
+</nav>
+
+<div class="content clearfix"></div>
+
+<nav class="nav-bot clearfix">
+  <ul class="nav-right">
+    <li><a href="#/" class="chat-icon"><i class="nav-icon fa fa-comments"></i></a></li>
   </ul>
 </nav>
 
@@ -23,14 +31,6 @@
 <script type="application/json" id="bootstrapped_open_games_json">
   <%= @open_games.to_json.html_safe %>
 </script>
-
-<div class="content"></div>
-
-<nav class="nav-bot clearfix">
-  <ul class="nav-right">
-    <li><a href="#/" class="chat-icon"><i class="fa fa-comments fa-2x"></i></a></li>
-  </ul>
-</nav>
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -68,5 +68,6 @@
       right: 0,
       opacity: 1
     }, 1000, 'easeOutBounce');
+
   });
 </script>

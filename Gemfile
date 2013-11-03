@@ -18,6 +18,7 @@ group :development do
   gem 'launchy'
   gem 'letter_opener'
   gem 'debugger'
+  gem 'thin'
 end
 
 group :production do

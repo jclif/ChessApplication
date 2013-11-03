@@ -40,8 +40,6 @@ Back End
 * x add omniauth support for gihutb
 * x add omniauth support for facebook
 * x add omniauth support for google
-* _ add omniauth support for twitter (effing a...twitter doesnt give email, so you cant validate to make sure user doesn't already exist. signing in with twitter will have to redirect to a form view that autopopulates fields returned by twitter, with email to be entered)
-* _ add omniauth support for soundcloud! (http://developers.soundcloud.com/docs#authentication)
 * _ profile images with paperclip
 
 ###Games
@@ -58,7 +56,6 @@ Back End
 
 ###PGN (ie, past game stats)
 * x implement them!!!
-* _ allow user to iterate through past game moves
 
 ###Friendships
 * [x] implement them!!!
@@ -80,6 +77,7 @@ Front End
 * x display basic stats (elo, id, etc)
 * [x] display associated info: ie, pgns (past games), friends, etfc
 * _ search feature for past games
+* _ allow user to iterate through past game moves
 * _ GrApHsSsSsS &$#&YI$(#&%(#$&!!!!!
 * _ if you click on the messages tab, the chat minimizes
 
@@ -93,6 +91,7 @@ Front End
 * x button for github omniauth
 * x button for facebook omniauth
 * x button for google omniauth
+* _ check valid login and jquery shake login-container if invalid
 * [x] button for guest sign in
 * [x] less ugly plz
 
@@ -107,7 +106,7 @@ Front End
 * x indicate when in checkmate
 * _ indication when the move is being validated
 * _ indicate when the move is invalid
-* _ redirect to results page when game is over
+* x results overlay when game is over
 * _ invert board for black
 * _ weird pusher error when channel not properly established (Pusher::HTTPError - end of file reached)
 
@@ -119,14 +118,12 @@ Front End
 ###GameCreateView
 * x add that sh%t
 * x !!! fix redirect error
-* _ autocomplete for opponent email
 * _ radio buttons for color desired, or random
 * _ create menus for different types of games, p vs p vs p vs ai, and match with random online user vs match with friend
 
 ###Navigation
-* _ four nav menus, starting from top-left, clockwise: chess, settings, chat, social
+* _ three nav menus, starting from top-left, clockwise: chess/social, notifications/settings/logout, chat
 * _ create box from each point of board to corner of screen, and pull menu icon toward center of board as cursor nears the point.
-* _ on mouseover of menu icon, display submenu
 
 InTeReStInG/cRaZy IdEaS
 -----------------------

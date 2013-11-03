@@ -38,8 +38,7 @@ ChessApplication::Application.configure do
   # devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  # caching
   config.assets.cache_store = :null_store
-  config.action_controller.cache_store = :null_store
   config.serve_static_assets = false
+  config.reload_classes_only_on_change = false
 end

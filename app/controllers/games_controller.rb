@@ -23,11 +23,9 @@ class GamesController < ApplicationController
     other_player_id = current_user.id == @game.white_user_id ? @game.black_user_id : @game.white_user_id
 
     if @game.save!
-      puts "create success!"
       Pusher.trigger("user_#{other_player_id}_channel", "add_game", @game.to_json)
       render json: @game, status: 200
     else
-      puts "create fail!"
       render json: @game.errors, status: 422
     end
   end
@@ -39,7 +37,6 @@ class GamesController < ApplicationController
 
     if current_user.id == current_player_id && @game.try_move(move)
       if @game.checkmate
-        puts "checkmate"
         @pgn = @game.make_pgn
         w = @game.white_player
         b = @game.black_player
@@ -50,11 +47,8 @@ class GamesController < ApplicationController
 
         game = @game
         @game.delete
-        puts game.inspect
         # Pusher: update and delete for detail view
-        puts @pgn.inspect
         if @pgn.save!
-          puts "triggering"
           Pusher.trigger("game_#{game.id}_channel", "delete_game", @pgn.to_json)
           Pusher.trigger("game_#{game.id}_channel", "render_pgn", {pgn: @pgn, game: game})
           render nothing: true
