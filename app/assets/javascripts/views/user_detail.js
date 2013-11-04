@@ -10,11 +10,14 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     that.userId = that.options.userId;
     that.friendships = that.options.friendships;
     that.channel = that.pusher.subscribe("user_" + that.model.id + "_channel");
-    that.channel.bind("update_profile", function(data){
-      console.log("update_profile");
-      console.log(data);
-      that.model.set(data);
-    });
+
+    if (that.model.id !== that.userId) {
+      that.channel.bind("update_profile", function(data){
+        console.log("update_profile");
+        console.log(data);
+        that.model.set(data);
+      });
+    }
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.model, "change", renderCallback);
@@ -33,7 +36,8 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     "keypress #user_email": "filterEnter",
     "click .friend-button": "addFriendship",
     "click .unfriend-button": "deleteFriendship",
-    "click .pending-button": "updateFriendship"
+    "click .accept-friendship": "acceptFriendship",
+    "click .deny-friendship": "denyFriendship"
   },
 
   render: function() {
@@ -96,15 +100,33 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
   },
 
   addFriendship: function() {
-    console.log("add friend!");
+    var that = this;
+
+    var ajaxOptions = {
+      url: '/friendships',
+      type: 'POST',
+      data: {"to_user_id": that.model.id},
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
   },
 
   deleteFriendship: function() {
-    console.log("delete friend!");
+    console.log("Delete friend!");
   },
 
-  updateFriendship: function() {
-    console.log("update friend!");
+  acceptFriendship: function() {
+    console.log("New friends!");
+  },
+
+  denyFriendship: function() {
+    console.log("Denied son!");
   }
 
 });

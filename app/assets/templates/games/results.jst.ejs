@@ -1,11 +1,11 @@
 <h2>Results:</h2>
 <div>
   <% if (pgn.results === 1) { %>
-    <p>White Won.</p>
+    <p>White Won!</p>
   <% } else { %>
-    <p>Black Won.</p>
+    <p>Black Won!</p>
   <% } %>
-  White's elo changed by <%= pgn.white_elo_diff %>.
+  White's elo changed by <%= pgn.white_elo_diff %>.<br>
   Black's elo changed by <%= pgn.black_elo_diff %>.
 </div>
 <div class="overlay-close clearfix">

@@ -20,8 +20,8 @@
       <span class="pending-button button-dropdown" style="display: none;" data-buttons="dropdown">
         <div class="button button-rounded button-royal">Pending Friend Request <i class="fa fa-caret-down"></i></div>
         <ul>
-          <li><a href="#accept">Accept</a></li>
-          <li><a href="#decline">Decline</a></li>
+          <li><a class="accept-friendship">Accept</a></li>
+          <li><a class="deny-friendship">Decline</a></li>
         </ul>
       </span>
       <div class="unfriend-button button button-rounded button-caution" style="display: none;">Unfriend</div>
@@ -68,12 +68,6 @@
       </div>
       <div id="friends" class="panel">
         Friends:
-        <br>
-        <% if(user.attributes.accepted_friends) { %>
-          <% user.attributes.accepted_friends.forEach(function(friend) { %>
-            <a href="/#/users/<%= friend.id %>">User<%= friend.id %> (<%= friend.email %>)</a><br>
-          <% }); %>
-        <% } %>
       </div>
       <div id="graphs" class="panel">
         <p> Graphs coming soon!</p>

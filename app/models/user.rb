@@ -71,30 +71,11 @@ class User < ActiveRecord::Base
   # Used
 
   def accepted_friend_ids
-    users = User.find_by_sql([<<-SQL, true, true, self.id, self.id, self.id, self.id, self.id])
-      SELECT
-        users.id
-      FROM
-        users
-      LEFT OUTER JOIN
-        friendships as ff
-      ON
-        users.id = ff.from_user_id
-      LEFT OUTER JOIN
-        friendships as ft
-      ON
-        users.id = ft.to_user_id
-      WHERE
-        (ff.accepted = ? OR ft.accepted = ?)
-      AND
-        (ff.from_user_id = ? OR ff.to_user_id = ? OR ft.from_user_id = ? OR ft.to_user_id = ?)
-      AND
-        users.id != ?
-    SQL
+    potential_friendships = self.friendships_created + self.friendships_proposed_to
 
-    users.map do |user|
-      user.id
-    end
+    potential_friendships.keep_if { |friendship| friendship.accepted == true }
+
+    potential_friendships.map { |friendship| friendship.from_user_id == self.id ? friendship.to_user_id : friendship.from_user_id }
   end
 
   def pending_friends_received_ids

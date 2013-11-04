@@ -12,20 +12,22 @@ window.ChessApplication = {
     var openGames = new ChessApplication.Collections.Games(OpenGamesData);
     var pusher = new Pusher('bfb361cbdaac1e51c621');
 
-    that.pusherInit(pusher, currUserId, currUserGames, openGames);
-
     currUser.fetch({
       success:function() {
+        that.pusherInit(pusher, currUser, currUserGames, openGames);
         new ChessApplication.Routers.GamesRouter($rootEl, currUser, currUserGames, openGames, pusher);
         Backbone.history.start();
       }
     });
   },
 
-  pusherInit: function(pusher, currUserId, currUserGames, openGames) {
+  pusherInit: function(pusher, currUser, currUserGames, openGames) {
     // Add Game Subscription
-    var channel = pusher.subscribe('user_' + currUserId + '_channel');
-    channel.bind("add_game", function(data){
+    var channel = pusher.subscribe('user_' + currUser.id + '_channel');
+    channel.bind("update_profile", function(data) {
+      currUser.set(data);
+    });
+    channel.bind("add_game", function(data) {
       var game = new ChessApplication.Models.Game(data);
       currUserGames.add(game);
       var channel = pusher.subscribe('game_' + game.id + '_channel');

@@ -18,6 +18,7 @@ Efficiency
 * x rip out long polling solution, and integrate pusher for move updates
 * _ integrate pusher with chat functionality
 * _ pass back list of legal moves to backbone so that the ui can validate without hitting server
+* _ find accepted friends by sql
 
 Security
 --------
