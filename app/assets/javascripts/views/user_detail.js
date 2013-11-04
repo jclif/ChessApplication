@@ -105,9 +105,9 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var that = this;
 
     var ajaxOptions = {
-      url: '/friendships/respond',
+      url: '/friendships',
       type: 'POST',
-      data: {"user_id": that.model.id},
+      data: {"to_user_id": that.model.id},
       success: function(data) {
         console.log(data);
       },
@@ -125,7 +125,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var ajaxOptions = {
       url: '/friendships/respond',
       type: 'POST',
-      data: {"user_id": that.model.id, "response": "delete"},
+      data: {"user_id": that.model.id, "response": "destroy"},
       success: function(data) {
         console.log(data);
       },

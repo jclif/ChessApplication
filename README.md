@@ -11,6 +11,7 @@ Technologies Utilized
 * JavaScript
 * Backbone
 * JQuery
+* Pusher API
 * HTML/CSS
 
 Gems
