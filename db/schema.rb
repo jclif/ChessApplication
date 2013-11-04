@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(:version => 20131101002845) do
   add_index "friendships", ["to_user_id"], :name => "index_friendships_on_to_user_id"
 
   create_table "games", :force => true do |t|
-    t.string   "moves",          :default => ""
+    t.text     "moves",          :default => ""
     t.integer  "white_user_id",                       :null => false
     t.integer  "black_user_id",                       :null => false
     t.string   "current_player", :default => "white"
-    t.string   "current_board"
+    t.text     "current_board"
     t.boolean  "check",          :default => false,   :null => false
     t.boolean  "checkmate",      :default => false,   :null => false
     t.boolean  "draw",           :default => false,   :null => false
