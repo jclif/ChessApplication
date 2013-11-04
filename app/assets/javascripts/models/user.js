@@ -16,8 +16,8 @@ ChessApplication.Models.User= Backbone.Model.extend({
   receivedRequestFrom: function(otherUserId) {
     var that = this;
     var found = false;
-    that.attributes.pending_friends_received_ids.forEach(function(id) {
-      if (id === otherUserId) {
+    that.attributes.pending_friends_received.forEach(function(friend) {
+      if (friend.id === otherUserId) {
         found = true;
       }
     });

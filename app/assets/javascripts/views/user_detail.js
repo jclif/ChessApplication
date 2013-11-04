@@ -72,7 +72,6 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
       $('#profile-tabs').tabs();
 
       $('.fancybox').fancybox();
-
     });
 
     return that.$el;

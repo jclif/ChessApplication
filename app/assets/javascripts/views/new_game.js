@@ -1,5 +1,13 @@
 ChessApplication.Views.NewGameView = Backbone.View.extend({
 
+  initialize: function() {
+    var that = this;
+
+    that.currUserGames = that.options.currUserGames;
+    that.openGames = that.options.openGames;
+    that.currUser = that.options.currUser;
+  },
+
   template: JST["games/new"],
 
   events: {
@@ -14,9 +22,15 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
     var that = this;
 
     that.$el.html(that.template({
-      open_games: that.options.open_games,
-      friendships: that.options.friendships
+      open_games: that.open_games,
+      currUser: that.currUser
     }));
+
+    _.defer(function() {
+
+      $('#new-game-tabs').tabs();
+
+    });
 
     return that.$el;
   },
@@ -32,7 +46,7 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
       success: function(model, response, options) {
         console.log('success');
         // that.collection.create(response);
-        that.collection.add(game);
+        that.currUserGames.add(game);
         Backbone.history.navigate("/", true);
       },
       error: function(model, response, options) {

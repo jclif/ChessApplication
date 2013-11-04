@@ -12,11 +12,12 @@ class GamesController < ApplicationController
   end
 
   def create
+    p params
     if params[:current_user_color_choice].downcase == "white"
       white_user_id = current_user.id
-      black_user_id = User.find_by_email(params[:opponent_email]).id
+      black_user_id = params[:opponent_id]
     elsif params[:current_user_color_choice].downcase == "black"
-      white_user_id = User.find_by_email(params[:opponent_email]).id
+      white_user_id = params[:opponent_id]
       black_user_id = current_user.id
     end
     @game = Game.new(white_user_id: white_user_id, black_user_id: black_user_id)

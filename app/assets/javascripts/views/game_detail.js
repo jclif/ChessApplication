@@ -11,7 +11,7 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     that.channel = that.pusher.subscribe('game_' + that.model.id + '_channel');
 
     // Bind channel for ending the game
-    channel.bind("render_pgn", function(data){
+    that.channel.bind("render_pgn", function(data){
       // Disable listenTo stuff
       that.undelegateEvents();
       // Render last move

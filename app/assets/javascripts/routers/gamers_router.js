@@ -43,7 +43,8 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     that.closePreviousView();
 
     that.currentView = new ChessApplication.Views.NewGameView({
-      open_games: that.openGames,
+      currUserGames: that.currUserGames,
+      openGames: that.openGames,
       currUser: that.currUser
     });
 

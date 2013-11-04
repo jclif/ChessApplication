@@ -85,10 +85,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  def pending_friends_received_ids
+  def pending_friends_received
     users = User.find_by_sql([<<-SQL, true, self.id])
       SELECT DISTINCT
-        users.id
+        users.*
       FROM
         users
       JOIN
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
     SQL
 
     users.map do |user|
-      user.id
+      {email: user.email, id: user.id, email: user.email, last_sign_in_at: user.last_sign_in_at, elo: user.elo}
     end
   end
 
