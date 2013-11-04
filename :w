@@ -7,6 +7,8 @@ ChessApplication.Models.User= Backbone.Model.extend({
     var found = false;
     that.attributes.accepted_friends.forEach(function(friend) {
       if (friend.id === otherUserId) {
+        console.log(id);
+        console.log(otherUserId);
         found = true;
       }
     });

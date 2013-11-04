@@ -15,7 +15,7 @@
 
   <div class="profile-container clearfix">
     <div class="profile-info-container clearfix">
-      <a href="assets/default_pic.png" class="fancybox"><img class="profile-pic" src="assets/default_pic.png" height="100px"></a>
+      <a href="assets/default_pic.png" class="fancybox"><img class="profile-pic" src="assets/default_pic.png"></a>
       <div class="friend-button button button-rounded button-action" style="display: none;">Friend</div>
       <span class="pending-button button-dropdown" style="display: none;" data-buttons="dropdown">
         <div class="button button-rounded button-royal">Pending Friend Request <i class="fa fa-caret-down"></i></div>
@@ -67,7 +67,18 @@
         </ul>
       </div>
       <div id="friends" class="panel">
-        Friends:
+        <ul class="friend-list clearfix">
+          <% user.attributes.accepted_friends.forEach(function(friend) { %>
+          <a href="/#/users/<%= friend.id %>">
+            <li class="friend-item clearfix">
+              <img class="friend-thumbnail" src="assets/default_pic.png">
+              <%= friend.email %><br>
+              Elo: <%= friend.elo %><br>
+              ID: <%= friend.id %><br>
+            </li>
+          </a>
+          <% }); %>
+        </ul>
       </div>
       <div id="graphs" class="panel">
         <p> Graphs coming soon!</p>

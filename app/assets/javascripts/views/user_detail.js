@@ -64,12 +64,14 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
         $('.messages').show();
       }
 
-      $( "#user_email" ).autocomplete({
+      $('#user_email').autocomplete({
         source: "/users.json",
         minLength: 2
       });
 
-      $("#profile-tabs").tabs();
+      $('#profile-tabs').tabs();
+
+      $('.fancybox').fancybox();
 
     });
 
@@ -103,9 +105,9 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var that = this;
 
     var ajaxOptions = {
-      url: '/friendships',
+      url: '/friendships/respond',
       type: 'POST',
-      data: {"to_user_id": that.model.id},
+      data: {"user_id": that.model.id},
       success: function(data) {
         console.log(data);
       },
@@ -118,15 +120,57 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
   },
 
   deleteFriendship: function() {
-    console.log("Delete friend!");
+    var that = this;
+
+    var ajaxOptions = {
+      url: '/friendships/respond',
+      type: 'POST',
+      data: {"user_id": that.model.id, "response": "delete"},
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
   },
 
   acceptFriendship: function() {
-    console.log("New friends!");
+    var that = this;
+
+    var ajaxOptions = {
+      url: '/friendships/respond',
+      type: 'POST',
+      data: {"user_id": that.model.id, "response": "accept"},
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
   },
 
   denyFriendship: function() {
-    console.log("Denied son!");
+    var that = this;
+
+    var ajaxOptions = {
+      url: '/friendships/respond',
+      type: 'POST',
+      data: {"user_id": that.model.id, "response": "deny"},
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
   }
 
 });

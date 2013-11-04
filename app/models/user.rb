@@ -70,12 +70,19 @@ class User < ActiveRecord::Base
 
   # Used
 
-  def accepted_friend_ids
+  def accepted_friends
     potential_friendships = self.friendships_created + self.friendships_proposed_to
 
     potential_friendships.keep_if { |friendship| friendship.accepted == true }
 
-    potential_friendships.map { |friendship| friendship.from_user_id == self.id ? friendship.to_user_id : friendship.from_user_id }
+    potential_friendships.map do |friendship|
+      if friendship.from_user_id == self.id
+        user = User.find_by_id(friendship.to_user_id)
+      else
+        user = User.find_by_id(friendship.from_user_id)
+      end
+      {email: user.email, id: user.id, email: user.email, last_sign_in_at: user.last_sign_in_at, elo: user.elo}
+    end
   end
 
   def pending_friends_received_ids

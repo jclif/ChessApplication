@@ -485,6 +485,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .profile-container .profile-pic {
+  height: 110px;
   float: left;
   border: white 2px solid;
   margin-right:10px;
@@ -518,6 +519,26 @@ a:link, a:visited, a:hover, a:active {
 
 .profile-nav .user-search-button {
   cursor: pointer;
+}
+
+.social-container .friends-list {
+  list-style-type: none;
+}
+
+.social-container .friend-item {
+  font-size:80%;
+  float: left;
+  width: 300px;
+  height: 70px;
+  border: 1px solid black;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.social-container .friend-thumbnail {
+  height: 70px;
+  float: left;
+  margin-right: 10px;
 }
 
 .page-not-found-container {

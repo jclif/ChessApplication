@@ -6,5 +6,9 @@ ChessApplication::Application.routes.draw do
   resources :games, only: [:show, :index, :create, :update]
   resources :open_games, only: [:create, :update]
   resources :users, only: [:show, :index]
-  resources :friendships, only: [:create]
+  resources :friendships, only: [:create] do
+    collection do
+      post :respond
+    end
+  end
 end
