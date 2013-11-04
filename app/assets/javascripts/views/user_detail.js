@@ -4,6 +4,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
   initialize: function () {
     var that = this;
+    console.log(this);
 
     that.coords = [];
     that.pusher = that.options.pusher;
@@ -55,7 +56,6 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
         $messages.html('<p>Messages coming soon!');
         $('#profile-tabs').append($messages);
       }
-
 
       $( "#user_email" ).autocomplete({
         source: "/users.json",

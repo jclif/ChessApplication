@@ -1,10 +1,10 @@
 ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
-  initialize: function($rootEl, current_user, current_users_games, open_games, pusher) {
+  initialize: function($rootEl, currUser, currUserGames, openGames, pusher) {
     this.$rootEl = $rootEl;
-    this.current_user = current_user;
-    this.current_users_games = current_users_games;
-    this.open_games = open_games;
+    this.currUser = currUser;
+    this.currUserGames = currUserGames;
+    this.openGames = openGames;
     this.pusher = pusher;
     this.currentView = null;
   },
@@ -13,7 +13,9 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     "": "index",
     "games/new": "new_game",
     "games/:id": "show_game",
-    "users/:id" : "show_user"
+    "users/:id" : "show_user",
+
+    '*notFound': 'notFound'
   },
 
   closePreviousView: function() {
@@ -28,23 +30,8 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     that.closePreviousView();
 
     that.currentView = new ChessApplication.Views.GamesListView({
-      collection: that.current_users_games,
-      userId: that.current_user.id
-    });
-
-    that.$rootEl.html(that.currentView.render());
-  },
-
-  show_game: function(id) {
-    var that = this;
-
-    that.closePreviousView();
-
-    var game = that.current_users_games.get(id);
-    that.currentView = new ChessApplication.Views.GameDetailView({
-      model: game,
-      pusher: that.pusher,
-      userId: that.current_user.id
+      collection: that.currUserGames,
+      userId: that.currUser.id
     });
 
     that.$rootEl.html(that.currentView.render());
@@ -56,9 +43,23 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     that.closePreviousView();
 
     that.currentView = new ChessApplication.Views.NewGameView({
-      open_games: that.open_games,
-      friendships: that.friendships,
-      userId: that.current_user.id
+      open_games: that.openGames,
+      currUser: that.currUser
+    });
+
+    that.$rootEl.html(that.currentView.render());
+  },
+
+  show_game: function(id) {
+    var that = this;
+
+    that.closePreviousView();
+
+    var game = that.currUserGames.get(id);
+    that.currentView = new ChessApplication.Views.GameDetailView({
+      model: game,
+      pusher: that.pusher,
+      userId: that.currUser.id
     });
 
     that.$rootEl.html(that.currentView.render());
@@ -69,26 +70,38 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
     that.closePreviousView();
 
-    if (id === that.current_user.id) {
+    if (id === that.currUser.id) {
       that.currentView = new ChessApplication.Views.UserDetailView({
         pusher: that.pusher,
-        model: that.current_user,
-        userId: that.current_user.id
+        model: that.currUser,
+        userId: that.currUser.id
       });
       that.$rootEl.html(that.currentView.render());
     } else {
       var user = new ChessApplication.Models.User({id: parseInt(id, 10) });
       user.fetch({
-        success:function() {
+        success: function() {
           that.currentView = new ChessApplication.Views.UserDetailView({
             pusher: that.pusher,
             model: user,
-            userId: that.current_user.id
+            userId: that.currUser.id
           });
           that.$rootEl.html(that.currentView.render());
+        },
+        error: function() {
+          that.notFound();
         }
       });
     }
+  },
+
+  notFound: function() {
+    var that = this;
+
+    that.closePreviousView();
+    that.currentView = new ChessApplication.Views.PageNotFoundView();
+
+    that.$rootEl.html(that.currentView.render());
   }
 
 });

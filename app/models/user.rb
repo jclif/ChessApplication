@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
   has_many :friendships_created, class_name: "Friendship", foreign_key: :from_user_id, primary_key: :id
   has_many :friendships_proposed_to, class_name: "Friendship", foreign_key: :to_user_id, primary_key: :id
 
+  def as_json(options = {})
+    super({only: [:id, :elo, :email]}.merge(options))
+  end
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
