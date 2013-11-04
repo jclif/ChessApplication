@@ -12,7 +12,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    p params
     if params[:current_user_color_choice].downcase == "white"
       white_user_id = current_user.id
       black_user_id = params[:opponent_id]
@@ -21,6 +20,8 @@ class GamesController < ApplicationController
       black_user_id = current_user.id
     end
     @game = Game.new(white_user_id: white_user_id, black_user_id: black_user_id)
+    @game.accepted = true
+    @game.pending = false
     other_player_id = current_user.id == @game.white_user_id ? @game.black_user_id : @game.white_user_id
 
     if @game.save!
@@ -57,6 +58,7 @@ class GamesController < ApplicationController
           render json: @pgn.errors, status: 422
         end
       else
+        puts "triggering"
         Pusher.trigger("game_#{@game.id}_channel", "update_game", @game.to_json)
         render nothing: true
       end

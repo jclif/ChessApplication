@@ -3,6 +3,7 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
   initialize: function() {
     var that = this;
 
+    that.pusher = that.options.pusher;
     that.currUserGames = that.options.currUserGames;
     that.openGames = that.options.openGames;
     that.currUser = that.options.currUser;
@@ -44,13 +45,15 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
     console.log(game);
     game.save({},{
       success: function(model, response, options) {
-        console.log('success');
-        // that.collection.create(response);
+        var channel = that.pusher.subscribe('game_' + game.id + '_channel');
+        channel.bind("update_game", function(data){
+          var model = that.currUserGames.get(data.id);
+          model.set(data);
+        });
         that.currUserGames.add(game);
         Backbone.history.navigate("/", true);
       },
       error: function(model, response, options) {
-        console.log('error');
         Backbone.history.navigate("/", true);
       }
     });
