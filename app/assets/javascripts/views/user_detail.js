@@ -4,14 +4,12 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
   initialize: function () {
     var that = this;
-    console.log(this);
 
     that.coords = [];
     that.pusher = that.options.pusher;
     that.userId = that.options.userId;
     that.friendships = that.options.friendships;
-    that.channelName = "user_" + that.model.id + "_channel";
-    that.channel = that.pusher.subscribe(that.channelName);
+    that.channel = that.pusher.subscribe("user_" + that.model.id + "_channel");
     that.channel.bind("update_profile", function(data){
       console.log("update_profile");
       console.log(data);
@@ -24,13 +22,18 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
 
   dispose: function() {
-    this.remove();
-    this.pusher.unsubscribe(this.channelName);
+    var that = this;
+
+    that.remove();
+    that.pusher.unsubscribe(that.channel.name);
   },
 
   events: {
     "click .user-search-button": "showSearchedUser",
-    "keypress #user_email": "filterEnter"
+    "keypress #user_email": "filterEnter",
+    "click .friend-button": "addFriendship",
+    "click .unfriend-button": "deleteFriendship",
+    "click .pending-button": "updateFriendship"
   },
 
   render: function() {
@@ -43,18 +46,18 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
     _.defer(function() {
       if (that.userId !== that.model.attributes.id) {
-        console.log(that.userId);
         if (that.model.isFriendsWith(that.userId)) {
           $('.unfriend-button').show();
+        } else if (that.model.receivedRequestFrom(that.userId)) {
+          $('.request-sent-button').show();
+        } else if (that.model.sentRequestTo(that.userId)) {
+          $('.pending-button').show();
         } else {
           $('.friend-button').show();
         }
       } else {
-        $('#profile-tabs .ui-tabs-nav').append('<li class="messages"><a href="#messages"><i class="fa fa-envelope"></i> Messages</a></li>');
-
-        $messages = $('<div></div>').attr("id", "messages").attr("class", "panel");
-        $messages.html('<p>Messages coming soon!');
-        $('#profile-tabs').append($messages);
+        $('#messages').show();
+        $('.messages').show();
       }
 
       $( "#user_email" ).autocomplete({
@@ -90,6 +93,18 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     };
 
     $.ajax(ajaxOptions);
+  },
+
+  addFriendship: function() {
+    console.log("add friend!");
+  },
+
+  deleteFriendship: function() {
+    console.log("delete friend!");
+  },
+
+  updateFriendship: function() {
+    console.log("update friend!");
   }
 
 });

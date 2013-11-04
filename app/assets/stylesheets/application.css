@@ -453,6 +453,10 @@ a:link, a:visited, a:hover, a:active {
   float: right;
 }
 
+.profile-container .request-sent-button {
+  float: right;
+}
+
 .profile-container .pending-button {
   cursor: pointer;
   float: right;
@@ -491,6 +495,11 @@ a:link, a:visited, a:hover, a:active {
 
 #profile-tabs .messages {
   float: right;
+  display: none;
+}
+
+#profile-tabs #messages {
+  display: none;
 }
 
 .profile-nav {
@@ -512,7 +521,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .page-not-found-container {
-  padding: 20px;
+  padding: 20px 0 0 0;
   text-align: center;
   background: white;
   /* Shadow */
@@ -527,4 +536,5 @@ a:link, a:visited, a:hover, a:active {
 
 .page-not-found-container .rage-face {
   height: 500px;
+  max-width: 700px;
 }

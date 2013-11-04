@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   # Used
 
   def accepted_friend_ids
-    User.find_by_sql([<<-SQL, true, true, self.id, self.id, self.id, self.id, self.id])
+    users = User.find_by_sql([<<-SQL, true, true, self.id, self.id, self.id, self.id, self.id])
       SELECT
         users.id
       FROM
@@ -91,14 +91,16 @@ class User < ActiveRecord::Base
       AND
         users.id != ?
     SQL
+
+    users.map do |user|
+      user.id
+    end
   end
 
-  # Unused
-
-  def pending_friends_recieved
-    User.find_by_sql([<<-SQL, true, self.id])
+  def pending_friends_received_ids
+    users = User.find_by_sql([<<-SQL, true, self.id])
       SELECT DISTINCT
-        users.*
+        users.id
       FROM
         users
       JOIN
@@ -110,12 +112,16 @@ class User < ActiveRecord::Base
       AND
         f.to_user_id = ?
     SQL
+
+    users.map do |user|
+      user.id
+    end
   end
 
-  def pending_friends_sent
-    User.find_by_sql([<<-SQL, true, self.id])
+  def pending_friends_sent_ids
+    users = User.find_by_sql([<<-SQL, true, self.id])
       SELECT DISTINCT
-        users.*
+        users.id
       FROM
         users
       JOIN
@@ -127,7 +133,13 @@ class User < ActiveRecord::Base
       AND
         f.from_user_id = ?
     SQL
+
+    users.map do |user|
+      user.id
+    end
   end
+
+  # Unused
 
   def denied_friend_requests_recieved
     Friendship.where(["to_user_id = ? AND accepted = ?", self.id, false])

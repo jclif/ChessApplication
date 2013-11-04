@@ -17,7 +17,7 @@
     <div class="profile-info-container clearfix">
       <a href="assets/default_pic.png" class="fancybox"><img class="profile-pic" src="assets/default_pic.png" height="100px"></a>
       <div class="friend-button button button-rounded button-action" style="display: none;">Friend</div>
-      <span class="pending-button button-dropdown" data-buttons="dropdown">
+      <span class="pending-button button-dropdown" style="display: none;" data-buttons="dropdown">
         <div class="button button-rounded button-royal">Pending Friend Request <i class="fa fa-caret-down"></i></div>
         <ul>
           <li><a href="#accept">Accept</a></li>
@@ -25,7 +25,7 @@
         </ul>
       </span>
       <div class="unfriend-button button button-rounded button-caution" style="display: none;">Unfriend</div>
-      <div class="friend-button button button-rounded button-highlight" style="display: none;">Friend Request Sent</div>
+      <div class="request-sent-button button button-rounded button-highlight" style="display: none;">Friend Request Sent</div>
       <h1><%= user.attributes.email %></h1>
       ID: <%= user.attributes.id %><br>
       Elo: <%= user.attributes.elo %><br><br>
@@ -37,6 +37,7 @@
         <li><a href="#past-games"><i class="fa fa-archive"></i> Past Games</a></li>
         <li><a href="#friends"><i class="fa fa-group"></i> Friends</a></li>
         <li><a href="#graphs"><i class="fa fa-bar-chart-o"></i> Graphs</a></li>
+        <li class="messages"><a href="#messages"><i class="fa fa-envelope"></i> Messages</a></li>
       </ul>
       <div id="wall" class="panel">
         <p>Wall coming soon!</p>
@@ -76,6 +77,9 @@
       </div>
       <div id="graphs" class="panel">
         <p> Graphs coming soon!</p>
+      </div>
+      <div id="messages" class="panel">
+        <p>Messages coming soon!</p>
       </div>
     </div>
   </div>

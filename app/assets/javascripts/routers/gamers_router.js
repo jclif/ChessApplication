@@ -68,9 +68,9 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
   show_user: function(id) {
     var that = this;
 
-    that.closePreviousView();
-
     if (id === that.currUser.id) {
+      that.closePreviousView();
+
       that.currentView = new ChessApplication.Views.UserDetailView({
         pusher: that.pusher,
         model: that.currUser,
@@ -78,9 +78,12 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
       });
       that.$rootEl.html(that.currentView.render());
     } else {
+
       var user = new ChessApplication.Models.User({id: parseInt(id, 10) });
       user.fetch({
         success: function() {
+          that.closePreviousView();
+
           that.currentView = new ChessApplication.Views.UserDetailView({
             pusher: that.pusher,
             model: user,

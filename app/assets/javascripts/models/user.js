@@ -2,25 +2,35 @@ ChessApplication.Models.User= Backbone.Model.extend({
 
   urlRoot: '/users',
 
-  isFriendsWith: function(OtherUserId) {
+  isFriendsWith: function(otherUserId) {
     var that = this;
     var found = false;
-    console.log(OtherUserId);
-    that.attributes.accepted_friend_ids.forEach(function(friend) {
-      console.log(friend.id);
-      if (friend.id === OtherUserId) {
+    that.attributes.accepted_friend_ids.forEach(function(id) {
+      if (id === otherUserId) {
+        console.log(id);
+        console.log(otherUserId);
         found = true;
       }
     });
-    console.log(found);
     return found;
   },
 
-  isWaitingForResponseFrom: function(OtherUserId) {
+  receivedRequestFrom: function(otherUserId) {
     var that = this;
     var found = false;
-    that.attributes.pending_friends.forEach(function(friend) {
-      if (friend.id === OtherUserId) {
+    that.attributes.pending_friends_received_ids.forEach(function(id) {
+      if (id === otherUserId) {
+        found = true;
+      }
+    });
+    return found;
+  },
+
+  sentRequestTo: function(otherUserId) {
+    var that = this;
+    var found = false;
+    that.attributes.pending_friends_sent_ids.forEach(function(id) {
+      if (id === otherUserId) {
         found = true;
       }
     });
