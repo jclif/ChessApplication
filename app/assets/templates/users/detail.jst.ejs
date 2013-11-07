@@ -33,12 +33,11 @@
 
     <div id="profile-tabs">
       <ul>
-        <li><a href="#wall"><i class="fa fa-home"></i> Wall</a></li>
-        <li><a href="#past-games"><i class="fa fa-archive"></i> Past Games</a></li>
-        <li><a href="#friends"><i class="fa fa-group"></i> Friends</a></li>
-        <li><a href="#pending-friends"><i class="fa fa-question"></i> Pending Friends</a></li>
-        <li><a href="#graphs"><i class="fa fa-bar-chart-o"></i> Graphs</a></li>
-        <li class="messages"><a href="#messages"><i class="fa fa-envelope"></i> Messages</a></li>
+        <li><a href="#wall"><span class="icon-home"></span> Wall</a></li>
+        <li><a href="#past-games"><span class="icon-trophy"></span> Past Games</a></li>
+        <li><a href="#friends"><span class="icon-users"></span> Friends</a></li>
+        <li><a href="#graphs"><span class="icon-graph"></span> Graphs</a></li>
+        <li class="messages"><a href="#messages"><span class="icon-mail"></span> Messages</a></li>
       </ul>
       <div id="wall" class="panel">
         <p>Wall coming soon!</p>
@@ -69,18 +68,24 @@
       </div>
       <div id="friends" class="panel">
         <ul class="friend-list clearfix">
-          <% user.attributes.accepted_friends.forEach(function(friend) { %>
-          <a href="/#/users/<%= friend.id %>">
-            <li class="friend-item clearfix">
-              <img class="friend-thumbnail" src="assets/default_pic.png">
-              <%= friend.email %><br>
-              Elo: <%= friend.elo %><br>
-              ID: <%= friend.id %><br>
-            </li>
-          </a>
-          <% }); %>
+          <% if (user.attributes.accepted_friends.length === 0) { %>
+            Aquire moar friends !!!
+          <% } else { %>
+            <% user.attributes.accepted_friends.forEach(function(friend) { %>
+            <a href="/#/users/<%= friend.id %>">
+              <li class="friend-item clearfix">
+                <img class="friend-thumbnail" src="assets/default_pic.png">
+                <%= friend.email %><br>
+                Elo: <%= friend.elo %><br>
+                ID: <%= friend.id %><br>
+              </li>
+            </a>
+            <% }); %>
+          <% } %>
         </ul>
       </div>
+      <script>
+/*
       <div id="pending-friends" class="panel">
         <ul class="friend-list clearfix">
           <% user.attributes.pending_friends_received.forEach(function(friend) { %>
@@ -95,6 +100,10 @@
           <% }); %>
         </ul>
       </div>
+      <div id="pending-games" class="panel">
+      </div>
+      */
+      </script>
       <div id="graphs" class="panel">
         <p> Graphs coming soon!</p>
       </div>

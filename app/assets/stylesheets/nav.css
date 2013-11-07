@@ -1,0 +1,48 @@
+.nav-top {
+  z-index:1;
+  position: fixed;
+  width: 100%;
+  top: -24px;
+}
+
+.nav-top a {
+  text-decoration: none;
+}
+
+.nav-icon {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  font-size: 150%;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-icon:hover {
+  color: #5D87B9;
+}
+
+.nav-right {
+  float: right;
+}
+
+.nav-right li {
+  margin-right: 20px;
+  float: right;
+}
+
+.nav-left {
+  float: left;
+}
+
+.nav-left li {
+  margin-left: 20px;
+  float: left;
+}
+
+.nav-bot {
+  position: fixed;
+  width: 100%;
+  bottom: -24px;
+}
+
+.nav-bot a {
+  text-decoration: none;
+}

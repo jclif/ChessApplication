@@ -19,6 +19,7 @@ Efficiency
 * _ integrate pusher with chat functionality
 * _ pass back list of legal moves to backbone so that the ui can validate without hitting server
 * _ find accepted friends by sql
+* _ instead of passing back the friend id for each different kind of friendship, just pass back the friendship and let javascript do all the figuring out, that way a restful api can be used and the database will not be hit so hard on every initial page load
 
 Security
 --------
@@ -114,7 +115,7 @@ Front End
 ###GameListView
 * x grid of current games that updates dynamically, with first board being plus icon that takes user to new game menu
 * _ when cursor over game, more details!
-* _ pagination, or some way of not displaying too many boards
+* _ pagination, in the form of right arrow when there is more than x games, and when pressed, slides the view to the right
 
 ###GameCreateView
 * x add that sh%t

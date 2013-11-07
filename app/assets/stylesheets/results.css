@@ -1,0 +1,21 @@
+.overlay {
+  opacity:.97;
+  background-color: #bbb;
+  -webkit-box-shadow: 0px 27px 25px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    0px 27px 25px rgba(50, 50, 50, 0.9);
+  box-shadow:         0px 27px 25px rgba(50, 50, 50, 0.9);
+  border: 10px solid #5D87B9;
+  position:absolute;
+  top:10%;
+  left:0;
+  right:0;
+  width: 350px;
+  margin: auto;
+  padding: 20px;
+  z-index:9999;
+  color:black;
+}
+
+.overlay-close {
+  float: right;
+}

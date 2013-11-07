@@ -1,0 +1,18 @@
+.page-not-found-container {
+  padding: 20px 0 0 0;
+  text-align: center;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.page-not-found-container .rage-face {
+  height: 500px;
+  max-width: 700px;
+}

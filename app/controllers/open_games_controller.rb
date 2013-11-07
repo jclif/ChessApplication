@@ -2,6 +2,11 @@ class OpenGamesController < ApplicationController
   before_filter :authenticate_user!
   respond_to :json
 
+  def index
+    @open_games = OpenGame.find(:all, include: :user)
+    render json: @open_games.to_json(include: {user: {only: [:email, :elo]}})
+  end
+
   def create
     @open_game = OpenGame.new(params[:open_game])
     @open_game.user_id = current_user.id
@@ -15,9 +20,9 @@ class OpenGamesController < ApplicationController
     end
   end
 
-  def update
-    # check to make sure current user isn't joining his own game
-    @open_game = OpenGame.find_by_id(params[:open_game][:id])
+  def destroy
+    p params
+    @open_game = OpenGame.find_by_id(params[:id])
     if current_user == @open_game.user_id
       render status: 400
     else
@@ -31,18 +36,23 @@ class OpenGamesController < ApplicationController
       if user_color == "white"
         @game.white_user_id = @open_game.user_id
         @game.black_user_id = current_user.id
+        @game.pending = false
+        @game.accepted = true
       elsif user_color == "black"
         @game.white_user_id = current_user.id
         @game.black_user_id = @open_game.user_id
+        @game.pending = false
+        @game.accepted = "true"
       end
       other_player_id = current_user.id == @game.white_user_id ? @game.black_user_id : @game.white_user_id
 
       if @game.save!
-        puts "create success!"
+        open_game = @open_game
+        @open_game.delete
         Pusher.trigger("user_#{other_player_id}_channel", "add_game", @game.to_json)
+        Pusher.trigger("open_games_channel", "delete_game", open_game.to_json)
         render json: @game, status: 200
       else
-        puts "create fail!"
         render json: @game.errors, status: 422
       end
     end

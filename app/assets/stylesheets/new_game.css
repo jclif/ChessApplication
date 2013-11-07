@@ -1,0 +1,55 @@
+.new-game-container {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+}
+
+.new-game-container nav {
+  margin-bottom: 20px;
+}
+
+.new-game-container li {
+  float: left;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.new-game-container li:hover {
+  border-bottom: 2px dotted #5D87B9;
+}
+
+.new-game-container .current {
+  color: #5D87B9;
+  border-bottom: 2px dotted #5D87B9;
+}
+
+#open-games table {
+  width: 100%;
+  text-align: center;
+}
+
+#open-games tr {
+  border-bottom: 1px solid #eee;
+}
+
+#open-games td {
+  padding: 15px 0;
+}
+
+#open-games tr:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+#open-games tr:first-child:hover {
+  background-color: transparent;
+}
+

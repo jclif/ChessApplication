@@ -7,12 +7,15 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
     that.currUserGames = that.options.currUserGames;
     that.openGames = that.options.openGames;
     that.currUser = that.options.currUser;
+
+    that.pusherInit();
   },
 
   template: JST["games/new"],
 
   events: {
-    "click button.submit": "submit"
+    "click #play-a-friend button.submit": "inviteFriend",
+    "click #open-games tr": "acceptOpenGame"
   },
 
   dispose: function() {
@@ -23,7 +26,7 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
     var that = this;
 
     that.$el.html(that.template({
-      open_games: that.open_games,
+      openGames: that.openGames,
       currUser: that.currUser
     }));
 
@@ -42,14 +45,9 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
 
     var formData = $(event.currentTarget).closest('form').serializeJSON();
     var game = new ChessApplication.Models.Game(formData.game);
-    console.log(game);
     game.save({},{
       success: function(model, response, options) {
-        var channel = that.pusher.subscribe('game_' + game.id + '_channel');
-        channel.bind("update_game", function(data){
-          var model = that.currUserGames.get(data.id);
-          model.set(data);
-        });
+        game.pusherInit(that.pusher, that.currUserGames);
         that.currUserGames.add(game);
         Backbone.history.navigate("/", true);
       },
@@ -57,5 +55,26 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
         Backbone.history.navigate("/", true);
       }
     });
+  },
+
+  acceptOpenGame: function(event) {
+    var that = this;
+
+    gameId = $(event.currentTarget).attr("id");
+    openGame = that.openGames.get(gameId);
+    openGame.destroy({
+      success: function(model, response) {
+        console.log(response);
+        var game = new ChessApplication.Models.Game(response);
+        game.pusherInit(that.pusher, that.currUserGames);
+        that.currUserGames.add(game);
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+  },
+
+  pusherInit: function(event) {
   }
 });

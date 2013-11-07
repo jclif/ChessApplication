@@ -4,9 +4,6 @@
   <title>Chessnuts</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-  <!--<link href="http://code.jquery.com/ui/1.10.3/themes/overcast/jquery-ui.css" rel="stylesheet">-->
   <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
   <%= csrf_meta_tags %>
@@ -22,19 +19,5 @@
 
 <%= yield %>
 
-<script type="text/javascript">
-/*
-$( document ).ready(function() {
-  // Enable pusher logging - don't include this in production
-  Pusher.log = function(message) {
-    if (window.console && window.console.log) {
-      window.console.log(message);
-    }
-  };
-});
-*/
-</script>
-
-<script src="http://js.pusher.com/2.1/pusher.min.js"></script>
 </body>
 </html>

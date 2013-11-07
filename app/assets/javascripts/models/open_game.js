@@ -1,3 +1,3 @@
 ChessApplication.Models.OpenGame = Backbone.Model.extend({
-  urlRoot : '/open_games'
+  urlRoot: '/open_games'
 });

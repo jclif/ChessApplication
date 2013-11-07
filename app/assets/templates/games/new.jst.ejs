@@ -1,41 +1,54 @@
 <div class="new-game-container clearfix">
-  <% console.log(open_games); %>
-  <% console.log(currUser); %>
-    <div id="new-game-tabs">
-      <ul>
-        <li><a href="#play-a-friend"><i class="fa fa-group"></i> Friends</a></li>
-        <li><a href="#create-game"><i class="fa fa-home"></i> Wall</a></li>
-        <li><a href="#open-games"><i class="fa fa-archive"></i> Past Games</a></li>
-        <li><a href="#play-chai"><i class="fa fa-question"></i> Pending Friends</a></li>
-      </ul>
-      <div id="play-a-friend" class="panel">
-        <% if (currUser.attributes.accepted_friends.length === 0) { %>
-        <p>To aquire moar games, aquire moar friends!</p>
-        <% } else { %>
-          <form>
-          Which friend would you like to play?<br>
-          <select name="game[opponent_id]" id="game_opponent_email">
-          <% currUser.attributes.accepted_friends.forEach(function(friend) { %>
-            <option value="<%= friend.id %>"><%= friend.email %></option>
-          <% }); %>
-          </select><br>
-          <input type="radio" name="game[current_user_color_choice]" value="Black" id="game_current_user_color_choice">Black<br>
-          <input type="radio" name="game[current_user_color_choice]" value="White" id="game_current_user_color_choice">White<br>
-
-          <button class="submit">Submit!</button>
-          </form>
-        <% } %>
-      </div>
-      <div id="create-game" class="panel">
-        <p>Creating games for any user to accept is coming soon!</p>
-      </div>
-      <div id="open-games" class="panel">
-        <p>Viewing all open games is coming soon!</p>
-      </div>
-      <div id="play-chai" class="panel">
-        <p>Playing games with my chess engine, Chai, coming soon!</p>
-      </div>
+  <div id="new-game-tabs">
+    <ul>
+      <li><a href="#open-games"><span class="icon-list"></i> Open Games</a></li>
+      <li><a href="#create-game"><span class="icon-plus"></i> Create a Game</a></li>
+      <li><a href="#play-a-friend"><span class="icon-users"></i> Play a Friend</a></li>
+      <li><a href="#play-chai"><span class="icon-calculate"></i> Play Chai</a></li>
+    </ul>
+    <div id="open-games" class="panel">
+      <% if (openGames.length === 0) { %>
+        Oops, no open games at the moment. Go create one!
+      <% } else { %>
+        <table>
+          <tr>
+            <th>Player</th>
+            <th>Elo</th>
+            <th>Their Color</th>
+          </tr>
+            <% openGames.forEach(function(game) { %>
+            <tr id="<%= game.attributes.id %>">
+              <td><%= game.attributes.user.email %></td>
+              <td><%= game.attributes.user.elo %></td>
+              <td><%= game.attributes.user_color %></td>
+            </tr>
+            <% }); %>
+        </table>
+       <% } %>
     </div>
-  <div class="create-game new-game-current"></div>
+    <div id="create-game" class="panel">
+      <p>Creating games for any user to accept is coming soon!</p>
+    </div>
+    <div id="play-a-friend" class="panel">
+      <% if (currUser.attributes.accepted_friends.length === 0) { %>
+        <p>To aquire moar games, aquire moar friends!</p>
+      <% } else { %>
+        <form>
+        Which friend would you like to play?<br>
+        <select name="game[opponent_id]" id="game_opponent_email">
+        <% currUser.attributes.accepted_friends.forEach(function(friend) { %>
+          <option value="<%= friend.id %>"><%= friend.email %></option>
+        <% }); %>
+        </select><br>
+        <input type="radio" name="game[current_user_color_choice]" value="Black" id="game_current_user_color_choice">Black<br>
+        <input type="radio" name="game[current_user_color_choice]" value="White" id="game_current_user_color_choice">White<br>
 
+        <button class="submit">Submit!</button>
+        </form>
+      <% } %>
+    </div>
+    <div id="play-chai" class="panel">
+      <p>Playing games with my chess engine, Chai, coming soon!</p>
+    </div>
+  </div>
 </div>

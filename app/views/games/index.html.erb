@@ -1,18 +1,26 @@
 <nav class="nav-top clearfix">
   <ul class="nav-left clearfix">
-    <li><a href="#/"><i class="nav-icon fa fa-home"></i></a></li>
-    <li><a href="#/users/<%= current_user.id %>"><i class="nav-icon fa fa-globe"></i></a></li>
+    <li><a href="#/"><span class="nav-icon icon-pawn"></span></a></li>
+    <li><a href="#/users/<%= current_user.id %>"><span class="nav-icon icon-earth"></span></a></li>
   </ul>
   <ul class="nav-right clearfix">
-    <li><a href="<%= destroy_user_session_url %>" data-method="delete" rel="nofollow" ><i class='nav-icon fa fa-sign-out'></i></a></li>
+    <li><a href="<%= destroy_user_session_url %>" data-method="delete" rel="nofollow"><span class="nav-icon icon-exit"></i></a></li>
   </ul>
 </nav>
 
 <div class="content clearfix"></div>
 
+<div id="pending-friends">Some Test stuff<br>look, sometest stuff!!!<br></div>
+<div id="pending-games">Some Test stuff<br>look, sometest stuff!!!<br></div>
+<div id="chat">Some Test stuff<br>look, sometest stuff!!!<br></div>
+
 <nav class="nav-bot clearfix">
   <ul class="nav-right">
-    <li><a href="#/" class="chat-icon"><i class="nav-icon fa fa-comments"></i></a></li>
+    <li><a href="#/"><span class="nav-icon icon-bubbles"></span></a></li>
+  </ul>
+  <ul class="nav-left">
+    <li><a href="#/"><span class="nav-icon icon-user-add"></span></a></li>
+    <li><a href="#/"><span class="nav-icon icon-googleplus"></span></a></li>
   </ul>
 </nav>
 
@@ -20,20 +28,16 @@
   <%= current_user.accepted_games.to_json.html_safe %>
 </script>
 
-<script type="application/json" id="bootstrapped_open_games_json">
-  <%= @open_games.to_json.html_safe %>
-</script>
-
 <script type="text/javascript">
   $(document).ready(function() {
     var currUserGamesData = JSON.parse($("#bootstrapped_current_users_games_json").html());
-    var openGamesData = JSON.parse($("#bootstrapped_open_games_json").html());
-    ChessApplication.initialize($('.content'), <%= current_user.id %>, currUserGamesData, openGamesData);
+    ChessApplication.initialize($('.content'), <%= current_user.id %>, currUserGamesData);
   });
 </script>
 
 <script type="text/javascript">
   $(document).ready(function() {
+
     var $navtop = $('.nav-top');
     var top_h = $navtop.outerHeight();
     $navtop.css({
@@ -43,19 +47,17 @@
     }).animate({
       top: 10,
       opacity: 1
-    }, 1000, 'easeOutBounce');
+    }, 1000, 'easeOutBounce')
+
     var $navbot = $('.nav-bot');
     var bot_h = $navbot.outerHeight();
-    var bot_w = $('.chat-icon').outerWidth();
 
     $navbot.css({
       bottom: -bot_h * 2,
-      right: -bot_w * 2,
       opacity: 0,
       display: 'block'
     }).animate({
       bottom: 10,
-      right: 0,
       opacity: 1
     }, 1000, 'easeOutBounce');
 
