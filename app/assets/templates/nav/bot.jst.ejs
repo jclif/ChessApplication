@@ -1,7 +1,7 @@
 <% console.log(currUser); %>
 <div id="pending-container">
   <div id="pending-friends-container">
-    <ul class="pending-friend-list clearfix">
+    <ul class="pending-friend-list">
       <% if (currUser.attributes.pending_friends_received.length === 0) { %>
         <p>No pending friend requests.</p>
       <% } else { %>
@@ -23,13 +23,21 @@
     Here's a pending game.
   </div>
 </div>
-<div id="chat-container">
-  <ul>
-    <li>Online friends:</li>
-    <li>somegirl@example.com</li>
-    <li>someguy@example.com</li>
-    <li>yada@example.com</li>
-  </ul>
+
+<div id="chat-wrapper">
+  <div id="selected-chat"></div>
+  <div id="chat-container">
+    <% if (currUser.attributes.accepted_friends === 0) { %>
+      <p>Aquire moar friends!</p>
+    <% } else { %>
+    <ul>
+      <li>Friends:</li>
+      <% currUser.attributes.accepted_friends.forEach(function(friend) { %>
+      <li class="chat-friend" data-id="<%= friend.id %>"><%= friend.email %></li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </div>
 </div>
 
 <nav class="nav-bot clearfix">

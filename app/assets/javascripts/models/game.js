@@ -13,7 +13,7 @@ ChessApplication.Models.Game = Backbone.Model.extend({
 
     channel.bind("delete_game", function(data) {
       var model = currUserGames.get(data.id);
-      model.trigger("destroy", that.model);
+      model.trigger("destroy", model);
     });
   }
 });

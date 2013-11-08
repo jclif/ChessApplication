@@ -4,6 +4,7 @@ window.ChessApplication = {
   Views: {},
   Routers: {},
 
+
   initialize: function($rootEl, $navEl, currUserId, CurrUserGamesData) {
     var that = this;
 
@@ -24,7 +25,9 @@ window.ChessApplication = {
     var channel = pusher.subscribe('user_' + currUser.id + '_channel');
 
     channel.bind("update_profile", function(data) {
+      console.log(currUser);
       currUser.set(data);
+      console.log(currUser);
     });
 
     channel.bind("add_game", function(data) {

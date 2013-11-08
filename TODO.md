@@ -75,9 +75,10 @@ Front End
 
 ###Profile View
 * x add dat sh%t
-* _ tabinate!@@#$#@$
+* x tabinate!@@#$#@$
 * x display basic stats (elo, id, etc)
-* [x] display associated info: ie, pgns (past games), friends, etfc
+* x display associated info: ie, pgns (past games), friends, etfc
+* _ rework tabination of add subviews so content doesn't jump when re-rendering
 * _ search feature for past games
 * _ allow user to iterate through past game moves
 * _ GrApHsSsSsS &$#&YI$(#&%(#$&!!!!!

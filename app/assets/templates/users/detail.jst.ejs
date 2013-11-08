@@ -1,4 +1,3 @@
-<% console.log(user); %>
 <div class="social-container">
 
   <nav class="profile-nav">
@@ -43,28 +42,31 @@
         <p>Wall coming soon!</p>
       </div>
       <div id="past-games" class="panel">
-        Past Games:
-        <ul class="past-games">
-        <% user.attributes.past_games.forEach(function(pgn) { %>
-        <li>
-        <% var other_user_id = null; %>
-          <% if (pgn.white_user_id === user.attributes.id) { %>
-            <% other_user_id = pgn.black_user_id; %>
-          <% } else { %>
-            <% other_user_id = pgn.white_user_id; %>
-          <% } %>
-          At <%= pgn.created_at %> you played as
-          <% if (pgn.white_user_id === user.id) { %>
-            white
-          <% } else { %>
-            black
-          <% } %>
-          against user <a href="/#/users/<%= other_user_id %>"><%= other_user_id %></a>.<br>
-          White's elo changed by <%= pgn.white_elo_diff %>.<br>
-          Black's elo changed by <%= pgn.black_elo_diff %>.
-        </li>
-        <% }); %>
-        </ul>
+        <% if (user.attributes.past_games.length === 0) { %>
+          <p>Go play some chess!</p>
+        <% } else { %>
+          <ul class="past-games">
+          <% user.attributes.past_games.forEach(function(pgn) { %>
+          <li>
+          <% var other_user_id = null; %>
+            <% if (pgn.white_user_id === user.attributes.id) { %>
+              <% other_user_id = pgn.black_user_id; %>
+            <% } else { %>
+              <% other_user_id = pgn.white_user_id; %>
+            <% } %>
+            At <%= pgn.created_at %> you played as
+            <% if (pgn.white_user_id === user.id) { %>
+              white
+            <% } else { %>
+              black
+            <% } %>
+            against against<a href="/#/users/<%= other_user_id %>"><%= other_user_id %></a>.<br>
+            White's elo changed by <%= pgn.white_elo_diff %>.<br>
+            Black's elo changed by <%= pgn.black_elo_diff %>.
+          </li>
+          <% }); %>
+          </ul>
+        <% } %>
       </div>
       <div id="friends" class="panel">
         <ul class="friend-list clearfix">

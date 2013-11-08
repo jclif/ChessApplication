@@ -11,4 +11,5 @@ ChessApplication::Application.routes.draw do
       post :respond
     end
   end
+  resources :messages, only: [:index]
 end

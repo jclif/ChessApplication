@@ -18,7 +18,11 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
     "click #pending-games": "togglePendingGames",
     "click #pending-friends": "togglePendingFriends",
     "click .pending-friend-list .accept-friendship": "acceptFriendship",
-    "click .pending-friend-list .deny-friendship": "denyFriendship"
+    "click .pending-friend-list .deny-friendship": "denyFriendship",
+    "click .chat-friend": "chatDetail",
+    "click .chat-exit": "chatExit",
+    "click .submit-message-button": "submitMessage",
+    "keypress #user_email": "filterEnter"
   },
 
   render: function() {
@@ -60,8 +64,16 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
   },
 
   toggleChat: function(event) {
+    var that = this;
+
     $(event.currentTarget).find('span').toggleClass('selected-nav');
-    $('#chat-container').toggle();
+
+    if ($('#chat-container').css("display") == 'none') {
+      $('#chat-container').toggle();
+    } else {
+      that.chatExit();
+      $('#chat-container').toggle();
+    }
   },
 
   togglePendingGames: function(event) {
@@ -96,10 +108,11 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
   denyFriendship: function(event) {
     var that = this;
 
+    var userId = $(event.currentTarget).data('id');
     var ajaxOptions = {
       url: '/friendships/respond',
       type: 'POST',
-      data: {"user_id": that.model.id, "response": "deny"},
+      data: {"user_id": userId, "response": "deny"},
       success: function(data) {
         console.log(data);
       },
@@ -109,6 +122,72 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
     };
 
     $.ajax(ajaxOptions);
+  },
+
+  chatDetail: function(event) {
+    var that = this;
+
+    var userId = $(event.currentTarget).data('id');
+    var ajaxOptions = {
+      url: '/messages/',
+      type: 'GET',
+      data: {"user_id": userId},
+      success: function(data) {
+        $('.selected-chat-friend').removeClass('selected-chat-friend');
+        $(event.currentTarget).addClass("selected-chat-friend");
+        that.chatExit();
+        that.renderChat(data);
+        $('#selected-chat').show();
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
+  },
+
+  renderChat: function(data) {
+    var that = this;
+
+    $el = $('#selected-chat').append('<span class="icon-x chat-exit"></span>');
+
+    if (data.length === 0) {
+      $el.append("<p class='sad-panda'>No messages yet.</p>");
+    } else {
+      $ul = $('<ul></ul>');
+      $ul.addClass('chat-list');
+      data.forEach(function(message) {
+        $li = $('<li></li>').addClass('clearfix');
+        $span = $('<span></span>').html(message.body);
+        if (that.currUser.id == message.sender_id) {
+          $span.addClass('currUser-message');
+        } else {
+          $span.addClass('otherUser-message');
+        }
+        $ul.append($li.append($span));
+      });
+
+      $li = $('<li></li>').addClass('clearfix').append("<input class='chat-input' type='text'></input>").append("<span class='icon-reply submit-message-button'></span>");
+      $el.append($ul.append($li));
+    }
+  },
+
+  chatExit: function() {
+    $('#selected-chat').empty();
+    $('#selected-chat').hide();
+  },
+
+  filterEnter: function(e) {
+    var that = this;
+
+    if (e.keyCode === 13) {
+      that.submitMessage();
+    }
+  },
+
+  submitMessage: function() {
+    console.log('submit dat');
   }
 
 });

@@ -25,11 +25,12 @@ class FriendshipsController < ApplicationController
       if f.save!
         @from_user = User.find_by_id(f.from_user_id)
         @to_user = User.find_by_id(f.to_user_id)
-        from_user_json = @from_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games])
-
-        to_user_json = @to_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games])
+        from_user_json = @from_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
+        to_user_json = @to_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
         Pusher.trigger("user_#{@from_user.id}_channel", "update_profile", from_user_json)
         Pusher.trigger("user_#{@to_user.id}_channel", "update_profile", to_user_json)
+        puts "triggered user_#{@from_user.id}_channel at 'update_profile' with #{from_user_json}"
+        puts "triggered user_#{@to_user.id}_channel at 'update_profile' with #{to_user_json}"
         render nothing: true
       else
         render json: f.errors, status: 422
@@ -40,9 +41,8 @@ class FriendshipsController < ApplicationController
       if @f.delete
         @from_user = User.find_by_id(f.from_user_id)
         @to_user = User.find_by_id(f.to_user_id)
-        from_user_json = @from_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games])
-
-        to_user_json = @to_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games])
+        from_user_json = @from_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
+        to_user_json = @to_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
         Pusher.trigger("user_#{@from_user.id}_channel", "update_profile", from_user_json)
         Pusher.trigger("user_#{@to_user.id}_channel", "update_profile", to_user_json)
         render nothing: true

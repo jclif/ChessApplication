@@ -53,6 +53,9 @@
 .icon-googleplus:before {
 	content: "\e614";
 }
+.icon-x:before {
+	content: "\e609";
+}
 .icon-graph:before {
 	content: "\e60c";
 }
@@ -79,6 +82,12 @@
 }
 .icon-abacus:before {
 	content: "\e60b";
+}
+.icon-reply:before {
+	content: "\e615";
+}
+.icon-forward:before {
+	content: "\e616";
 }
 .icon-list-ul:before {
 	content: "\e613";

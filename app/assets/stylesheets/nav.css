@@ -54,14 +54,42 @@
   bottom:0;
 }
 
-#chat-container {
-  display: none;
+#chat-wrapper {
   position: fixed;
   right: 10px;
   bottom: 45px;
+}
+
+#pending-container {
+  position: fixed;
+  left: 10px;
+  bottom: 45px;
+}
+
+#chat-container {
+  display: none;
   padding: 10px;
   width: 300px;
+  margin: 10px 0;
   background: white;
+  max-height: 400px;
+  overflow: auto;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.9);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.9);
+  /* Radius */
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+#selected-chat {
+  display: none;
+  margin: 10px 0;
+  background: white;
+  max-height: 600px;
+  overflow: auto;
   /* Shadow */
   -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
   -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.9);
@@ -75,7 +103,7 @@
 #chat-container li {
   margin-top: 5px;
   cursor: pointer;
-  padding: 5px;
+  padding: 10px;
 }
 
 #chat-container li:hover {
@@ -88,12 +116,6 @@
   margin-top: 0;
 }
 
-#pending-container {
-  position: fixed;
-  left: 10px;
-  bottom: 45px;
-}
-
 #pending-friends span, #pending-games span, #chat span {
   padding-bottom: 2px;
 }
@@ -104,7 +126,7 @@
   background: white;
   margin: 10px 0;
   width: 300px;
-  height: 400px;
+  max-height: 400px;
   overflow: auto;
   /* Shadow */
   -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
@@ -122,7 +144,7 @@
   background: white;
   margin: 10px 0;
   width: 300px;
-  height: 400px;
+  max-height: 400px;
   overflow: auto;
   /* Shadow */
   -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
@@ -169,17 +191,72 @@
 }
 
 .notif-bubble {
-    position:absolute;    /* This breaks the div from the normal HTML document. */
-    top: -10px;
-    right: 17px;
-    padding: 1px 5px 1px 5px;
-    background-color:red; /* you could use a background image if you'd like as well */
-    color:white;
-    font-weight:bold;
-
-    border-radius:30px;
+  position:absolute;    /* This breaks the div from the normal HTML document. */
+  top: -10px;
+  right: 17px;
+  padding: 1px 5px 1px 5px;
+  background-color:red; /* you could use a background image if you'd like as well */
+  color:white;
+  font-weight:bold;
+  border-radius:30px;
 }
 
 .selected-nav {
   border-bottom: 2px solid #5D87B9;
+}
+
+.chat-list {
+  margin: 10px;
+}
+
+.chat-list li {
+  margin: 5px 0;
+  width: 100%;
+}
+
+.chat-list li:first-child {
+  margin: 0 0 5px 0;
+}
+
+.chat-exit {
+  float: right;
+  -webkit-border-radius: 3px 3px 3px 3px;
+  cursor: pointer;
+}
+
+.otherUser-message {
+  display: inline-block;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  float: left;
+  background: #ddd;
+  padding: 5px;
+  max-width: 80%;
+}
+
+.currUser-message {
+  display: inline-block;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  float: right;
+  background: #5D87B9;
+  padding: 5px 10px;
+  max-width: 80%;
+  color: white;
+}
+
+.chat-input {
+  width: 90%;
+  margin-right: 5px;
+}
+
+.sad-panda {
+  padding: 15px 0 15px 0;
+  text-align: center;
+}
+
+.selected-chat-friend {
+  background: #ddd;
 }

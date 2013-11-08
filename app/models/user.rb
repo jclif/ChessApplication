@@ -68,8 +68,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Used
-
   def accepted_friends
     potential_friendships = self.friendships_created + self.friendships_proposed_to
 
@@ -146,6 +144,10 @@ class User < ActiveRecord::Base
 
   def pending_games_received
     Game.where(["white_user_id = ? AND pending = ?", self.id, true]) + Game.where(["black_user_id = ? AND pending = ?", self.id, true])
+  end
+
+  def messages_exchanged_with(user_id)
+    Message.where(["(recipient_id = ? AND sender_id = ?) OR (recipient_id = ? AND sender_id = ?)", self.id, user_id, user_id, self.id])
   end
 
 end

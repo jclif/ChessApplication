@@ -8,21 +8,23 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     that.coords = [];
     that.pusher = that.options.pusher;
     that.userId = that.options.userId;
+    that.user = that.options.user;
     that.friendships = that.options.friendships;
-    that.channel = that.pusher.subscribe("user_" + that.model.id + "_channel");
+    that.channel = null;
 
     that.pusherInit();
 
     var renderCallback = that.render.bind(that);
-    that.listenTo(that.model, "change", renderCallback);
+    that.listenTo(that.user, "change", renderCallback);
   },
 
   pusherInit: function() {
     var that = this;
 
-    if (that.model.id !== that.userId) {
+    if (that.user.id !== that.userId) {
+      that.channel = that.pusher.subscribe("user_" + that.user.id + "_channel");
       that.channel.bind("update_profile", function(data){
-        that.model.set(data);
+        that.user.set(data);
       });
     }
   },
@@ -31,7 +33,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var that = this;
 
     that.remove();
-    that.pusher.unsubscribe(that.channel.name);
+    if (that.channel) { that.pusher.unsubscribe(that.channel.name); }
   },
 
   events: {
@@ -47,17 +49,17 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var that = this;
 
     that.$el.html(that.template({
-      user: that.model,
+      user: that.user,
       userId: that.userId
     }));
 
     _.defer(function() {
-      if (that.userId !== that.model.attributes.id) {
-        if (that.model.isFriendsWith(that.userId)) {
+      if (that.userId !== that.user.attributes.id) {
+        if (that.user.isFriendsWith(that.userId)) {
           $('.unfriend-button').show();
-        } else if (that.model.receivedRequestFrom(that.userId)) {
+        } else if (that.user.receivedRequestFrom(that.userId)) {
           $('.request-sent-button').show();
-        } else if (that.model.sentRequestTo(that.userId)) {
+        } else if (that.user.sentRequestTo(that.userId)) {
           $('.pending-button').show();
         } else {
           $('.friend-button').show();
@@ -109,7 +111,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var ajaxOptions = {
       url: '/friendships',
       type: 'POST',
-      data: {"to_user_id": that.model.id},
+      data: {"to_user_id": that.user.id},
       success: function(data) {
         console.log(data);
       },
@@ -127,7 +129,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var ajaxOptions = {
       url: '/friendships/respond',
       type: 'POST',
-      data: {"user_id": that.model.id, "response": "destroy"},
+      data: {"user_id": that.user.id, "response": "destroy"},
       success: function(data) {
         console.log(data);
       },
@@ -145,7 +147,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var ajaxOptions = {
       url: '/friendships/respond',
       type: 'POST',
-      data: {"user_id": that.model.id, "response": "accept"},
+      data: {"user_id": that.user.id, "response": "accept"},
       success: function(data) {
         console.log(data);
       },
@@ -163,7 +165,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     var ajaxOptions = {
       url: '/friendships/respond',
       type: 'POST',
-      data: {"user_id": that.model.id, "response": "deny"},
+      data: {"user_id": that.user.id, "response": "deny"},
       success: function(data) {
         console.log(data);
       },
