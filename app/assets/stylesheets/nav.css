@@ -231,6 +231,7 @@
 
 .chat-list {
   margin: 10px;
+  position: relative;
 }
 
 .chat-list li {
@@ -273,8 +274,8 @@
 }
 
 .chat-input {
-  width: 90%;
-  margin-right: 5px 5px 0 0;
+  width: 85%;
+  margin: 5px;
 }
 
 .sad-panda {
@@ -309,4 +310,10 @@
 .game-item {
   height:50px
   float: left;
+}
+
+.game-item span {
+  float: left;
+  margin-right: 5px;
+  padding: 10px;
 }
