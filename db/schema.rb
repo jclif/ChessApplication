@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20131101002845) do
     t.integer  "elo",                    :default => 1200, :null => false
     t.string   "provider"
     t.string   "uid"
+    t.string   "last_request_at"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
   end

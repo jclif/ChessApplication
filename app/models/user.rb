@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :friendships_proposed_to, class_name: "Friendship", foreign_key: :to_user_id, primary_key: :id
 
   def as_json(options = {})
-    super({only: [:id, :elo, :email]}.merge(options))
+    super({only: [:id, :elo, :email, :last_request_at]}.merge(options))
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)

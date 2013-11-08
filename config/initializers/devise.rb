@@ -247,3 +247,10 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 end
+
+[Devise::SessionsController,
+ Devise::RegistrationsController,
+ Devise::PasswordsController
+].each do |devise_controller_class|
+  devise_controller_class.skip_before_filter :set_last_request_at
+end

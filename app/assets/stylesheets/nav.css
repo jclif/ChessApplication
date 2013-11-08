@@ -11,8 +11,10 @@
 
 .nav-icon {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-  font-size: 150%;
+  font-size: 160%;
   transition: color 0.2s ease-in-out;
+  font-color: black;
+  cursor: pointer;
 }
 
 .nav-icon:hover {
@@ -45,4 +47,88 @@
 
 .nav-bot a {
   text-decoration: none;
+}
+
+#nav-bot-container {
+  position: fixed;
+  bottom:0;
+}
+
+#chat-container {
+  display: none;
+  position: fixed;
+  right: 10px;
+  bottom: 45px;
+  padding: 10px;
+  width: 300px;
+  background: white;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.9);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.9);
+  /* Radius */
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+#chat-container li {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+#chat-container li:hover {
+  background: #ccc;
+}
+
+#chat-container li:first-child {
+  background: #5D87B9;
+  text-align: center;
+  margin-top: 0;
+}
+
+#pending-container {
+  position: fixed;
+  left: 10px;
+  bottom: 45px;
+}
+
+#pending-friends span, #pending-games span, #chat span {
+  padding-bottom: 2px;
+}
+
+#pending-friends-container {
+  display: none;
+  padding: 10px;
+  background: white;
+  margin: 10px 0;
+  width: 300px;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.9);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.9);
+  /* Radius */
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+#pending-games-container {
+  display: none;
+  padding: 10px;
+  background: white;
+  margin: 10px 0;
+  width: 300px;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.9);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.9);
+  /* Radius */
+  border-radius: 3px 3px 3px 3px;
+  -moz-border-radius: 3px 3px 3px 3px;
+  -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+.selected-nav {
+  border-bottom: 2px solid #5D87B9;
 }

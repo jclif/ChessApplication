@@ -1,0 +1,42 @@
+<% console.log(currUser); %>
+<div id="pending-container">
+  <div id="pending-friends-container">
+    <ul class="friend-list clearfix">
+      <% if (currUser.attributes.pending_friends_received.length === 0) { %>
+        <p>No pending friend requests.</p>
+      <% } else { %>
+        <% currUser.attributes.pending_friends_received.forEach(function(friend) { %>
+          <a href="/#/users/<%= friend.id %>">
+            <li class="friend-item clearfix">
+              <img class="friend-thumbnail" src="assets/default_pic.png">
+              <%= friend.email %><br>
+              Elo: <%= friend.elo %><br>
+              ID: <%= friend.id %><br>
+            </li>
+          </a>
+        <% }); %>
+      <% }  %>
+    </ul>
+  </div>
+  <div id="pending-games-container">
+    Here's a pending game.
+  </div>
+</div>
+<div id="chat-container">
+  <ul>
+    <li>Online friends:</li>
+    <li>somegirl@example.com</li>
+    <li>someguy@example.com</li>
+    <li>yada@example.com</li>
+  </ul>
+</div>
+
+<nav class="nav-bot clearfix">
+  <ul class="nav-right">
+    <li><div id="chat" href="#/"><span class="nav-icon icon-bubbles"></span></div></li>
+  </ul>
+  <ul class="nav-left">
+    <li><div id="pending-friends" href="#/"><span class="nav-icon icon-user-add"></span></div></li>
+    <li><div id="pending-games" href="#/"><span class="nav-icon icon-googleplus"></span></div></li>
+  </ul>
+</nav>

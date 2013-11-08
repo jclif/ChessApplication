@@ -1,11 +1,27 @@
 ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
 
-  initialize: function($rootEl, currUser, currUserGames, pusher) {
-    this.$rootEl = $rootEl;
-    this.currUser = currUser;
-    this.currUserGames = currUserGames;
-    this.pusher = pusher;
-    this.currentView = null;
+  initialize: function($rootEl, $navEl, currUser, currUserGames, pusher) {
+    var that = this;
+
+    that.$rootEl = $rootEl;
+    that.$navEl = $navEl;
+    that.currUser = currUser;
+    that.currUserGames = currUserGames;
+    that.pusher = pusher;
+    that.currentView = null;
+
+    that.navInit();
+  },
+
+  navInit: function() {
+    var that = this;
+
+    var navView = new ChessApplication.Views.NavBotView({
+      pusher: that.pusher,
+      currUser: that.currUser
+    });
+
+    that.$navEl.html(navView.render());
   },
 
   routes: {

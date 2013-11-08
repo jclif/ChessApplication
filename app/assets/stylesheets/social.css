@@ -17,10 +17,6 @@
   position: relative;
 }
 
-.profile-container a {
-  color: white;
-}
-
 .profile-container .friend-button {
   cursor: pointer;
   float:right;
@@ -96,25 +92,46 @@
 }
 
 .profile-nav .user-search-button {
+  color: white;
   cursor: pointer;
 }
 
-.social-container .friends-list {
+.social-container .friend-list {
   list-style-type: none;
+}
+
+.social-container .friend-list > a > li:hover {
+  background: #eee;
 }
 
 .social-container .friend-item {
   font-size:80%;
   float: left;
   width: 300px;
-  height: 70px;
-  border: 1px solid black;
+  height: 80px;
+  padding: 5px 0 5px 0;
   margin-right: 10px;
-  margin-bottom: 10px;
+  /* Shadow */
+  -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
+  -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.57);
+  box-shadow:         4px 4px 10px rgba(50, 50, 50, 0.57);
+  /* Radius */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;-bottom: 10px;
+}
+
+.social-container .friend-item:hover {
+  background-color: #fff;
 }
 
 .social-container .friend-thumbnail {
   height: 70px;
   float: left;
-  margin-right: 10px;
+  margin: 0 10px 0 10px;
+  border: 1px solid black;
+}
+
+.social-container .friend-info li{
+  padding: 5px 0;
 }

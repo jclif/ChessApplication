@@ -4,7 +4,7 @@ window.ChessApplication = {
   Views: {},
   Routers: {},
 
-  initialize: function($rootEl, currUserId, CurrUserGamesData) {
+  initialize: function($rootEl, $navEl, currUserId, CurrUserGamesData) {
     var that = this;
 
     var currUser = new ChessApplication.Models.User({id: currUserId });
@@ -14,7 +14,7 @@ window.ChessApplication = {
     currUser.fetch({
       success:function() {
         that.pusherInit(pusher, currUser, currUserGames);
-        new ChessApplication.Routers.GamesRouter($rootEl, currUser, currUserGames, pusher);
+        new ChessApplication.Routers.GamesRouter($rootEl, $navEl, currUser, currUserGames, pusher);
         Backbone.history.start();
       }
     });

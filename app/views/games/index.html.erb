@@ -10,19 +10,7 @@
 
 <div class="content clearfix"></div>
 
-<div id="pending-friends">Some Test stuff<br>look, sometest stuff!!!<br></div>
-<div id="pending-games">Some Test stuff<br>look, sometest stuff!!!<br></div>
-<div id="chat">Some Test stuff<br>look, sometest stuff!!!<br></div>
-
-<nav class="nav-bot clearfix">
-  <ul class="nav-right">
-    <li><a href="#/"><span class="nav-icon icon-bubbles"></span></a></li>
-  </ul>
-  <ul class="nav-left">
-    <li><a href="#/"><span class="nav-icon icon-user-add"></span></a></li>
-    <li><a href="#/"><span class="nav-icon icon-googleplus"></span></a></li>
-  </ul>
-</nav>
+<div id="nav-bot-container"></div>
 
 <script type="application/json" id="bootstrapped_current_users_games_json">
   <%= current_user.accepted_games.to_json.html_safe %>
@@ -31,7 +19,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     var currUserGamesData = JSON.parse($("#bootstrapped_current_users_games_json").html());
-    ChessApplication.initialize($('.content'), <%= current_user.id %>, currUserGamesData);
+    ChessApplication.initialize($('.content'), $('#nav-bot-container'), <%= current_user.id %>, currUserGamesData);
   });
 </script>
 
@@ -48,18 +36,6 @@
       top: 10,
       opacity: 1
     }, 1000, 'easeOutBounce')
-
-    var $navbot = $('.nav-bot');
-    var bot_h = $navbot.outerHeight();
-
-    $navbot.css({
-      bottom: -bot_h * 2,
-      opacity: 0,
-      display: 'block'
-    }).animate({
-      bottom: 10,
-      opacity: 1
-    }, 1000, 'easeOutBounce');
 
   });
 </script>

@@ -13,8 +13,6 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
     if (that.model.id !== that.userId) {
       that.channel.bind("update_profile", function(data){
-        console.log("update_profile");
-        console.log(data);
         that.model.set(data);
       });
     }
@@ -66,7 +64,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
 
       $('#user_email').autocomplete({
         source: "/users.json",
-        minLength: 2
+        minLength: 1
       });
 
       $('#profile-tabs').tabs();

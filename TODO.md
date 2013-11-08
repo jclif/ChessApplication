@@ -84,7 +84,10 @@ Front End
 * _ if you click on the messages tab, the chat minimizes
 
 ###ChatViews (not sure how exactly this will work)
-* _ add dat sh%t
+* x add dat sh%t
+* x only display online users (add last_request_at column for user and update column on every request (except sign in [devise initilize skip_before_filter]), then just display friend if they're active)
+* _ fetch last 10 messages when user clicks on friends name
+* _ when they scroll to the top of the messages, load 10 more, etc
 
 ###Login
 * x flash errors that can be clicked to hide
