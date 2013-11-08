@@ -9,4 +9,19 @@ class MessagesController < ApplicationController
     render json: @messages
   end
 
+  def create
+    puts params
+    recipient_id = params[:user_id]
+    sender_id = current_user.id
+    @message = Message.new(sender_id: sender_id, recipient_id: recipient_id, body: params[:body])
+
+    if @message.save!
+      Pusher.trigger("user_#{recipient_id}_channel", "update_convo_with_#{sender_id}", @message.to_json)
+
+      render json: @message, status: 200
+    else
+      render json: @message.errors, status: 422
+    end
+  end
+
 end

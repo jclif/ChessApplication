@@ -156,33 +156,57 @@
   -webkit-border-radius: 3px 3px 3px 3px;
 }
 
-.pending-friend-list > li {
+.pending-friends-list > li {
   border-bottom: 1px solid #ccc;
   padding: 10px;
 }
 
-.pending-friend-list li:last-child {
+.pending-friends-list li:last-child {
   border-bottom: none;
   margin-bottom: none;
 }
 
-.pending-friend-list li:first-child {
+.pending-friends-list li:first-child {
   background: #5D87B9;
   text-align: center;
   border-bottom: none;
 }
 
-.pending-friend-list .friend-thumbnail {
+.pending-friends-list .friend-thumbnail {
   width: 45px;
   margin: 0 10px 0 5px;
   float: left;
 }
 
-.pending-friend-list .friend-response-container {
+.pending-friends-list .friend-response-container {
   margin-top: 2px;
 }
 
-.pending-friend-list .accept-friendship, .pending-friend-list .deny-friendship {
+.pending-friends-list .accept-friendship, .pending-friend-list .deny-friendship {
+  cursor: pointer;
+}
+
+#pending-games-list > li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+#pending-games-list li:last-child {
+  border-bottom: none;
+  margin-bottom: none;
+}
+
+#pending-games-list li:first-child {
+  background: #5D87B9;
+  text-align: center;
+  border-bottom: none;
+}
+
+#pending-games-list .game-response-container {
+  margin-top: 2px;
+}
+
+#pending-games-list .accept-game, #pending-games-list .deny-game {
   cursor: pointer;
 }
 
@@ -212,6 +236,7 @@
 .chat-list li {
   margin: 5px 0;
   width: 100%;
+  list-style-type: none;
 }
 
 .chat-list li:first-child {
@@ -249,7 +274,7 @@
 
 .chat-input {
   width: 90%;
-  margin-right: 5px;
+  margin-right: 5px 5px 0 0;
 }
 
 .sad-panda {
@@ -259,4 +284,29 @@
 
 .selected-chat-friend {
   background: #ddd;
+}
+
+#pending-games-list li {
+  margin-top: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+#pending-games-list li:hover {
+  background: #ccc;
+}
+
+#pending-games-container li:first-child {
+  background: #5D87B9;
+  text-align: center;
+  margin-top: 0;
+}
+
+.game-info {
+  float: left;
+}
+
+.game-item {
+  height:50px
+  float: left;
 }

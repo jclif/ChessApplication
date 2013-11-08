@@ -1,7 +1,7 @@
 .login-container {
   background: white;
   width: 460px;
-  margin: 50px auto 0 auto;
+  margin: 100px auto 0 auto;
   padding: 20px;
   /* Shadow */
   -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.57);
@@ -44,7 +44,7 @@
 }
 
 .login-container label {
-  font-size: 60%;
+  font-size: 80%;
 }
 
 .login-button {
@@ -79,7 +79,7 @@
 .login-container .devise-extras {
   margin-top:15px;
   float:left;
-  font-size:55%;
+  font-size:60%;
 }
 
 .login-container .devise-extras a {

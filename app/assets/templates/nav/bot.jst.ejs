@@ -1,11 +1,11 @@
 <% console.log(currUser); %>
 <div id="pending-container">
   <div id="pending-friends-container">
-    <ul class="pending-friend-list">
+    <ul class="pending-friends-list">
       <% if (currUser.attributes.pending_friends_received.length === 0) { %>
         <p>No pending friend requests.</p>
       <% } else { %>
-        <li>Pending requests:</li>
+        <li>Friend Requests:</li>
         <% currUser.attributes.pending_friends_received.forEach(function(friend) { %>
           <li class="friend-item clearfix">
             <img class="friend-thumbnail" src="assets/default_pic.png">
@@ -20,7 +20,21 @@
     </ul>
   </div>
   <div id="pending-games-container">
-    Here's a pending game.
+    <ul id="pending-games-list">
+      <% if (currUser.attributes.pending_games_received.length === 0) { %>
+        <p>No pending game requests.</p>
+      <% } else { %>
+        <li>Game Requests:</li>
+        <% currUser.attributes.pending_games_received.forEach(function(game) { %>
+        <li class="game-item clearfix">User <a href="#/users/<%= game.id %>"><%= game.id %></a>
+          <div class="game-response-container">
+            <div data-id="<%= game.id %>" class="accept-game button button-rounded button-action">Accept</div>
+            <div data-id="<%= game.id %>" class="deny-game button button-rounded button-highlight">Deny</div>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+      <% } %>
   </div>
 </div>
 
@@ -28,7 +42,7 @@
   <div id="selected-chat"></div>
   <div id="chat-container">
     <% if (currUser.attributes.accepted_friends === 0) { %>
-      <p>Aquire moar friends!</p>
+      <p class="sad-panda">Aquire moar friends!</p>
     <% } else { %>
     <ul>
       <li>Friends:</li>

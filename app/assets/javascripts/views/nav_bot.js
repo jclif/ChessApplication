@@ -22,7 +22,7 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
     "click .chat-friend": "chatDetail",
     "click .chat-exit": "chatExit",
     "click .submit-message-button": "submitMessage",
-    "keypress #user_email": "filterEnter"
+    "keypress .chat-input": "filterEnter"
   },
 
   render: function() {
@@ -136,7 +136,7 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
         $('.selected-chat-friend').removeClass('selected-chat-friend');
         $(event.currentTarget).addClass("selected-chat-friend");
         that.chatExit();
-        that.renderChat(data);
+        that.renderChat(data, userId);
         $('#selected-chat').show();
       },
       error: function(data) {
@@ -147,16 +147,18 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
     $.ajax(ajaxOptions);
   },
 
-  renderChat: function(data) {
+  renderChat: function(data, userId) {
     var that = this;
 
-    $el = $('#selected-chat').append('<span class="icon-x chat-exit"></span>');
+    var $el = $('#selected-chat').append('<span class="icon-x chat-exit"></span>');
+    var $input = $('<li data-id=' + userId + '></li>').addClass('clearfix').append("<input class='chat-input' type='text'></input>").append("<span class='icon-reply submit-message-button'></span>");
+    var $ul = $('<ul></ul>').addClass('chat-list');
+    var $li = null;
 
     if (data.length === 0) {
       $el.append("<p class='sad-panda'>No messages yet.</p>");
+      $el.append($ul.append($input));
     } else {
-      $ul = $('<ul></ul>');
-      $ul.addClass('chat-list');
       data.forEach(function(message) {
         $li = $('<li></li>').addClass('clearfix');
         $span = $('<span></span>').html(message.body);
@@ -168,8 +170,7 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
         $ul.append($li.append($span));
       });
 
-      $li = $('<li></li>').addClass('clearfix').append("<input class='chat-input' type='text'></input>").append("<span class='icon-reply submit-message-button'></span>");
-      $el.append($ul.append($li));
+      $el.append($ul.append($li).append($input));
     }
   },
 
@@ -178,16 +179,35 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
     $('#selected-chat').hide();
   },
 
-  filterEnter: function(e) {
+  filterEnter: function(event) {
     var that = this;
 
-    if (e.keyCode === 13) {
-      that.submitMessage();
+    if (event.keyCode === 13) {
+      that.submitMessage(event);
     }
   },
 
-  submitMessage: function() {
-    console.log('submit dat');
+  submitMessage: function(event) {
+    var that = this;
+    console.log(event.currentTarget);
+
+    var userId = $(event.currentTarget).closest('li').data('id');
+    var body = $('.chat-input').val();
+    console.log(body);
+    var ajaxOptions = {
+      url: '/messages/',
+      type: 'POST',
+      data: {"user_id": userId, "body": body},
+      success: function(data) {
+        $('.chat-input').val("");
+        console.log(data);
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
   }
 
 });

@@ -70,7 +70,6 @@
   line-height:10px;
   font-size: 10px;
   text-align: center;
-  cursor: default;
 }
 
 .mini-board-holder {
@@ -94,6 +93,7 @@
   margin: 20px;
   float:left;
   position:relative;
+  cursor: pointer;
 }
 
 .new-game {
