@@ -1,19 +1,20 @@
 <% console.log(currUser); %>
 <div id="pending-container">
   <div id="pending-friends-container">
-    <ul class="friend-list clearfix">
+    <ul class="pending-friend-list clearfix">
       <% if (currUser.attributes.pending_friends_received.length === 0) { %>
         <p>No pending friend requests.</p>
       <% } else { %>
+        <li>Pending requests:</li>
         <% currUser.attributes.pending_friends_received.forEach(function(friend) { %>
-          <a href="/#/users/<%= friend.id %>">
-            <li class="friend-item clearfix">
-              <img class="friend-thumbnail" src="assets/default_pic.png">
-              <%= friend.email %><br>
-              Elo: <%= friend.elo %><br>
-              ID: <%= friend.id %><br>
-            </li>
-          </a>
+          <li class="friend-item clearfix">
+            <img class="friend-thumbnail" src="assets/default_pic.png">
+            <%= friend.email %><br>
+            <div class="friend-response-container">
+              <div data-id="<%= friend.id %>" class="accept-friendship button button-rounded button-action">Accept</div>
+              <div data-id="<%= friend.id %>" class="deny-friendship button button-rounded button-highlight">Deny</div>
+            </div>
+          </li>
         <% }); %>
       <% }  %>
     </ul>
@@ -36,7 +37,17 @@
     <li><div id="chat" href="#/"><span class="nav-icon icon-bubbles"></span></div></li>
   </ul>
   <ul class="nav-left">
-    <li><div id="pending-friends" href="#/"><span class="nav-icon icon-user-add"></span></div></li>
-    <li><div id="pending-games" href="#/"><span class="nav-icon icon-googleplus"></span></div></li>
+    <li class="notif-container">
+      <% if (currUser.attributes.pending_friends_received.length > 0) { %>
+        <div class="notif-bubble"><%= currUser.attributes.pending_friends_received.length %></div>
+      <% }; %>
+      <div id="pending-friends" href="#/"><span class="nav-icon icon-user-add"></span></div>
+    </li>
+    <li class="notif-container">
+      <% if (currUser.attributes.pending_games_received.length > 0) { %>
+        <div class="notif-bubble"><%= currUser.attributes.pending_games_received.length %></div>
+      <% } %>
+      <div id="pending-games" href="#/"><span class="nav-icon icon-googleplus"></span></div>
+    </li>
   </ul>
 </nav>

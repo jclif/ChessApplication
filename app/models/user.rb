@@ -127,16 +127,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Unused
-
-  def denied_friend_requests_recieved
-    Friendship.where(["to_user_id = ? AND accepted = ?", self.id, false])
-  end
-
-  def pending_game_requests_recieved
-    Game.where(["white_user_id = ? AND pending = ?", self.id, true]) + Game.where(["black_user_id = ? AND pending = ?", self.id, true])
-  end
-
   def accepted_games
     Game.find_by_sql([<<-SQL, true, self.id, self.id])
       SELECT
@@ -152,6 +142,10 @@ class User < ActiveRecord::Base
 
   def past_games
     Pgn.where(["white_user_id = ?", self.id]) + Pgn.where(["black_user_id = ?", self.id])
+  end
+
+  def pending_games_received
+    Game.where(["white_user_id = ? AND pending = ?", self.id, true]) + Game.where(["black_user_id = ? AND pending = ?", self.id, true])
   end
 
 end

@@ -20,8 +20,6 @@ class GamesController < ApplicationController
       black_user_id = current_user.id
     end
     @game = Game.new(white_user_id: white_user_id, black_user_id: black_user_id)
-    @game.accepted = true
-    @game.pending = false
     other_player_id = current_user.id == @game.white_user_id ? @game.black_user_id : @game.white_user_id
 
     if @game.save!

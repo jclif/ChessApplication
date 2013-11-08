@@ -72,7 +72,6 @@
             Aquire moar friends !!!
           <% } else { %>
             <% user.attributes.accepted_friends.forEach(function(friend) { %>
-<% console.log(friend); %>
             <a class="clearfix" href="/#/users/<%= friend.id %>">
               <li class="friend-item clearfix">
                 <img class="friend-thumbnail" src="assets/default_pic.png">

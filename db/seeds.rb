@@ -16,7 +16,6 @@ Pgn.delete_all
 test_users = User.create([
   {email: "test1@gmail.com", password: "password"},
   {email: "test2@gmail.com", password: "password"},
-  {email: "test3@gmail.com", password: "password"},
 ])
 
 test_games = Game.create([

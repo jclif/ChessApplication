@@ -11,7 +11,7 @@
 
 .nav-icon {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-  font-size: 160%;
+  font-size: 170%;
   transition: color 0.2s ease-in-out;
   font-color: black;
   cursor: pointer;
@@ -75,6 +75,7 @@
 #chat-container li {
   margin-top: 5px;
   cursor: pointer;
+  padding: 5px;
 }
 
 #chat-container li:hover {
@@ -103,6 +104,8 @@
   background: white;
   margin: 10px 0;
   width: 300px;
+  height: 400px;
+  overflow: auto;
   /* Shadow */
   -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
   -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.9);
@@ -119,6 +122,8 @@
   background: white;
   margin: 10px 0;
   width: 300px;
+  height: 400px;
+  overflow: auto;
   /* Shadow */
   -webkit-box-shadow: 4px 4px 10px rgba(50, 50, 50, 0.9);
   -moz-box-shadow:    4px 4px 10px rgba(50, 50, 50, 0.9);
@@ -127,6 +132,52 @@
   border-radius: 3px 3px 3px 3px;
   -moz-border-radius: 3px 3px 3px 3px;
   -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+.pending-friend-list > li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.pending-friend-list li:last-child {
+  border-bottom: none;
+  margin-bottom: none;
+}
+
+.pending-friend-list li:first-child {
+  background: #5D87B9;
+  text-align: center;
+  border-bottom: none;
+}
+
+.pending-friend-list .friend-thumbnail {
+  width: 45px;
+  margin: 0 10px 0 5px;
+  float: left;
+}
+
+.pending-friend-list .friend-response-container {
+  margin-top: 2px;
+}
+
+.pending-friend-list .accept-friendship, .pending-friend-list .deny-friendship {
+  cursor: pointer;
+}
+
+.notif-container {
+    position:relative;
+}
+
+.notif-bubble {
+    position:absolute;    /* This breaks the div from the normal HTML document. */
+    top: -10px;
+    right: 17px;
+    padding: 1px 5px 1px 5px;
+    background-color:red; /* you could use a background image if you'd like as well */
+    color:white;
+    font-weight:bold;
+
+    border-radius:30px;
 }
 
 .selected-nav {

@@ -39,7 +39,7 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
     return that.$el;
   },
 
-  submit: function(event) {
+  inviteFriend: function(event) {
     event.preventDefault();
     var that = this;
 
@@ -49,10 +49,10 @@ ChessApplication.Views.NewGameView = Backbone.View.extend({
       success: function(model, response, options) {
         game.pusherInit(that.pusher, that.currUserGames);
         that.currUserGames.add(game);
-        Backbone.history.navigate("/", true);
+        Backbone.history.navigate("#/", true);
       },
       error: function(model, response, options) {
-        Backbone.history.navigate("/", true);
+        Backbone.history.navigate("#/", true);
       }
     });
   },

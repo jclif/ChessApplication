@@ -11,16 +11,21 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     that.friendships = that.options.friendships;
     that.channel = that.pusher.subscribe("user_" + that.model.id + "_channel");
 
-    if (that.model.id !== that.userId) {
-      that.channel.bind("update_profile", function(data){
-        that.model.set(data);
-      });
-    }
+    that.pusherInit();
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.model, "change", renderCallback);
   },
 
+  pusherInit: function() {
+    var that = this;
+
+    if (that.model.id !== that.userId) {
+      that.channel.bind("update_profile", function(data){
+        that.model.set(data);
+      });
+    }
+  },
 
   dispose: function() {
     var that = this;
@@ -32,10 +37,10 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
   events: {
     "click .user-search-button": "showSearchedUser",
     "keypress #user_email": "filterEnter",
-    "click .friend-button": "addFriendship",
-    "click .unfriend-button": "deleteFriendship",
-    "click .accept-friendship": "acceptFriendship",
-    "click .deny-friendship": "denyFriendship"
+    "click .social-container .friend-button": "addFriendship",
+    "click .social-container .unfriend-button": "deleteFriendship",
+    "click .social-container .accept-friendship": "acceptFriendship",
+    "click .social-container .deny-friendship": "denyFriendship"
   },
 
   render: function() {
