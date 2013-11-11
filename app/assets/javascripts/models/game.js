@@ -21,13 +21,14 @@ ChessApplication.Models.Game = Backbone.Model.extend({
     var that = this;
     var result = false;
 
-    if (that.current_player === "black") {
-      if (playerId === that.black_user_id) {
-        return true;
+    if (that.attributes.current_player === "black") {
+      if (playerId === that.attributes.black_user_id) {
+        result = true;
       }
     } else {
-      if (playerId === that.white_user_id) {
-        return true;
+      console.log("white's turn");
+      if (playerId === that.attributes.white_user_id) {
+        result = true;
       }
     }
     
