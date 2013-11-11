@@ -4,7 +4,7 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
 
   initialize: function () {
     var that = this;
-    that.userId = that.options.userId;
+    that.currUser = that.options.currUser;
 
     var renderCallback = that.render.bind(that);
     that.listenTo(that.collection, "add", renderCallback);
@@ -51,6 +51,7 @@ ChessApplication.Views.GamesListView = Backbone.View.extend({
     };
 
     that.$el.html(that.template({
+      currUser: that.currUser,
       is_white: is_white,
       white_to_solid: white_to_solid,
       games: that.collection

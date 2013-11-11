@@ -38,7 +38,7 @@ Move Logic
 Back End
 --------
 ###Users
-* [x] add guest account
+* x add guest account
 * x add omniauth support for gihutb
 * x add omniauth support for facebook
 * x add omniauth support for google
@@ -50,17 +50,18 @@ Back End
 * x write algorith for updating elo after game
 * _ move all game logic to a better place, for organization karma (lib/chess perhaps?)
 * x add create game api
-* [x] on game create, allow for autocompleting the opponents email, and picking color
-* _ add ability to create games between friends or random online user
+* x add ability to create games between friends
+* _ allow open game creators to set stipulations for type of opponent (elo, etc)
 
 ###Messages
-* _ implement them!!!
+* x implement them!!!
 
 ###PGN (ie, past game stats)
 * x implement them!!!
 
 ###Friendships
-* [x] implement them!!!
+* x implement them!!!
+* x a user can accept or deny friendships
 
 ###Notifications
 * [x] a user can accept or deny friendships (perhaps as a field for the user/friendship model)
@@ -107,7 +108,7 @@ Front End
 * _ implement notification growl, where hidden box is filled with notification content (by pusher listener for current user) when it receives data, then slowly fades away
 
 ###GameDetailView
-* x indicate whether it's your move
+* _ indicate whether it's your move
 * x indicate when check
 * x indicate when in checkmate
 * _ indication when the move is being validated
@@ -124,12 +125,16 @@ Front End
 ###GameCreateView
 * x add that sh%t
 * x !!! fix redirect error
-* _ radio buttons for color desired, or random
-* _ create menus for different types of games, p vs p vs p vs ai, and match with random online user vs match with friend
+* x radio buttons for color desired, or random
+* x create menus for different types of games
+* x p vs friend
+* _ p vs ai
+* _ p vs random online user
+* [x] add ability to create open games
 
 ###Navigation
-* _ three nav menus, starting from top-left, clockwise: chess/social, notifications/settings/logout, chat
-* _ create box from each point of board to corner of screen, and pull menu icon toward center of board as cursor nears the point.
+* x three nav menus, starting from top-left, clockwise: chess/social, settings/logout, chat, notifications
+* x animations
 
 InTeReStInG/cRaZy IdEaS
 -----------------------

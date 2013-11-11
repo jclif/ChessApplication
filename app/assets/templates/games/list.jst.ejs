@@ -1,8 +1,15 @@
+<% console.log(games); %>
+<% console.log("what") %>
+<% console.log(currUser); %>
 <div class="mini-board-holder clearfix">
   <a href="#/games/new"><span class="icon-plus new-game"></i></a>
   <% games.each(function (game) { %>
     <% var board = JSON.parse(game.attributes.current_board) %>
-    <div class="mini-board clearfix">
+    <% if (game.is_current_player(currUser.id)) { %>
+      <div class="mini-board clearfix your-turn">
+    <% } else { %>
+      <div class="mini-board clearfix">
+    <% } %>
       <a href="#/games/<%= game.escape("id") %>">
         <% for(var i = 0; i < 8; i++) { %>
           <% for(var j = 0; j < 8; j++) { %>

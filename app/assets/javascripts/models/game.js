@@ -15,5 +15,23 @@ ChessApplication.Models.Game = Backbone.Model.extend({
       var model = currUserGames.get(data.id);
       model.trigger("destroy", model);
     });
+  },
+
+  is_current_player: function(playerId) {
+    var that = this;
+    var result = false;
+
+    if (that.current_player === "black") {
+      if (playerId === that.black_user_id) {
+        return true;
+      }
+    } else {
+      if (playerId === that.white_user_id) {
+        return true;
+      }
+    }
+    
+    return result;
   }
+
 });
