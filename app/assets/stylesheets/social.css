@@ -44,12 +44,48 @@
 
 .profile-container #profile-tabs {
   font-size: 100%;
+  width: 100%;
+  background: #ccc;
+}
+
+.profile-container #profile-tabs li {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.profile-container #profile-tabs span {
+  margin: auto;
+}
+
+.profile-container #profile-tabs li:hover {
+  background: #aaa;
+}
+
+.profile-container #profile-tabs li:active {
+  background: #5D87B9;
+} 
+
+.social-container #profile-tabs .messages {
+  float: right;
 }
 
 .profile-container .panel {
   font-size: 100%;
   overflow: auto;
   height: 300px;
+  display: none;
+  padding: 20px;
+}
+
+.profile-container .current-panel {
+  display: block;
+}
+
+.profile-container .current-tab {
+  background: #aaa;
 }
 
 .profile-container .profile-info-container {
@@ -66,15 +102,6 @@
   box-shadow: 0 0 10px #888;
   -moz-box-shadow: 0 0 10px #888888;
   -webkit-box-shadow: 0 0 10px #888;
-}
-
-#profile-tabs .messages {
-  float: right;
-  display: none;
-}
-
-#profile-tabs #messages {
-  display: none;
 }
 
 .profile-nav {

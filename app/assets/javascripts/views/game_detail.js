@@ -9,6 +9,7 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     that.subViews = [];
     that.pusher = that.options.pusher;
     that.channel = that.pusher.subscribe('game_' + that.model.id + '_channel');
+    that.currUser = that.options.currUser;
 
     // Bind channel for ending the game
     that.channel.bind("render_pgn", function(data){
@@ -56,6 +57,7 @@ ChessApplication.Views.GameDetailView = Backbone.View.extend({
     var that = this;
 
     that.$el.html(that.template({
+      currUser: that.currUser,
       is_white: that.is_white,
       white_to_solid: that.white_to_solid,
       game: that.model,

@@ -1,34 +1,59 @@
-<% console.log(games); %>
-<% console.log("what") %>
-<% console.log(currUser); %>
 <div class="mini-board-holder clearfix">
   <a href="#/games/new"><span class="icon-plus new-game"></i></a>
   <% games.each(function (game) { %>
     <% var board = JSON.parse(game.attributes.current_board) %>
-    <% if (game.is_current_player(currUser.id)) { %>
-      <div class="mini-board clearfix your-turn">
-    <% } else { %>
-      <div class="mini-board clearfix">
-    <% } %>
-      <a href="#/games/<%= game.escape("id") %>">
-        <% for(var i = 0; i < 8; i++) { %>
-          <% for(var j = 0; j < 8; j++) { %>
-            <% if ((i + j) % 2 == 0 ) { %>
-              <div class="mini-square light" data-id="<%= i %>_<%= j %>">
-              <% if (is_white(board[i][j])) { %>
-                <span class="piece-underlay small-piece"><%= white_to_solid(board[i][j]) %></span>
+    <% if (game.attributes.white_user_id == currUser.id) { %>
+      <% if (game.is_current_player(currUser.id)) { %>
+        <div class="mini-board clearfix your-turn">
+      <% } else { %>
+        <div class="mini-board clearfix">
+      <% } %>
+        <a href="#/games/<%= game.escape("id") %>">
+          <% for(var i = 0; i < 8; i++) { %>
+            <% for(var j = 0; j < 8; j++) { %>
+              <% if ((i + j) % 2 == 0 ) { %>
+                <div class="mini-square light" data-id="<%= i %>_<%= j %>">
+                <% if (is_white(board[i][j])) { %>
+                  <span class="piece-underlay small-piece"><%= white_to_solid(board[i][j]) %></span>
+                <% } %>
+                <span class="piece small-piece"><%= board[i][j] %></span></div>
+              <% } else { %>
+                <div class="mini-square dark" data-id="<%= i %>_<%= j %>">
+                <% if (is_white(board[i][j])) { %>
+                  <span class="piece-underlay small-piece"><%= white_to_solid(board[i][j]) %></span>
+                <% } %>
+                <span class="piece small-piece"><%= board[i][j] %></span></div>
               <% } %>
-              <span class="piece small-piece"><%= board[i][j] %></span></div>
-            <% } else { %>
-              <div class="mini-square dark" data-id="<%= i %>_<%= j %>">
-              <% if (is_white(board[i][j])) { %>
-                <span class="piece-underlay small-piece"><%= white_to_solid(board[i][j]) %></span>
-              <% } %>
-              <span class="piece small-piece"><%= board[i][j] %></span></div>
             <% } %>
           <% } %>
-        <% } %>
-      </a>
-      </div>
+        </a>
+        </div>
+      <% } else { %>
+      <% if (game.is_current_player(currUser.id)) { %>
+        <div class="mini-board clearfix your-turn">
+      <% } else { %>
+        <div class="mini-board clearfix">
+      <% } %>
+        <a class="black-down" href="#/games/<%= game.escape("id") %>">
+          <% for(var i = 0; i < 8; i++) { %>
+            <% for(var j = 0; j < 8; j++) { %>
+              <% if ((i + j) % 2 == 0 ) { %>
+                <div class="mini-square light" data-id="<%= 7-i %>_<%= 7-j %>">
+                <% if (is_white(board[i][j])) { %>
+                  <span class="piece-underlay small-piece"><%= white_to_solid(board[7-i][7-j]) %></span>
+                <% } %>
+                <span class="piece small-piece"><%= board[7-i][7-j] %></span></div>
+              <% } else { %>
+                <div class="mini-square dark" data-id="<%= 7-i %>_<%= 7-j %>">
+                <% if (is_white(board[i][j])) { %>
+                  <span class="piece-underlay small-piece"><%= white_to_solid(board[7-i][7-j]) %></span>
+                <% } %>
+                <span class="piece small-piece"><%= board[7-i][7-j] %></span></div>
+              <% } %>
+            <% } %>
+          <% } %>
+        </a>
+        </div>
+      <% } %>
   <% }); %>
 </div>

@@ -81,7 +81,7 @@ ChessApplication.Routers.GamesRouter = Backbone.Router.extend({
     that.currentView = new ChessApplication.Views.GameDetailView({
       model: game,
       pusher: that.pusher,
-      userId: that.currUser.id
+      currUser: that.currUser
     });
 
     that.$rootEl.html(that.currentView.render());

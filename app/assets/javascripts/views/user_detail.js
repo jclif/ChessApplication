@@ -39,6 +39,7 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
   events: {
     "click .user-search-button": "showSearchedUser",
     "keypress #user_email": "filterEnter",
+    "click #profile-tabs li": "tabinate",
     "click .social-container .friend-button": "addFriendship",
     "click .social-container .unfriend-button": "deleteFriendship",
     "click .social-container .accept-friendship": "acceptFriendship",
@@ -54,29 +55,10 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     }));
 
     _.defer(function() {
-      if (that.userId !== that.user.attributes.id) {
-        if (that.user.isFriendsWith(that.userId)) {
-          $('.unfriend-button').show();
-        } else if (that.user.receivedRequestFrom(that.userId)) {
-          $('.request-sent-button').show();
-        } else if (that.user.sentRequestTo(that.userId)) {
-          $('.pending-button').show();
-        } else {
-          $('.friend-button').show();
-        }
-      } else {
-        $('#messages').show();
-        $('.messages').show();
-      }
-
       $('#user_email').autocomplete({
         source: "/users.json",
         minLength: 1
       });
-
-      $('#profile-tabs').tabs();
-
-      $('.fancybox').fancybox();
     });
 
     return that.$el;
@@ -103,6 +85,16 @@ ChessApplication.Views.UserDetailView = Backbone.View.extend({
     };
 
     $.ajax(ajaxOptions);
+  },
+
+  tabinate: function(event) {
+    id = $(event.currentTarget).attr('class');
+
+    $('.current-tab').removeClass('current-tab');
+    $(event.currentTarget).addClass('current-tab');
+    
+    $('.current-panel').removeClass('current-panel');
+    $('#' + id).addClass('current-panel');
   },
 
   addFriendship: function() {

@@ -15,88 +15,98 @@
   <div class="profile-container clearfix">
     <div class="profile-info-container clearfix">
       <a href="assets/default_pic.png" class="fancybox"><img class="profile-pic" src="assets/default_pic.png"></a>
-      <div class="friend-button button button-rounded button-action" style="display: none;">Friend</div>
-      <span class="pending-button button-dropdown" style="display: none;" data-buttons="dropdown">
-        <div class="button button-rounded button-royal">Pending Friend Request <span class="icon-arrow-down"></span></div>
-        <ul>
-          <li><a class="accept-friendship">Accept</a></li>
-          <li><a class="deny-friendship">Decline</a></li>
-        </ul>
-      </span>
-      <div class="unfriend-button button button-rounded button-caution" style="display: none;">Unfriend</div>
-      <div class="request-sent-button button button-rounded button-highlight" style="display: none;">Friend Request Sent</div>
+
+      <% if (userId !== user.attributes.id) { %>
+        <% if (user.isFriendsWith(userId)) { %>
+          <div class="unfriend-button button button-rounded button-caution">Unfriend</div>
+        <% } else if (user.receivedRequestFrom(userId)) { %>
+          <div class="request-sent-button button button-rounded button-highlight">Friend Request Sent</div>
+        <% } else if (user.sentRequestTo(userId)) { %>
+          <span class="pending-button button-dropdown" data-buttons="dropdown">
+            <div class="button button-rounded button-royal">Pending Friend Request <span class="icon-arrow-down"></span></div>
+            <ul>
+              <li><a class="accept-friendship">Accept</a></li>
+              <li><a class="deny-friendship">Decline</a></li>
+            </ul>
+          </span>
+        <% } else { %>
+          <div class="friend-button button button-rounded button-action">Friend</div>
+        <% } %>
+      <% } %>
+
       <h1><%= user.attributes.email %></h1>
       ID: <%= user.attributes.id %><br>
       Elo: <%= user.attributes.elo %><br><br>
     </div>
 
-    <div id="profile-tabs">
+    <div id="profile-tabs" class="clearfix">
       <ul>
-        <li><a href="#wall"><span class="icon-home"></span> Wall</a></li>
-        <li><a href="#past-games"><span class="icon-trophy"></span> Past Games</a></li>
-        <li><a href="#friends"><span class="icon-users"></span> Friends</a></li>
-        <li><a href="#graphs"><span class="icon-graph"></span> Graphs</a></li>
-        <li class="messages"><a href="#messages"><span class="icon-mail"></span> Messages</a></li>
-      </ul>
-      <div id="wall" class="panel">
-        <p>Wall coming soon!</p>
-      </div>
-      <div id="past-games" class="panel">
-        <% if (user.attributes.past_games.length === 0) { %>
-          <p>Go play some chess!</p>
-        <% } else { %>
-          <ul class="past-games">
-          <% user.attributes.past_games.forEach(function(pgn) { %>
-          <li>
-          <% var other_user_id = null; %>
-            <% if (pgn.white_user_id === user.attributes.id) { %>
-              <% other_user_id = pgn.black_user_id; %>
-            <% } else { %>
-              <% other_user_id = pgn.white_user_id; %>
-            <% } %>
-            At <%= pgn.created_at %> you played as
-            <% if (pgn.white_user_id === user.id) { %>
-              white
-            <% } else { %>
-              black
-            <% } %>
-            against against<a href="/#/users/<%= other_user_id %>"><%= other_user_id %></a>.<br>
-            White's elo changed by <%= pgn.white_elo_diff %>.<br>
-            Black's elo changed by <%= pgn.black_elo_diff %>.
-          </li>
-          <% }); %>
-          </ul>
+        <li class='wall current-tab'><span class="icon-home"></span> Wall</li>
+        <li class='past-games'><span class="icon-trophy"></span> Past Games</li>
+        <li class='friends'><span class="icon-users"></span> Friends</li>
+        <li class='graphs'><span class="icon-graph"></span> Graphs</li>
+        <% if (userId === user.attributes.id) { %>
+          <li class="messages"><span class="icon-mail"></span> Messages</li>
         <% } %>
-      </div>
-      <div id="friends" class="panel">
-        <ul class="friend-list clearfix">
-          <% if (user.attributes.accepted_friends.length === 0) { %>
-            Aquire moar friends !!!
+      </ul>
+    </div>
+    <div id="wall" class="panel current-panel">
+      <p>Wall coming soon!</p>
+    </div>
+    <div id="past-games" class="panel">
+      <% if (user.attributes.past_games.length === 0) { %>
+        <p>Go play some chess!</p>
+      <% } else { %>
+        <ul class="past-games">
+        <% user.attributes.past_games.forEach(function(pgn) { %>
+        <li>
+        <% var other_user_id = null; %>
+          <% if (pgn.white_user_id === user.attributes.id) { %>
+            <% other_user_id = pgn.black_user_id; %>
           <% } else { %>
-            <% user.attributes.accepted_friends.forEach(function(friend) { %>
-            <a class="clearfix" href="/#/users/<%= friend.id %>">
-              <li class="friend-item clearfix">
-                <img class="friend-thumbnail" src="assets/default_pic.png">
-                <ul class="friend-info" style="float:left;">
-                  <li><%= friend.email %></li>
-                  <li>Elo: <%= friend.elo %></li>
-                  <li>ID: <%= friend.id %></li>
-                </ul>
-              </li>
-            </a>
-            <% }); %>
+            <% other_user_id = pgn.white_user_id; %>
           <% } %>
+          At <%= pgn.created_at %> you played as
+          <% if (pgn.white_user_id === user.id) { %>
+            white
+          <% } else { %>
+            black
+          <% } %>
+          against against<a href="/#/users/<%= other_user_id %>"><%= other_user_id %></a>.<br>
+          White's elo changed by <%= pgn.white_elo_diff %>.<br>
+          Black's elo changed by <%= pgn.black_elo_diff %>.
+        </li>
+        <% }); %>
         </ul>
-      </div>
-      <script>
-
-      </script>
-      <div id="graphs" class="panel">
-        <p> Graphs coming soon!</p>
-      </div>
+      <% } %>
+    </div>
+    <div id="friends" class="panel">
+      <ul class="friend-list clearfix">
+        <% if (user.attributes.accepted_friends.length === 0) { %>
+          Aquire moar friends !!!
+        <% } else { %>
+          <% user.attributes.accepted_friends.forEach(function(friend) { %>
+          <a class="clearfix" href="/#/users/<%= friend.id %>">
+            <li class="friend-item clearfix">
+              <img class="friend-thumbnail" src="assets/default_pic.png">
+              <ul class="friend-info" style="float:left;">
+                <li><%= friend.email %></li>
+                <li>Elo: <%= friend.elo %></li>
+                <li>ID: <%= friend.id %></li>
+              </ul>
+            </li>
+          </a>
+          <% }); %>
+        <% } %>
+      </ul>
+    </div>
+    <div id="graphs" class="panel">
+      <p> Graphs coming soon!</p>
+    </div>
+    <% if (userId === user.attributes.id) { %>
       <div id="messages" class="panel">
         <p>Messages coming soon!</p>
       </div>
-    </div>
+    <% } %>
   </div>
 </div>

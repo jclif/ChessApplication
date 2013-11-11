@@ -8,8 +8,8 @@ SO MUCH TO DO, SO LITTLE TIME
 FIX THIS BEFORE YOU DEPLOY!!!
 -----------------------------
 * x set up pusher api keys
-* [x] configure capistrano
-* _ remove pusher log thingy
+* x remove pusher log thingy
+* _ try to deploy with git 
 
 Efficiency
 ----------

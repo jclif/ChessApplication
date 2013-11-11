@@ -1,19 +1,41 @@
-<div class="chessboard clearfix">
-  <% for(var i = 0; i < 8; i++) { %>
-    <% for(var j = 0; j < 8; j++) { %>
-      <% if ((i + j) % 2 == 0 ) { %>
-        <div class="square" data-id="<%= i %>_<%= j %>">
-        <% if (is_white(board[i][j])) { %>
-          <span class="piece-underlay big-piece"><%= white_to_solid(board[i][j]) %></span>
+<% if (game.attributes.white_user_id == currUser.id) { %>
+  <div class="chessboard clearfix">
+    <% for(var i = 0; i < 8; i++) { %>
+      <% for(var j = 0; j < 8; j++) { %>
+        <% if ((i + j) % 2 == 0 ) { %>
+          <div class="square" data-id="<%= i %>_<%= j %>">
+          <% if (is_white(board[i][j])) { %>
+            <span class="piece-underlay big-piece"><%= white_to_solid(board[i][j]) %></span>
+          <% } %>
+          <span class="piece big-piece"><%= board[i][j] %></span></div>
+        <% } else { %>
+          <div class="square dark" data-id="<%= i %>_<%= j %>">
+          <% if (is_white(board[i][j])) { %>
+            <span class="piece-underlay big-piece"><%= white_to_solid(board[i][j]) %></span>
+          <% } %>
+          <span class="piece big-piece"><%= board[i][j] %></span></div>
         <% } %>
-        <span class="piece big-piece"><%= board[i][j] %></span></div>
-      <% } else { %>
-        <div class="square dark" data-id="<%= i %>_<%= j %>">
-        <% if (is_white(board[i][j])) { %>
-          <span class="piece-underlay big-piece"><%= white_to_solid(board[i][j]) %></span>
-        <% } %>
-        <span class="piece big-piece"><%= board[i][j] %></span></div>
       <% } %>
     <% } %>
-  <% } %>
-</div>
+  </div>
+<% } else { %>
+  <div class="chessboard clearfix">
+    <% for(var i = 0; i < 8; i++) { %>
+      <% for(var j = 0; j < 8; j++) { %>
+        <% if ((i + j) % 2 == 0 ) { %>
+          <div class="square" data-id="<%= 7-i %>_<%= 7-j %>">
+          <% if (is_white(board[i][j])) { %>
+            <span class="piece-underlay big-piece"><%= white_to_solid(board[7-i][7-j]) %></span>
+          <% } %>
+          <span class="piece big-piece"><%= board[7-i][7-j] %></span></div>
+        <% } else { %>
+          <div class="square dark" data-id="<%= 7-i %>_<%= 7-j %>">
+          <% if (is_white(board[7-i][7-j])) { %>
+            <span class="piece-underlay big-piece"><%= white_to_solid(board[7-i][7-j]) %></span>
+          <% } %>
+          <span class="piece big-piece"><%= board[7-i][7-j] %></span></div>
+        <% } %>
+      <% } %>
+    <% } %>
+  </div>
+<% } %>
