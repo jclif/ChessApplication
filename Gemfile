@@ -20,6 +20,21 @@ group :development do
   gem 'letter_opener'
   gem 'debugger'
   gem 'thin'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'cucumber-rails', require: false
+  gem 'jasmine'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'faker'
+  gem 'guard-rspec'
+  gem 'selenium-webdriver'
+  gem 'nokogiri'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'turn', require: false
 end
 
 group :production do
