@@ -19,8 +19,8 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
     "click #pending-friends": "togglePendingFriends",
     "click .pending-friends-list .accept-friendship": "acceptFriendship",
     "click .pending-friends-list .deny-friendship": "denyFriendship",
-    "click .pending-game-list .accept-game": "acceptGame",
-    "click .pending-game-list .deny-game": "denyGame",
+    "click #pending-games-list .accept-game": "acceptGame",
+    "click #pending-games-list .deny-game": "denyGame",
     "click .chat-friend": "chatDetail",
     "click .chat-exit": "chatExit",
     "click .submit-message-button": "submitMessage",
@@ -161,7 +161,7 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
 
     if (data.length === 0) {
       $el.append("<p class='sad-panda'>No messages yet.</p>");
-      $el.append($ul.append($input));
+      $el.append($ul).append($input);
     } else {
       data.forEach(function(message) {
         $li = $('<li></li>').addClass('clearfix');
@@ -216,7 +216,32 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
   },
 
   pusherInit: function(userId) {
+  },
+
+  acceptGame: function(event) {
+    var that = this;
+
+    gameId = $(event.currentTarget).attr('data-id');
+    
+    var ajaxOptions = {
+      url: '/games/' + gameId + 'respond',
+      type: 'POST',
+      data: {"response": "accept"},
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
+  },
+
+  denyGame: function() {
+    console.log('denied');
   }
+
 
 });
 

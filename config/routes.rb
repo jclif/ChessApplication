@@ -3,7 +3,11 @@ ChessApplication::Application.routes.draw do
 
   root to: "games#index"
 
-  resources :games, only: [:show, :index, :create, :update]
+  resources :games, only: [:show, :index, :create, :update, :respond] do
+    member do
+      post :respond
+    end
+  end
   resources :open_games, only: [:index, :create, :destroy]
   resources :users, only: [:show, :index]
   resources :friendships, only: [:create] do

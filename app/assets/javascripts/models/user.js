@@ -33,6 +33,19 @@ ChessApplication.Models.User= Backbone.Model.extend({
       }
     });
     return found;
+  },
+
+  otherGameUser: function(game) {
+    var that = this;
+    var result = undefined;
+
+    if (that.id === game.white_user_id) {
+      result = game.black_user_id;
+    } else if (that.id === game.black_user_id) {
+      result = game.white_user_id;
+    }
+
+    return result;
   }
 
 });

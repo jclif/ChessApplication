@@ -64,4 +64,43 @@ class GamesController < ApplicationController
       render json: @game.errors, status: 422
     end
   end
+
+  def respond
+    puts params
+    fail
+    if params[:response] == "accept"
+      g = Game.find_by_user_ids(current_user.id, params[:user_id])
+      g.accepted = true
+      g.pending = false
+      if g.save!
+        @white_user = User.find_by_id(g.white_user_id)
+        @black_user = User.find_by_id(g.black_user_id)
+        white_user_json = @white_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
+        black_user_json = @black_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
+        Pusher.trigger("user_#{@white_user.id}_channel", "add_game", g.to_json)
+        Pusher.trigger("user_#{@black_user.id}_channel", "add_game", g.to_json)
+        Pusher.trigger("user_#{@white_user.id}_channel", "update_profile", white_user_json)
+        Pusher.trigger("user_#{@black_user.id}_channel", "update_profile", black_user_json)
+        render nothing: true
+      else
+        render json: f.errors, status: 422
+      end
+    elsif params[:response] == "deny"
+      @g= Game.find_by_user_ids(current_user.id, params[:user_id])
+      g = @g
+      if @g.delete
+        @white_user = User.find_by_id(g.white_user_id)
+        @black_user = User.find_by_id(g.black_user_id)
+        white_user_json = @white_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
+        black_user_json = @black_user.as_json(methods: [:accepted_friends, :pending_friends_received, :pending_friends_sent_ids, :past_games, :pending_games_received])
+        Pusher.trigger("user_#{@white_user.id}_channel", "update_profile", white_user_json)
+        Pusher.trigger("user_#{@black_user.id}_channel", "update_profile", black_user_json)
+        render nothing: true
+      else
+        render json: @g.errors, status: 422
+      end
+    else
+      render status: 422
+    end
+  end
 end

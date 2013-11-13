@@ -63,24 +63,20 @@ Back End
 * x implement them!!!
 * x a user can accept or deny friendships
 
-###Notifications
-* [x] a user can accept or deny friendships (perhaps as a field for the user/friendship model)
-* _ a user can accept or deny games
-* _ pending games and friendships could be aggregated into lists that drop down from different icons (game icon, friendships icon, etc), with buttons for accepting or denying
-
 Front End
 ---------
 
 ###Pusher Listeners
-* [x] initialize all collections initially, then set up pusher listeners for each of those models
+* x initialize all collections initially, then set up pusher listeners for each of those models
+* x add object function for initializing game model
 
 ###Profile View
 * x add dat sh%t
 * x tabinate!@@#$#@$
 * x display basic stats (elo, id, etc)
 * x display associated info: ie, pgns (past games), friends, etfc
-* _ rework tabination of add subviews so content doesn't jump when re-rendering
-* _ search feature for past games
+* x rework tabination of add subviews so content doesn't jump when re-rendering
+* _ instead of completely rerendering-just update all of the information, so the it stays on the current tab
 * _ allow user to iterate through past game moves
 * _ GrApHsSsSsS &$#&YI$(#&%(#$&!!!!!
 * _ if you click on the messages tab, the chat minimizes
@@ -88,7 +84,7 @@ Front End
 ###ChatViews (not sure how exactly this will work)
 * x add dat sh%t
 * x only display online users (add last_request_at column for user and update column on every request (except sign in [devise initilize skip_before_filter]), then just display friend if they're active)
-* _ fetch last 10 messages when user clicks on friends name
+* x fetch last 10 messages when user clicks on friends name
 * _ when they scroll to the top of the messages, load 10 more, etc
 
 ###Login
@@ -99,17 +95,16 @@ Front End
 * x button for facebook omniauth
 * x button for google omniauth
 * _ check valid login and jquery shake login-container if invalid
-* [x] button for guest sign in
-* [x] less ugly plz
+* x button for guest sign in
+* x less ugly plz
 
 ###Prettify
-* _ basic layout
-* _ put move list in div and give it move numbers
+* x basic layout
 * _ implement notification growl, where hidden box is filled with notification content (by pusher listener for current user) when it receives data, then slowly fades away
 
 ###GameDetailView
 * _ indicate whether it's your move
-* x indicate when check
+* _ indicate when check
 * x indicate when in checkmate
 * _ indication when the move is being validated
 * _ indicate when the move is invalid
@@ -128,6 +123,8 @@ Front End
 * x radio buttons for color desired, or random
 * x create menus for different types of games
 * x p vs friend
+* _ rework tabs
+* _ dont rerender on update, just reinsert data
 * _ p vs ai
 * _ p vs random online user
 * [x] add ability to create open games
