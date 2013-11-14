@@ -238,10 +238,25 @@ ChessApplication.Views.NavBotView = Backbone.View.extend({
     $.ajax(ajaxOptions);
   },
 
-  denyGame: function() {
-    console.log('denied');
-  }
+  denyGame: function(event) {
+    var that = this;
 
+    gameId = $(event.currentTarget).attr('data-id');
+    
+    var ajaxOptions = {
+      url: '/games/' + gameId + 'respond',
+      type: 'POST',
+      data: {"response": "deny"},
+      success: function(data) {
+        console.log(data);
+      },
+      error: function(data) {
+        console.log(data);
+      }
+    };
+
+    $.ajax(ajaxOptions);
+  }
 
 });
 

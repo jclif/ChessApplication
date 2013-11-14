@@ -66,10 +66,8 @@ class GamesController < ApplicationController
   end
 
   def respond
-    puts params
-    fail
     if params[:response] == "accept"
-      g = Game.find_by_user_ids(current_user.id, params[:user_id])
+      g = Game.find_by_id(params[:id])
       g.accepted = true
       g.pending = false
       if g.save!
@@ -86,8 +84,7 @@ class GamesController < ApplicationController
         render json: f.errors, status: 422
       end
     elsif params[:response] == "deny"
-      @g= Game.find_by_user_ids(current_user.id, params[:user_id])
-      g = @g
+      @g= Game.find_by_id(params[:id])
       if @g.delete
         @white_user = User.find_by_id(g.white_user_id)
         @black_user = User.find_by_id(g.black_user_id)

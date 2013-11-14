@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require serializejson
+//= require sinon
 //= require chess_application
 //= require_tree ../templates
 //= require_tree ./models

@@ -1,4 +1,4 @@
-ChessApplication.Models.User= Backbone.Model.extend({
+ChessApplication.Models.User = Backbone.Model.extend({
 
   urlRoot: '/users',
 

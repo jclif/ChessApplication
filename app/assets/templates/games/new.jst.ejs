@@ -27,7 +27,17 @@
        <% } %>
     </div>
     <div id="create-game" class="panel">
-      <p>Creating games for any user to accept is coming soon!</p>
+      <form>
+      <select name="game[opponent_id]" id="game_opponent_email">
+      <% currUser.attributes.accepted_friends.forEach(function(friend) { %>
+        <option value="<%= friend.id %>"><%= friend.email %></option>
+      <% }); %>
+      </select><br>
+      <input type="radio" name="game[current_user_color_choice]" value="Black" id="game_current_user_color_choice">Black<br>
+      <input type="radio" name="game[current_user_color_choice]" value="White" id="game_current_user_color_choice">White<br>
+
+      <button class="open-game-submit submit">Submit!</button>
+      </form>
     </div>
     <div id="play-a-friend" class="panel">
       <% if (currUser.attributes.accepted_friends.length === 0) { %>
@@ -43,7 +53,7 @@
         <input type="radio" name="game[current_user_color_choice]" value="Black" id="game_current_user_color_choice">Black<br>
         <input type="radio" name="game[current_user_color_choice]" value="White" id="game_current_user_color_choice">White<br>
 
-        <button class="submit">Submit!</button>
+        <button class="play-a-friend-submit submit">Submit!</button>
         </form>
       <% } %>
     </div>
