@@ -3,8 +3,6 @@ Chessnuts
 
 A social, minimally designed, one-page web application.
 
-Check out the live deployment [here](http://chess.jaredcraigclifton.com).
-
 Technologies Utilized
 ---------------------
 * Ruby on Rails
