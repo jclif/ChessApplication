@@ -23,14 +23,14 @@ group :development do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'cucumber-rails', require: false
-  gem 'jasmine'
+  gem 'jasmine', '>= 1.3.2'
 end
 
 group :test do
   gem 'capybara'
   gem 'faker'
-  gem 'guard-rspec'
-  gem 'selenium-webdriver'
+  gem 'guard-rspec', '>= 4.0.4'
+  gem 'selenium-webdriver', '>= 2.37.0'
   gem 'nokogiri'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
