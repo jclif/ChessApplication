@@ -22,16 +22,16 @@ group :development do
   gem 'thin'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails', require: false
+  gem 'cucumber-rails', '>= 1.4.0', require: false
   gem 'jasmine'
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '>= 2.1.0'
   gem 'faker'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
-  gem 'nokogiri'
+  gem 'nokogiri', '>= 1.8.5'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'turn', require: false
